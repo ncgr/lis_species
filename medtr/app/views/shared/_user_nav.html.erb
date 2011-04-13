@@ -1,0 +1,8 @@
+<div id="user-nav">
+    <% if user_signed_in? %>
+        Currently signed in as [ <%= link_to current_user.username, "http://comparative-legumes.org/user_profile/#{current_user.id}"  %> ] [ <%= link_to "Sign Out", destroy_user_session_path %>  ]
+    <% else %>
+        [ <%= link_to "Register", "http://comparative-legumes.org/user_information/new" %> ] [ <%= link_to "Sign In", new_user_session_path %>  ]
+    <% end %>
+</div>
+<div style="clear: both;"></div>

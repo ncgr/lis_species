@@ -1,0 +1,153 @@
+/*** Form Styles ***/
+form {
+	margin: 5px;
+	padding: 0;
+}
+
+form fieldset {
+	margin: 5px 0 5px 0;
+	padding: 5px;
+	width: 70%;
+}
+
+form textarea {
+	margin: 5px 0px 5px 5px;
+	padding: 5px;
+	width: 60%;
+	height: 120px;
+}
+
+form textarea.small {
+	margin: 5px 0px 5px 5px;
+	padding: 5px;
+	width: 60%;
+	height: 40px;
+}
+
+form textarea.no-display {
+    display: none;
+}
+
+.textarea-seq {
+    width: 95%;
+    font-size: 10px;
+}
+
+form input {
+	margin: 0 0 0 5px;
+	padding: 0;
+	width: auto;
+	height: auto;
+}
+
+.radio-form {
+	font-size: 12px;
+}
+
+form input.submit, form input.reset {
+	width: auto;
+}
+/*** End Form Styles ***/
+
+/*** Table Styles ***/
+table {
+	margin: 0;
+	border: 0;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th {
+	white-space: normal;
+	background-color: #eeeeee;
+}
+
+th, td {
+	padding: 2px;
+	text-align: left;
+	font-size: 12px;
+}
+
+th a, a:hover {
+	text-decoration: underline;
+	border: none;
+}
+
+td {
+	white-space: normal;
+}
+
+td.category {
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: underline;
+	height: 25px;
+}
+
+tr.odd {
+	background-color: #ffffff;
+}
+
+tr.even {
+	background-color: #f8f8ff;
+}
+
+table#account-info {
+	margin: 0;
+    border: 0;
+    width: 60%;
+    border-collapse: collapse;
+}
+/*** End ***/
+
+
+/*** Error Styles ***/
+#error_explanation {
+	width: 80%;
+	border: 2px solid #0065de;
+	padding: 7px;
+	padding-bottom: 0;
+	margin-bottom: 20px;
+	background-color: #ffffff;
+}
+
+#error_explanation h2 {
+	text-align: left;
+	font-weight: bold;
+	padding: 5px 5px 5px 15px;
+	font-size: 18px;
+	margin: -7px;
+	margin-bottom: 0px;
+	background-color: #0065de;
+	color: #fff;
+}
+
+#error_explanation ul {
+	margin: 15px 20px 15px 40px;
+    padding: 0;
+}
+
+#error_explanation ul li {
+	margin: 0;
+    padding: 0 0 0 5px;
+    font-size: 14px;	
+    line-height: 18px;
+}
+
+#notice, #alert, #error {
+	margin: 10px 0 15px 0;
+	padding: 0;
+	
+	color: #0065de;
+	font-size: 18px;
+	font-weight: bold;
+	clear: both;
+}
+
+.field_with_errors {
+	padding: 2px;
+	background-color: #0065de;
+	display: table;
+	color: #fff;
+}
+/*** End ***/

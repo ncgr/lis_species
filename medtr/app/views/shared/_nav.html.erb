@@ -1,0 +1,54 @@
+<% base_url = "http://comparative-legumes.org/" %>
+
+<ul class="level1" id="root">
+	<li><%= link_to "Home", base_url %></li> 
+	<li class="sep">|</li>
+	<li><%= link_to "About", "#{base_url}about" %></li> 
+	<li class="sep">|</li>
+	<li><%= link_to "News", "#{base_url}news_articles" %></li> 
+	<li class="sep">|</li>
+	<li><%= link_to "Development", "#{base_url}development_activities" %></li> 
+	<li class="sep">|</li>
+	<li>
+		<a href="#" class="no_cursor">Search</a> 
+		<ul class="level2"> 
+			<li><%= link_to "Search by sequence", root_path %></li> 
+		</ul> 
+	</li> 
+	<li class="sep">|</li>
+	<li>
+		<a href="#" class="no_cursor">Maps</a> 
+		<ul class="level2"> 
+			<li><%= link_to "Comparative map views", "http://cmap.comparative-legumes.org/index.html" %></li> 
+		</ul> 
+	</li> 
+	<li class="sep">|</li>
+	<li>
+		<a href="#" class="no_cursor">Reference Species</a> 
+		<ul class="level2"> 
+			<li><%= link_to "Glycine max", "#{base_url}glycine_max" %></li>
+			<li><%= link_to "Medicago truncatula", "#{base_url}medicago_truncatula" %></li>
+			<li><%= link_to "Lotus japonicus", "#{base_url}lotus_japonicus" %></li>
+		</ul> 
+	</li>
+	<li class="sep">|</li>
+	<li>
+		<a href="#" class="no_cursor">Research Community</a> 
+		<ul class="level2"> 
+			<li><%= link_to "Links", "#{base_url}links" %></li>
+			<li><%= link_to "Participating groups", "#{base_url}participating_groups" %></li>
+		</ul> 
+	</li>
+	<li class="sep">|</li>
+	<li>
+		<a href="#" class="no_cursor">LIS Classic</a> 
+		<ul class="level2"> 
+			<li><%= link_to "Genomes", "http://lis.comparative-legumes.org/lisg/lis_summary.html?page_type=genomic" %></li>
+			<li><%= link_to "Transcripts", "http://lis.comparative-legumes.org/lis/lis_summary.html?page_type=transcript" %></li>
+			<li><%= link_to "Maps", "http://lis.comparative-legumes.org/lis/lis_summary.html?page_type=cmap" %></li>
+			<li><%= link_to "Pathways", "http://soybase.ncgr.org/cgi-bin/ace/generic/search/soybase?class=Reaction_or_pathway" %></li>
+		</ul> 
+	</li>
+	<li class="sep">|</li>
+	<li><%= link_to "Collaborators", "#{base_url}collaborators" %></li> 
+</ul> 

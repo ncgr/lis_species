@@ -2,7 +2,7 @@
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
   # ==> CAS Configuration
-  config.cas_base_url = "https://localhost:7777"
+  config.cas_base_url = "https://aztec.ncgr.org:7777"
   config.cas_create_user = false
 
   # ==> Mailer Configuration

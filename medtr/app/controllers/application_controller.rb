@@ -2,7 +2,6 @@
 class ApplicationController < ActionController::Base
  
   before_filter :check_existing_cas_session
-
   protect_from_forgery
 
   # 

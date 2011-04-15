@@ -38,7 +38,7 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :username ]
+  # config.case_insensitive_keys = [ :username ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true
@@ -55,10 +55,10 @@ Devise.setup do |config|
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
-  config.stretches = 20
+  # config.stretches = 20
 
   # Setup a pepper to generate the encrypted password.
-  config.pepper = "c01594089249ea928934579482375982437598724395781148b0120e0b370e72855f3e13a9999a0672e0897a56fe390ecb34048601c378cca569f13320e1ef9a47c"
+  # config.pepper = "c01594089249ea92893457948237598243759872439578897a56fe390ecb34048601c378cca569f13320e1ef9a47c"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time

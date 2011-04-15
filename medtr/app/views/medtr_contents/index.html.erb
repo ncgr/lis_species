@@ -1,0 +1,20 @@
+<h1>Medicago truncatula (barrel medic)</h1>
+
+<% permitted_to? :update, :medtr_contents do %>
+    <p><%= link_to raw("Edit Contents &raquo;"), edit_medtr_content_path(@medtr.id) %></p>
+<% end %>
+
+<h3>Overview</h3>
+<%= raw(@medtr.overview) %>
+
+<h3>Genome summary</h3>
+<%= raw(@medtr.genome_summary) %>
+
+<h3>At Wikipedia</h3>
+<%= raw(@medtr.at_wikipedia) %>
+
+<h3>Resources</h3>
+<%= raw(@medtr.resources) %>
+
+<h3>Selected references</h3>
+<%= raw(@medtr.selected_references) %>

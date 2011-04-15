@@ -1,0 +1,36 @@
+<script type="text/javascript" src="http://aztec.ncgr.org:7650/javascripts/ckeditor/ckeditor.js"></script>
+
+<h1>Edit Contents</h1>
+
+<%= form_for @medtr, :html => {:onsubmit => "processingOnSubmit()"} do |f| %>
+    <p>
+    	<%= f.label :overview, "Overview:" %><br />
+        <%= f.text_area :overview, :id => "ckeditor_overview" %>
+	</p>
+	 <p>
+        <%= f.label :genome_summary, "Genome Summary:" %><br />
+        <%= f.text_area :genome_summary, :id => "ckeditor_genome_summary" %>
+    </p>
+	 <p>
+        <%= f.label :at_wikipedia, "At Wikipedia:" %><br />
+        <%= f.text_area :at_wikipedia, :id => "ckeditor_at_wikipedia" %>
+    </p>
+	 <p>
+        <%= f.label :resources, "Resources:" %><br />
+        <%= f.text_area :resources, :id => "ckeditor_resources" %>
+    </p>
+	 <p>
+        <%= f.label :selected_references, "Selected References:" %><br />
+        <%= f.text_area :selected_references, :id => "ckeditor_selected_references" %>
+    </p>
+	<p><%= f.submit "Update Contents", :id => "submit", :class => "submit" %></p>
+<% end %>
+
+<script type="text/javascript">
+	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_at_wikipedia","ckeditor_resources","ckeditor_selected_references"];
+	ids.each(function (id) {
+		CKEDITOR.replace(id, {
+			toolbar : "<%= @tool_bar %>"
+		});
+	});
+</script>

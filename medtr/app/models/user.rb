@@ -1,7 +1,8 @@
 
 class User < ActiveRecord::Base
 
-  belongs_to :role
+  has_many :user_roles, :dependent => :destroy
+  has_many :roles, :through => :user_roles
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :timeoutable, :omniauthable
@@ -19,25 +20,15 @@ class User < ActiveRecord::Base
         self.first_name = value
       when :last_name
         self.last_name = value
-      when :role_id
-        self.role_id = value
       end
     end
   end
 
   #
-  # Find all User Roles
+  # Declarative authorization method
   #
-  def get_user_roles
-    roles = Role.select("name").all
-    roles.map {|n| n.name.to_sym}
-  end
-
-  #
-  # Helper to check user's role.
-  #
-  def has_role? (role)
-    (self.role.name.to_sym == role.to_sym) && (self.get_user_roles.include? role.to_sym)
+  def role_symbols
+    (roles || []).map {|r| r.name.to_sym}
   end  
 
 end

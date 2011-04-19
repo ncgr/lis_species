@@ -1,8 +1,16 @@
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
+
+# Set the CAS Server URL
+if Rails.env.production?
+  cas_url = "https://cas.comparative-legumes.org"
+else
+  cas_url = "https://aztec.ncgr.org:7777"
+end
+
 Devise.setup do |config|
   # ==> CAS Configuration
-  config.cas_base_url = "https://aztec.ncgr.org:7777"
+  config.cas_base_url = cas_url
   config.cas_create_user = false
 
   # ==> Mailer Configuration

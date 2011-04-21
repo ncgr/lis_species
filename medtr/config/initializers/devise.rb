@@ -4,13 +4,16 @@
 # Set the CAS Server URL
 if Rails.env.production?
   cas_url = "https://cas.comparative-legumes.org"
+  cas_validate = "https://velarde.ncgr.org:8055/proxyValidate"
 else
   cas_url = "https://aztec.ncgr.org:7777"
+  cas_validate = "https://aztec.ncgr.org:7777"
 end
 
 Devise.setup do |config|
   # ==> CAS Configuration
   config.cas_base_url = cas_url
+  config.cas_validate_url = cas_validate
   config.cas_create_user = false
 
   # ==> Mailer Configuration

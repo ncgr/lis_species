@@ -16,7 +16,7 @@
 	<li>
 		<a href="#" class="no_cursor">Search</a> 
 		<ul class="level2"> 
-			<li><%= link_to "Search by sequence", root_path %></li> 
+			<li><%= link_to "Search by sequence", "http://search.comparative-legumes.org" %></li> 
 		</ul> 
 	</li> 
 	<li class="sep">|</li>
@@ -28,11 +28,11 @@
 	</li> 
 	<li class="sep">|</li>
 	<li>
-		<a href="#" class="no_cursor">Reference Species</a> 
+		<%= link_to "Species", "#{base_url}pages/species" %>
 		<ul class="level2"> 
-			<li><%= link_to "Glycine max", "#{base_url}pages/glycine_max" %></li>
-			<li><%= link_to "Medicago truncatula", "#{base_url}pages/medicago_truncatula" %></li>
-			<li><%= link_to "Lotus japonicus", "#{base_url}pages/lotus_japonicus" %></li>
+			<li><%= link_to "Glycine max", "http://glyma.comparative-legumes.org" %></li>
+			<li><%= link_to "Medicago truncatula", "http://medtr.comparative-legumes.org" %></li>
+			<li><%= link_to "Lotus japonicus", "http://lotja.comparative-legumes.org" %></li>
 		</ul> 
 	</li>
 	<li class="sep">|</li>

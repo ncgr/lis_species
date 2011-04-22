@@ -18,7 +18,7 @@ class MedtrContentsController < ApplicationController
     @medtr = MedtrContent.find(params[:id])
     if @medtr.update_attributes(params[:medtr_content])
       flash[:error] = "Successfully updated contents."
-      redirect_to medtr_contents_path
+      redirect_to root_path
     else
       flash[:notice] = "Unable to update contents"
       render :action => "edit"

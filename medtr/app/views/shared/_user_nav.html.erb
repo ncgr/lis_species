@@ -6,9 +6,11 @@
 
 <div id="user-nav">
     <% if user_signed_in? %>
-        Currently signed in as [ <%= link_to current_user.username, "#{base_url}user_profiles/#{current_user.id}"  %> ] [ <%= link_to "Sign Out", destroy_user_session_path %>  ]
+        Currently signed in as [ <%= link_to current_user.username, "#{base_url}user_profiles/#{current_user.id}"  %> ] 
+		[ <%= link_to "Sign Out", destroy_user_session_path %>  ]
     <% else %>
-        [ <%= link_to "Register", "#{base_url}user_information/sign_up" %> ] [ <%= link_to "Sign In", new_user_session_path %>  ]
+        [ <%= link_to "Register", "#{base_url}user_information/sign_up" %> ] 
+		[ <%= link_to "Sign In", new_user_session_path %>  ]
     <% end %>
 </div>
 <div style="clear: both;"></div>

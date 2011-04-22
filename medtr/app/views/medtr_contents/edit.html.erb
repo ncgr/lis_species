@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://aztec.ncgr.org:7650/javascripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckeditor/ckeditor.js"></script>
 
 <h1>Edit Contents</h1>
 
@@ -27,7 +27,8 @@
 <% end %>
 
 <script type="text/javascript">
-	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_at_wikipedia","ckeditor_resources","ckeditor_selected_references"];
+	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_at_wikipedia",
+	           "ckeditor_resources","ckeditor_selected_references"];
 	ids.each(function (id) {
 		CKEDITOR.replace(id, {
 			toolbar : "<%= @tool_bar %>"

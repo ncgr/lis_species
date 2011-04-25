@@ -1,8 +1,12 @@
 <script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckeditor/ckeditor.js"></script>
 
 <h1>Edit Contents</h1>
-
-<%= form_for @medtr, :html => {:onsubmit => "processingOnSubmit()"} do |f| %>
+<% unless @medtr.user_id.blank? %>
+    <p>Last updated by <%= @medtr.user.first_name %> <%= @medtr.user.last_name %> on 
+	<%= @medtr.updated_at.to_s(:date_time_long) %>.</p>
+<% end %>
+<p><%= link_to raw("Return Home &raquo;"), root_path %></p>
+<%= form_for @medtr, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
     <p>
     	<%= f.label :overview, "Overview:" %><br />
         <%= f.text_area :overview, :id => "ckeditor_overview" %>
@@ -23,6 +27,13 @@
         <%= f.label :selected_references, "Selected References:" %><br />
         <%= f.text_area :selected_references, :id => "ckeditor_selected_references" %>
     </p>
+	<% unless @medtr.file_name.blank? %>
+        <p>Current Data File: <%= link_to @medtr.file_name, send_data_file_medtr_content_path(@medtr) %></p>
+    <% end %>
+	<p>
+		<label>Data File (.txt)</label><br />
+	    <%= file_field(:file_upload, :file, :accept => 'text/plain') %>
+	</p>
 	<p><%= f.submit "Update Contents", :id => "submit", :class => "submit" %></p>
 <% end %>
 
@@ -30,8 +41,8 @@
 	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_at_wikipedia",
 	           "ckeditor_resources","ckeditor_selected_references"];
 	ids.each(function (id) {
-		CKEDITOR.replace(id, {
-			toolbar : "<%= @tool_bar %>"
-		});
-	});
+	    CKEDITOR.replace(id, {
+	        toolbar : "<%= @tool_bar %>"
+	    });
+    });
 </script>

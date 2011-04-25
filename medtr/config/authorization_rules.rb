@@ -14,17 +14,16 @@ authorization do
     
   role :superuser do
     includes :base
-    has_permission_on :medtr_contents, :to => [:manage]
+    has_permission_on :medtr_contents, :to => [:manage, :send_data_file]
   end
     
   role :admin do
     includes :base
-    has_permission_on :medtr_contents, :to => [:update]
+    has_permission_on :medtr_contents, :to => [:update, :send_data_file]
   end
 
   role :editor do
     includes :base
-    has_permission_on :medtr_contents, :to => [:update]
   end
     
   role :system_user do
@@ -40,5 +39,6 @@ privileges do
   privilege :create, :includes => :new
   privilege :update, :includes => :edit
   privilege :delete, :includes => :destroy
+  privilege :send_data_file
 end
 

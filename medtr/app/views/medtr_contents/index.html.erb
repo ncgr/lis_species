@@ -18,3 +18,19 @@
 
 <h3>Selected references</h3>
 <%= raw(@medtr.selected_references) %>
+
+<% content_for :rightcol do %>
+    <div id="photo">
+        <% title = "Medicago truncatula" %>
+	    <% caption = "Medicago truncatula cultivar Jemalong A17 leaf" %>
+	    <%= link_to image_tag("medicago_small.png", :alt => title, :class => "photo"), 
+	        "#medicago", :class => "photo-link" %>
+	</div>
+	<div id="medicago" style="display: none;">
+	    <%= image_tag "medicago.png", :alt => title %><br />
+	    <span class="caption"><%= caption %></span>
+	</div>
+	<hr />
+    <h3>Reference datasets</h3>
+	<%= parse_data_file(@data_file) %>
+<% end %>

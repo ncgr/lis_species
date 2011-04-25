@@ -12,10 +12,12 @@
             <%= render :partial => "shared/user_nav" %>
             <div id="content">
                 <div id="logo">
-                    <div id="rss">
-                        <%= link_to image_tag("feed.png", :alt => "RSS Feed"), "http://comparative-legumes.org/news_articles.rss" %>
-                    </div>
-                    <div id="google_translate_element"></div>
+                    <div id="logo_left"></div>
+                    <div id="logo_right">
+                        <div id="rss">
+                            <%= link_to image_tag("feed.png", :alt => "RSS Feed"), "http://comparative-legumes.org/news_articles.rss" %>
+                        </div>
+                        <div id="google_translate_element"></div>
                         <script type="text/javascript">
                             function googleTranslateElementInit() {
                               new google.translate.TranslateElement({
@@ -24,6 +26,7 @@
                             }
                         </script>
                         <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </div>
                 </div>
                 <div id="nav">
                     <%= render :partial => "shared/nav" %>

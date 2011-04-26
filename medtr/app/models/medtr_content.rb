@@ -5,6 +5,9 @@ class MedtrContent < ActiveRecord::Base
   
   DATA_FILE_ROOT = ::Rails.root.to_s + "/data/"
 
+  #
+  # Upload the data file for Reference Datasets.
+  #
   def upload_data_file(file)
     # Check content type and file extension.
     file_ext = File.extname(File.basename(file.original_filename)).downcase

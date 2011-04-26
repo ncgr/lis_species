@@ -1,12 +1,12 @@
 <script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckeditor/ckeditor.js"></script>
 
 <h1>Edit Contents</h1>
-<% unless @medtr.user_id.blank? %>
-    <p>Last updated by <%= @medtr.user.first_name %> <%= @medtr.user.last_name %> on 
-	<%= @medtr.updated_at.to_s(:date_time_long) %>.</p>
+<% unless @phavu.user_id.blank? %>
+    <p>Last updated by <%= @phavu.user.first_name %> <%= @phavu.user.last_name %> on 
+	<%= @phavu.updated_at.to_s(:date_time_long) %>.</p>
 <% end %>
 <p><%= link_to raw("Return Home &raquo;"), root_path %></p>
-<%= form_for @medtr, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
+<%= form_for @phavu, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
     <p>
     	<%= f.label :overview, "Overview:" %><br />
         <%= f.text_area :overview, :id => "ckeditor_overview" %>
@@ -24,8 +24,8 @@
         <%= f.text_area :selected_references, :id => "ckeditor_selected_references" %>
     </p>
 	<% if has_role? :superuser %>
-		<% unless @medtr.file_name.blank? %>
-	        <p>Current Data File: <%= link_to @medtr.file_name, send_data_file_medtr_content_path(@medtr) %></p>
+		<% unless @phavu.file_name.blank? %>
+	        <p>Current Data File: <%= link_to @phavu.file_name, send_data_file_phavu_content_path(@phavu) %></p>
 	    <% end %>
 		<p>
 			<label>Data File (.txt)</label><br />

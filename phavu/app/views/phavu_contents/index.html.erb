@@ -1,0 +1,33 @@
+<h1>Phaseolus vulgaris (common bean)</h1>
+
+<% permitted_to? :update, :phavu_contents do %>
+    <p><%= link_to raw("Edit Contents &raquo;"), edit_phavu_content_path(@phavu.id) %></p>
+<% end %>
+
+<h3>Overview</h3>
+<%= raw(@phavu.overview) %>
+
+<h3>Genome summary</h3>
+<%= raw(@phavu.genome_summary) %>
+
+<h3>Resources</h3>
+<%= raw(@phavu.resources) %>
+
+<h3>Selected references</h3>
+<%= raw(@phavu.selected_references) %>
+
+<% content_for :rightcol do %>
+    <div id="photo">
+        <% title = "Phaseolus vulgaris" %>
+	    <% caption = "Phaseolus vulgaris L. - kidney bean" %>
+	    <%= link_to image_tag("phaseolus_small.png", :alt => title, :class => "photo"), 
+	        "#phaseolus", :class => "photo-link" %>
+	</div>
+	<div id="phaseolus" style="display: none;">
+	    <%= image_tag "phaseolus.png", :alt => title %><br />
+	    <span class="caption"><%= caption %></span>
+	</div>
+	<hr />
+    <h3>Reference datasets</h3>
+	<%= parse_data_file(@data_file) %>
+<% end %>

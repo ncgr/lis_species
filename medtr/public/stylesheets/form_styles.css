@@ -63,7 +63,7 @@ th {
 }
 
 th, td {
-	padding: 2px;
+	padding: 3px;
 	text-align: left;
 	font-size: 12px;
 }
@@ -98,6 +98,7 @@ table#account-info {
     width: 60%;
     border-collapse: collapse;
 }
+
 /*** End ***/
 
 

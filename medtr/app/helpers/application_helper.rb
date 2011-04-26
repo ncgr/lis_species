@@ -7,7 +7,7 @@ module ApplicationHelper
     return "" if data_file.blank?
     
     i = 1
-    data = "<table id='downloads-table'>"
+    data = "<table id='datasets'>"
     
     # Set the headers
     headers = data_file.shift

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>404</title>
+        <link rel="alternate" type="application/rss+xml" title="News Articles" href="http://comparative-legumes.org/news_articles.rss" />
+        <script src="/javascripts/prototype.js" type="text/javascript"></script>
+        <script src="/javascripts/effects.js" type="text/javascript"></script>
+        <script src="/javascripts/dragdrop.js" type="text/javascript"></script>
+        <script src="/javascripts/controls.js" type="text/javascript"></script>
+        <script src="/javascripts/application.js" type="text/javascript"></script>
+        <script src="/javascripts/dropdownnav.js" type="text/javascript"></script>
+        <script src="/javascripts/fancy-zoom.js" type="text/javascript"></script>
+        <link href="/stylesheets/nav.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/stylesheets/styles.css" media="screen" rel="stylesheet" type="text/css" />
+        <meta name="csrf-param" content="authenticity_token"/>
+        <meta name="csrf-token" content=""/>
+    </head>
+    <body>
+        <div id="main">
+            <div id="content">
+                <div id="logo">
+                    <div id="logo_left"></div>
+                    <div id="logo_right">
+                        <div id="rss">
+                            <a href="/news_articles.rss"><img src="/images/feed.png" alt="RSS Feed" /></a>
+                        </div>
+                        <div id="google_translate_element"></div>
+                            <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                  new google.translate.TranslateElement({
+                                    pageLanguage: 'en'
+                                  }, 'google_translate_element');
+                                }
+                            </script>
+                            <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </div>
+                </div>
+                <div id="nav">
+                    <ul class="level1" id="root">
+                        <li><a href="/">Home</a></li> 
+                        <li class="sep">|</li>
+                        <li><a href="/pages/about">About</a></li> 
+                        <li class="sep">|</li>
+                        <li><a href="/news_articles">News</a></li>
+                        <li class="sep">|</li>
+                        <li><a href="/development_activities">Development</a></li>  
+                        <li class="sep">|</li>
+                        <li>
+                            <a href="#" class="no_cursor">Search</a> 
+                            <ul class="level2"> 
+                                <li><a href="http://search.comparative-legumes.org">Search by sequence</a></li> 
+                            </ul> 
+                        </li> 
+                        <li class="sep">|</li>
+                        <li>
+                            <a href="#" class="no_cursor">Maps</a> 
+                            <ul class="level2"> 
+                                <li><a href="http://cmap.comparative-legumes.org/index.html">Comparative map views</a></li> 
+                            </ul> 
+                        </li> 
+                        <li class="sep">|</li>
+                        <li>
+                            <a href="#" class="no_cursor">Species</a> 
+                            <ul class="level2"> 
+                                <li><a href="/pages/glycine_max">Glycine max</a></li>
+                                <li><a href="/pages/medicago_truncatula">Medicago truncatula</a></li>
+                                <li><a href="/pages/lotus_japonicus">Lotus japonicus</a></li>
+                            </ul> 
+                        </li>
+                        <li class="sep">|</li>
+                        <li>
+                            <a href="#" class="no_cursor">Research Community</a> 
+                            <ul class="level2"> 
+                                <li><a href="/pages/links">Links</a></li>
+                                <li><a href="/pages/participating_groups">Participating groups</a></li>
+                            </ul> 
+                        </li>
+                        <li class="sep">|</li>
+                        <li>
+                            <a href="#" class="no_cursor">LIS Classic</a> 
+                            <ul class="level2"> 
+                                <li><a href="http://lis.comparative-legumes.org/lisg/lis_summary.html?page_type=genomic">Genomes</a></li>
+                                <li><a href="http://lis.comparative-legumes.org/lis/lis_summary.html?page_type=transcript">Transcripts</a></li>
+                                <li><a href="http://lis.comparative-legumes.org/lis/lis_summary.html?page_type=cmap">Maps</a></li>
+                                <li><a href="http://soybase.ncgr.org/cgi-bin/ace/generic/search/soybase?class=Reaction_or_pathway">Pathways</a></li>
+                            </ul> 
+                        </li>
+                        <li class="sep">|</li>
+                        <li><a href="/pages/collaborators">Collaborators</a></li> 
+                    </ul> 
+                </div>
+                <div id="frame">
+                    <div id="singlecol">
+                        <div id="interior">
+                            <h1>Oops! The page you requested doesn't exist.</h1>
+                            <p>
+                                You may have mistyped the address or the page may have moved. Please check your 
+                                URL or <a href="/">click here</a> to go home.
+                            </p>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+            <div id="footer">
+                <p><strong>Legume Information System</strong> <%= Time.now.strftime('%B %Y')%></p>
+            </div>
+        </div>
+        <script type="text/javascript"> 
+            $("logo_left").observe("click", function() {
+                document.location.pathname="/";
+            });
+        </script>
+    </body>
+</html>

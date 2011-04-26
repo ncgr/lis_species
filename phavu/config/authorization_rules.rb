@@ -9,17 +9,17 @@
 authorization do
     
   role :base do
-   has_permission_on :medtr_contents, :to => [:read]
+   has_permission_on :phavu_contents, :to => [:read]
   end
     
   role :superuser do
     includes :base
-    has_permission_on :medtr_contents, :to => [:manage, :send_data_file]
+    has_permission_on :phavu_contents, :to => [:manage, :send_data_file]
   end
     
   role :admin do
     includes :base
-    has_permission_on :medtr_contents, :to => [:update]
+    has_permission_on :phavu_contents, :to => [:update]
   end
 
   role :editor do

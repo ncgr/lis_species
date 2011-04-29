@@ -1,0 +1,45 @@
+<script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckeditor/ckeditor.js"></script>
+
+<h1>Edit Contents</h1>
+<% unless @lotja.user_id.blank? %>
+    <p>Last updated by <%= @lotja.user.first_name %> <%= @lotja.user.last_name %> on 
+	<%= @lotja.updated_at.to_s(:date_time_long) %>.</p>
+<% end %>
+<p><%= link_to raw("Return Home &raquo;"), root_path %></p>
+<%= form_for @lotja, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
+    <p>
+    	<%= f.label :overview, "Overview:" %><br />
+        <%= f.text_area :overview, :id => "ckeditor_overview" %>
+	</p>
+	<p>
+        <%= f.label :genome_summary, "Genome Summary:" %><br />
+        <%= f.text_area :genome_summary, :id => "ckeditor_genome_summary" %>
+    </p>
+	<p>
+        <%= f.label :resources, "Resources:" %><br />
+        <%= f.text_area :resources, :id => "ckeditor_resources" %>
+    </p>
+	<p>
+        <%= f.label :selected_references, "Selected References:" %><br />
+        <%= f.text_area :selected_references, :id => "ckeditor_selected_references" %>
+    </p>
+	<% if has_role? :superuser %>
+		<% unless @lotja.file_name.blank? %>
+	        <p>Current Data File: <%= link_to @lotja.file_name, send_data_file_lotja_content_path(@lotja) %></p>
+	    <% end %>
+		<p>
+			<label>Data File (.txt)</label><br />
+		    <%= file_field(:file_upload, :file, :accept => 'text/plain') %>
+		</p>
+	<% end %>
+	<p><%= f.submit "Update Contents", :id => "submit", :class => "submit" %></p>
+<% end %>
+
+<script type="text/javascript">
+	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_resources","ckeditor_selected_references"];
+	ids.each(function (id) {
+	    CKEDITOR.replace(id, {
+	        toolbar : "<%= @tool_bar %>"
+	    });
+    });
+</script>

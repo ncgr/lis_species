@@ -1,0 +1,33 @@
+<h1>Lotus japonicus</h1>
+
+<% permitted_to? :update, :lotja_contents do %>
+    <p><%= link_to raw("Edit Contents &raquo;"), edit_lotja_content_path(@lotja.id) %></p>
+<% end %>
+
+<h3>Overview</h3>
+<%= raw(@lotja.overview) %>
+
+<h3>Genome summary</h3>
+<%= raw(@lotja.genome_summary) %>
+
+<h3>Resources</h3>
+<%= raw(@lotja.resources) %>
+
+<h3>Selected references</h3>
+<%= raw(@lotja.selected_references) %>
+
+<% content_for :rightcol do %>
+    <div id="photo">
+        <% title = "Lotus japonicus" %>
+	    <% caption = "Lotus japonicus" %>
+	    <%= link_to image_tag("lotus_small.png", :alt => title, :class => "photo"), 
+	        "#lotus", :class => "photo-link" %>
+	</div>
+	<div id="lotus" style="display: none;">
+	    <%= image_tag "lotus.png", :alt => title %><br />
+	    <span class="caption"><%= caption %></span>
+	</div>
+	<hr />
+    <h3>Reference datasets</h3>
+	<%= parse_data_file(@data_file) %>
+<% end %>

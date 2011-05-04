@@ -1,12 +1,12 @@
 <script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckeditor/ckeditor.js"></script>
 
 <h1>Edit Contents</h1>
-<% unless @lotja.user_id.blank? %>
-    <p>Last updated by <%= @lotja.user.first_name %> <%= @lotja.user.last_name %> on 
-	<%= @lotja.updated_at.to_s(:date_time_long) %>.</p>
+<% unless @content.user_id.blank? %>
+    <p>Last updated by <%= @content.user.first_name %> <%= @content.user.last_name %> on 
+	<%= @content.updated_at.to_s(:date_time_long) %>.</p>
 <% end %>
 <p><%= link_to raw("Return Home &raquo;"), root_path %></p>
-<%= form_for @lotja, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
+<%= form_for @content, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
     <p>
     	<%= f.label :overview, "Overview:" %><br />
         <%= f.text_area :overview, :id => "ckeditor_overview" %>
@@ -24,8 +24,8 @@
         <%= f.text_area :selected_references, :id => "ckeditor_selected_references" %>
     </p>
 	<% if has_role? :superuser %>
-		<% unless @lotja.file_name.blank? %>
-	        <p>Current Data File: <%= link_to @lotja.file_name, send_data_file_lotja_content_path(@lotja) %></p>
+		<% unless @content.file_name.blank? %>
+	        <p>Current Data File: <%= link_to @content.file_name, send_data_file_lotja_content_path(@content) %></p>
 	    <% end %>
 		<p>
 			<label>Data File (.txt)</label><br />

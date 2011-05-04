@@ -2,6 +2,11 @@
 class LotjaContent < ActiveRecord::Base
 
   belongs_to :user
+  belongs_to :legume
+  
+  has_many :pathogens, 
+    :primary_key => :legume_id, 
+    :dependent => :destroy
   
   DATA_FILE_ROOT = ::Rails.root.to_s + "/data/"
 

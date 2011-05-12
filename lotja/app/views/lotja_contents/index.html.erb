@@ -4,30 +4,187 @@
     <p><%= link_to raw("Edit Contents &raquo;"), edit_lotja_content_path(@content.id) %></p>
 <% end %>
 
-<h3>Overview</h3>
-<%= raw(@content.overview) %>
+<h2>Overview</h2>
+<div id="overview">
+	<%= raw(@content.overview) %>
+</div>
 
-<h3>Genome summary</h3>
-<%= raw(@content.genome_summary) %>
+<% unless @content.season.blank? %>
+    <p><strong>Season:</strong> <%= @content.season %></p>
+<% end %>
 
-<h3>Resources</h3>
-<%= raw(@content.resources) %>
+<% unless @content.economic_type.blank? %>
+    <p><strong>Growth:</strong> <%= @content.economic_type %></p>
+<% end %>
 
-<h3>Selected references</h3>
-<%= raw(@content.selected_references) %>
+<% if !@content.economic_type.blank? && !@content.economic_importance.blank? %>
+    <p><strong>Economic Importance:</strong></p>
+	<div id="economic_importance" class="indent">
+		<%= raw(@content.economic_importance) %>
+	</div>
+<% end %>
+
+<% unless @content.scientific_importance.blank? %>
+    <p><strong>Scientific Importance:</strong></p>
+    <div id="scientific_importance" class="indent">
+        <%= raw(@content.scientific_importance) %>
+    </div>
+<% end %>
+
+<% unless @content.nodulation_type.blank? %>
+    <p><strong>Nodulation Type:</strong> <%= @content.nodulation_type %></p>
+<% end %>
+
+<% if !@content.nodulation_type.blank? && !@content.nodulation_information.blank? %>
+    <p><strong>Nodulation Information:</strong></p>
+    <div id="nodulation_information" class="indent">
+        <%= raw(@content.nodulation_information) %>
+    </div>
+<% end %>
+
+<% unless @content.nodulator_species.blank? %>
+    <p><strong>Main Nodulator:</strong> <%= @content.nodulator_species %></p>
+<% end %>
+
+<% if !@content.nodulator_species.blank? && !@content.nodulator_taxon_id.blank? %>
+    <p><strong>Nodulator Taxon ID:</strong> <%= @content.nodulator_taxon_id %></p>
+<% end %>
+
+<% unless @content.flowering_type.blank? %>
+    <p><strong>Flowering Time:</strong> <%= @content.flowering_type %></p>
+<% end %>
+
+<% if !@content.flowering_type.blank? && !@content.flowering_information.blank? %>
+    <p><strong>Flowering Time Information:</strong></p>
+    <div id="flowering_information" class="indent">
+        <%= raw(@content.flowering_information) %>
+    </div>
+<% end %>
+
+<% unless @content.pollination_type.blank? %>
+    <p><strong>Pollination:</strong> <%= @content.pollination_type %></p>
+<% end %>
+
+<% if !@content.pollination_type.blank? && !@content.pollination_information.blank? %>
+    <p><strong>Pollination Information:</strong></p>
+    <div id="pollination_information" class="indent">
+        <%= raw(@content.pollination_information) %>
+    </div>
+<% end %>
+
+<% unless @content.self_incompatibility.blank? %>
+    <p><strong>Self Incompatibility:</strong> <%= @content.self_incompatibility %></p>
+<% end %>
+
+<% if @content.self_incompatibility.to_s == "Inbreeding" && !@content.inbreeding.blank? %>
+    <p><strong>Inbreeding:</strong> <%= @content.inbreeding %>%</p>
+<% end %>
+
+<% unless @content.pathogens.empty? %>
+    <h4>Major Pathogens</h4>
+	<div class="indent">
+        <% @content.pathogens.each do |p| %>
+			<p>
+				<% unless p.name.blank? %>
+			        <strong>Pathogen:</strong> <%= p.name %><br />
+			    <% end %>
+				<% unless p.ncbi_taxon_id.blank? %>
+			        <strong>NCBI Taxon ID:</strong> <%= p.ncbi_taxon_id %>
+			    <% end %>
+			</p>
+        <% end %>
+	</div>
+<% end %>
+
+<% unless @content.wiki_link.blank? %>
+    <p><strong>Wikipedia:</strong> <%= link_to @content.wiki_link, @content.wiki_link %></p>
+<% end %>
+
+<h2>Genome summary</h2>
+<div id="genome_summary">
+	<%= raw(@content.genome_summary) %>
+</div>
+
+<% unless @content.chromosomes.blank? %>
+    <p><strong>Number of chromosomes:</strong> 2n = <%= @content.chromosomes %></p>
+<% end %>
+
+<% unless @content.genome_size.blank? %>
+    <p><strong>Genome Size:</strong> <%= @content.genome_size %> (Mb)</p>
+<% end %>
+
+<% unless @content.ploidy.blank? %>
+    <p><strong>Ploidy:</strong> <%= @content.ploidy %></p>
+<% end %>
+
+<% unless @content.ploidy_type.blank? %>
+    <p><strong>Ploidy Type:</strong> <%= @content.ploidy_type %></p>
+<% end %>
+
+<% unless @content.gc_content_genome.blank? %>
+    <p><strong>GC Content Genome:</strong> <%= @content.gc_content_genome %></p>
+<% end %>
+
+<% unless @content.gc_content_transcriptome.blank? %>
+    <p><strong>GC Content Transcriptome:</strong> <%= @content.gc_content_transcriptome %></p>
+<% end %>
+
+<% unless @content.chloroplast_genome_size.blank? %>
+    <p><strong>Chloroplast Genome Size:</strong> <%= @content.chloroplast_genome_size %> (Mb)</p>
+<% end %>
+
+<% unless @content.chloroplast_accession_number.blank? %>
+    <p><strong>Chloroplast NCBI Accession Number:</strong> <%= @content.chloroplast_accession_number %></p>
+<% end %>
+
+<% unless @content.mitochondria_genome_size.blank? %>
+    <p><strong>Mitochondria Genome Size:</strong> <%= @content.mitochondria_genome_size %> (Mb)</p>
+<% end %>
+
+<% unless @content.mitochondria_accession_number.blank? %>
+    <p><strong>Mitochondria NCBI Accession Number:</strong> <%= @content.mitochondria_accession_number %></p>
+<% end %>
+
+<h2>Resources</h2>
+<div id="resources">
+	<%= raw(@content.resources) %>
+</div>
+
+<h2>Selected references</h2>
+<div id="selected_references">
+    <%= raw(@content.selected_references) %>
+</div>
 
 <% content_for :rightcol do %>
     <div id="photo">
         <% title = "Lotus japonicus" %>
 	    <% caption = "Lotus japonicus" %>
-	    <%= link_to image_tag("lotus_small.png", :alt => title, :class => "photo"), 
-	        "#lotus", :class => "photo-link" %>
+	    <%= link_to image_tag("lotja_small.png", :alt => title, :class => "photo"), 
+	        "#lotja", :class => "photo-link" %>
 	</div>
-	<div id="lotus" style="display: none;">
-	    <%= image_tag "lotus.png", :alt => title %><br />
+	<div id="lotja" style="display: none;">
+	    <%= image_tag "lotja.png", :alt => title %><br />
 	    <span class="caption"><%= caption %></span>
 	</div>
 	<hr />
-    <h3>Reference datasets</h3>
+    <h2>Reference datasets</h2>
 	<%= parse_data_file(@data_file) %>
 <% end %>
+
+<script type="text/javascript">
+	$j(function($) {
+		ids = ["#overview p","#economic_importance p","#scientific_importance p",
+		       "#nodulation_information p","#flowering_information p",
+			   "#pollination_information p","#genome_summary p","#resources p",
+			   "#selected_references p"];
+	    $.each(ids, function(i, e){
+	        $(e).condense({
+                moreSpeed: 'fast',
+                lessSpeed: 'slow',
+                moreText: 'More [+]',
+                lessText: 'Close [-]',
+                ellipsis: " ..."
+            });
+		});
+    });
+</script>

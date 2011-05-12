@@ -5,6 +5,8 @@ class LotjaContentsController < ApplicationController
   before_filter :authenticate_user!, :except => :index
   filter_access_to :edit, :update
   
+  before_filter :set_tool_bar, :only => [:edit, :update]
+  
   def index
     @content = LotjaContent.first
     @name = Legume.where({:id => @content.legume_id}).first.name
@@ -13,12 +15,12 @@ class LotjaContentsController < ApplicationController
 
   def edit
     @content = LotjaContent.find(params[:id])
-    set_tool_bar
   end
   
   def update
+    params[:lotja_content][:existing_pathogens_attributes] ||= {}
+    
     @content = LotjaContent.find(params[:id])
-    set_tool_bar
     unless params[:file_upload].blank?
       begin
         @content.upload_data_file(params[:file_upload][:file])
@@ -45,14 +47,6 @@ class LotjaContentsController < ApplicationController
   end
   
   private
-  def set_tool_bar
-    if (has_role? :superuser)
-      @tool_bar = "AdminToolbar"
-    else
-      @tool_bar = "MemberToolbar"
-    end
-  end
-  
   def set_layout
     case action_name
     when "edit"

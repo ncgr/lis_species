@@ -7,22 +7,165 @@
 <% end %>
 <p><%= link_to raw("Return Home &raquo;"), root_path %></p>
 <%= form_for @content, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
+    <%= render "shared/error_messages", :target => @content %>
+	<h3>Overview</h3>
     <p>
     	<%= f.label :overview, "Overview:" %><br />
         <%= f.text_area :overview, :id => "ckeditor_overview" %>
 	</p>
 	<p>
-        <%= f.label :genome_summary, "Genome Summary:" %><br />
+        <%= f.label :season, "Season:" %>
+        <%= f.select :season, [['--Select--',''], ['Warm','Warm'], ['Cool','Cool']] %>
+    </p>
+	<p>
+        <%= f.label :economic_type, "Cultivated or Wild:" %>
+        <%= f.select :economic_type, [['--Select--',''],['Cultivated','Cultivated'],['Wild','Wild']] %>
+    </p>
+	<div id="economic_importance">
+		<p>
+	        <%= f.label :economic_importance, "Economic Importance:" %><br />
+	        <%= f.text_area :economic_importance, :id => "ckeditor_economic_importance" %>
+	    </p>
+	</div>
+	<p>
+        <%= f.label :scientific_importance, "Scientific Importance:" %><br />
+        <%= f.text_area :scientific_importance, :id => "ckeditor_scientific_importance" %>
+    </p>
+	<p>
+		<strong>Center of Origin</strong><br />
+	    Please provide latitude and longitude to 6 decimal places (ex: Lat 35.637476, Long -105.959908).
+	</p>
+	<p>
+		<%= f.label :origin_lat, "Latitude:" %><br />
+		<%= f.text_field :origin_lat %>
+	</p>
+	<p>
+		<%= f.label :origin_long, "Longitude:" %><br />
+        <%= f.text_field :origin_long %>
+	</p>
+	<p>
+		<%= f.label :nodulation_type, "Nodulation Type:" %>
+        <%= f.select :nodulation_type, [['--Select--',''],['Determinant','Determinant'],['Non-Determinant','Non-Determinant']] %>
+    </p>
+	<div id="nodulation_information">
+        <p>
+            <%= f.label :nodulation_information, "Nodulation Information:" %><br />
+            <%= f.text_area :nodulation_information, :id => "ckeditor_nodulation_information" %>
+        </p>
+    </div>
+	<p>
+        <%= f.label :nodulator_species, "Main Nodulator Species:" %><br />
+        <%= f.text_field :nodulator_species %>
+    </p>
+	<div id="nodulator_id">
+        <p>
+            <%= f.label :nodulator_taxon_id, "Main Nodulator Taxon ID:" %><br />
+            <%= f.text_field :nodulator_taxon_id %>
+        </p>
+    </div>
+	<p>
+        <%= f.label :flowering_type, "Flowering Type:" %>
+        <%= f.select :flowering_type, [['--Select--',''],['Short Day','Short Day'],['Long Day','Long Day']] %>
+    </p>
+    <div id="flowering_information">
+        <p>
+            <%= f.label :flowering_information, "Flowering Information:" %><br />
+            <%= f.text_area :flowering_information, :id => "ckeditor_flowering_information" %>
+        </p>
+    </div>
+	<p>
+        <%= f.label :pollination_type, "Pollination Type:" %>
+        <%= f.select :pollination_type, [['--Select--',''],['Wind','Wind'],['Insect','Insect']] %>
+    </p>
+    <div id="pollination_information">
+        <p>
+            <%= f.label :pollination_information, "Pollination Information:" %><br />
+            <%= f.text_area :pollination_information, :id => "ckeditor_pollination_information" %>
+        </p>
+    </div>
+	<p>
+        <%= f.label :self_incompatibility, "Self Incompatibility:" %>
+        <%= f.select :self_incompatibility, [['--Select--',''],['Inbreeding','Inbreeding'],['Obligate Out-Crossing','Obligate Out-Crossing']] %>
+    </p>
+    <div id="inbreeding">
+        <p>
+            <%= f.label :inbreeding, "Percent Inbreeding:" %><br />
+            <%= f.text_field :inbreeding %>%
+        </p>
+    </div>
+	
+	<div id="pathogens">
+		<p><strong>Known Pathogens</strong></p>
+		<%= render :partial => "pathogens", :collection => @content.pathogens %>
+	</div>
+	<p><%= add_pathogen_link "Add Pathogen" %></p>
+	
+	<p>
+        <%= f.label :wiki_link, "Link to Wikipedia Page (include http://):" %><br />
+        <%= f.text_field :wiki_link %>
+    </p>
+	<hr />
+	
+	<h3>Genome Summary</h3>
+	<p>
+        <%= f.label :genome_summary, "Summary:" %><br />
         <%= f.text_area :genome_summary, :id => "ckeditor_genome_summary" %>
     </p>
+	<p>
+        <%= f.label :chromosomes, "Number of Chromosomes:" %><br />
+        2n = <%= f.text_field :chromosomes %>
+    </p>
+	<p>
+        <%= f.label :genome_size, "Genome Size (Mb):" %><br />
+        <%= f.text_field :genome_size %>
+    </p>
+	<p>
+        <%= f.label :ploidy, "Ploidy:" %><br />
+        <%= f.text_field :ploidy %>
+    </p>
+	<p>
+        <%= f.label :ploidy_type, "Ploidy Type:" %>
+        <%= f.select :ploidy_type, [['--Select--',''],['Auto','Auto'],['Allo-Tetraploid','Allo-Tetraploid']] %>
+    </p>
+	<p>
+        <%= f.label :gc_content_genome, "GC Content of Genome:" %><br />
+        <%= f.text_field :gc_content_genome %>
+    </p>
+	<p>
+        <%= f.label :gc_content_transcriptome, "GC Content of Transcriptome:" %><br />
+        <%= f.text_field :gc_content_transcriptome %>
+    </p>
+	<p>
+        <%= f.label :chloroplast_genome_size, "Chloroplast Genome Size (Mb):" %><br />
+        <%= f.text_field :chloroplast_genome_size %>
+    </p>
+	<p>
+        <%= f.label :chloroplast_accession_number, "Chloroplast NCBI Accession Number:" %><br />
+        <%= f.text_field :chloroplast_accession_number %>
+    </p>
+	<p>
+        <%= f.label :mitochondria_genome_size, "Mitochondria Genome Size (Mb):" %><br />
+        <%= f.text_field :mitochondria_genome_size %>
+    </p>
+	<p>
+        <%= f.label :mitochondria_accession_number, "Mitochondria NCBI Accession Number:" %><br />
+        <%= f.text_field :mitochondria_accession_number %>
+    </p>
+    <hr />
+    
+    <h3>Resources</h3>
 	<p>
         <%= f.label :resources, "Resources:" %><br />
         <%= f.text_area :resources, :id => "ckeditor_resources" %>
     </p>
+	<hr />
+    
+    <h3>References</h3>
 	<p>
         <%= f.label :selected_references, "Selected References:" %><br />
         <%= f.text_area :selected_references, :id => "ckeditor_selected_references" %>
     </p>
+	
 	<% if has_role? :superuser %>
 		<% unless @content.file_name.blank? %>
 	        <p>Current Data File: <%= link_to @content.file_name, send_data_file_lotja_content_path(@content) %></p>
@@ -36,10 +179,87 @@
 <% end %>
 
 <script type="text/javascript">
-	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_resources","ckeditor_selected_references"];
+	/** Text Editors **/
+	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_resources","ckeditor_selected_references",
+	       "ckeditor_economic_importance","ckeditor_scientific_importance","ckeditor_nodulation_information",
+		   "ckeditor_flowering_information","ckeditor_pollination_information"];
 	ids.each(function (id) {
 	    CKEDITOR.replace(id, {
 	        toolbar : "<%= @tool_bar %>"
 	    });
+    });
+	
+	/** Economic Type **/
+	if ($('lotja_content_economic_type').value != 'Cultivated') {
+		$('economic_importance').hide();
+	}
+	$('lotja_content_economic_type').observe('click', function(){
+		if (this.getValue() != 'Cultivated') {
+			$('economic_importance').hide();
+		} else {
+			$('economic_importance').show();
+		}
+	});
+	
+	/** Nodulation Type **/
+    if ($('lotja_content_nodulation_type').value == '') {
+        $('nodulation_information').hide();
+    }
+    $('lotja_content_nodulation_type').observe('click', function(){
+        if (this.getValue() == '') {
+            $('nodulation_information').hide();
+        } else {
+            $('nodulation_information').show();
+        }
+    });
+	
+	/** Nodulator Species **/
+	if ($('lotja_content_nodulator_species').value == '') {
+		$('nodulator_id').hide();
+	}
+	$('lotja_content_nodulator_species').observe('keyup', function(){
+        str = this.getValue();
+		min = 3;
+		if (str.length < min) {
+            $('nodulator_id').hide();
+        } else {
+            $('nodulator_id').show();
+        }
+    });
+	
+	/** Flowering Time **/
+	if ($('lotja_content_flowering_type').value == '') {
+        $('flowering_information').hide();
+    }
+    $('lotja_content_flowering_type').observe('click', function(){
+        if (this.getValue() == '') {
+            $('flowering_information').hide();
+        } else {
+            $('flowering_information').show();
+        }
+    });
+	
+	/** Pollination **/
+    if ($('lotja_content_pollination_type').value == '') {
+        $('pollination_information').hide();
+    }
+    $('lotja_content_pollination_type').observe('click', function(){
+        if (this.getValue() == '') {
+            $('pollination_information').hide();
+        } else {
+            $('pollination_information').show();
+        }
+    });
+	
+	/** Self Incompatibility **/
+    if ($('lotja_content_self_incompatibility').value == '') {
+        $('inbreeding').hide();
+    }
+    $('lotja_content_self_incompatibility').observe('click', function(){
+        if (this.getValue() != 'Inbreeding') {
+            $('inbreeding').hide();
+        } else {
+            $('inbreeding').show();
+        }
     });
 </script>

@@ -5,9 +5,9 @@ form {
 }
 
 form fieldset {
-	margin: 5px 0 5px 0;
-	padding: 5px;
-	width: 70%;
+	margin: 5px 0 10px 0;
+	padding: 5px 8px 5px 8px;
+	width: 100%;
 }
 
 form textarea {

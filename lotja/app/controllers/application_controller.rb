@@ -21,5 +21,18 @@ class ApplicationController < ActionController::Base
       authenticate_user!
     end
   end
+  
+  private
+  
+  #
+  # Set the CKEditor tool bar based on role.
+  #
+  def set_tool_bar
+    if (has_role? :superuser)
+      @tool_bar = "AdminToolbar"
+    else
+      @tool_bar = "MemberToolbar"
+    end
+  end
 
 end

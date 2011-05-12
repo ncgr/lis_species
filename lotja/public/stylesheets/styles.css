@@ -12,7 +12,7 @@ body {
 	font-family: Tahoma, Geneva, sans-serif;	
 }
 
-a {
+a, .condense_control {
 	color: #ff6600;
 	text-decoration: none;
 }
@@ -299,11 +299,11 @@ ol.web li {
 
 #leftcol {
 	margin: 10px 0 10px 10px;
-	padding: 0 0 25px 10px;
+	padding: 0 15px 25px 15px;
 	
 	background-color: #ffffff;
 	
-	width: 600px;
+	width: 580px;
 	height: auto;
 	
 	float: left;

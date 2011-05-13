@@ -173,17 +173,17 @@
 
 <script type="text/javascript">
 	$j(function($) {
-		ids = ["#overview p","#economic_importance p","#scientific_importance p",
-		       "#nodulation_information p","#flowering_information p",
-			   "#pollination_information p","#genome_summary p","#resources p",
-			   "#selected_references p"];
+		ids = ["#overview","#economic_importance","#scientific_importance",
+		       "#nodulation_information","#flowering_information",
+			   "#pollination_information","#genome_summary","#resources",
+			   "#selected_references"];
 	    $.each(ids, function(i, e){
 	        $(e).condense({
                 moreSpeed: 'fast',
                 lessSpeed: 'slow',
                 moreText: 'More [+]',
-                lessText: 'Close [-]',
-                ellipsis: " ..."
+                lessText: 'Close [-] <br />',
+                ellipsis: ""
             });
 		});
     });

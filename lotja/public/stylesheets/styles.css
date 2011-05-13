@@ -12,6 +12,14 @@ body {
 	font-family: Tahoma, Geneva, sans-serif;	
 }
 
+.condense_control {
+	margin: 0;
+	padding: 4px 0 4px 0;
+	font-size: 12px;
+	position: relative;
+	clear: both;
+}
+
 a, .condense_control {
 	color: #ff6600;
 	text-decoration: none;

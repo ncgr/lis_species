@@ -6,8 +6,8 @@ if Rails.env.production?
   cas_url = "https://cas.comparative-legumes.org"
   cas_validate = "https://velarde.ncgr.org:8055/proxyValidate"
 else
-  cas_url = "https://aztec.ncgr.org:7777"
-  cas_validate = "https://aztec.ncgr.org:7777/proxyValidate"
+  cas_url = "https://localhost:7777"
+  cas_validate = "https://localhost:7777/proxyValidate"
 end
 
 Devise.setup do |config|

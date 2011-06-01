@@ -9,8 +9,15 @@ class LotjaContentsController < ApplicationController
   
   def index
     @content = LotjaContent.first
-    @name = Legume.where({:id => @content.legume_id}).first.name
+    @name = @content.legume.name
     @data_file = read_data_file(@content.file_name)
+    
+    # Attributes for tables
+    @overview_attr = ["season", "nodulation_type", "nodulator_species", "nodulator_taxon_id",
+      "flowering_type", "pollination_type", "self_incompatibility"]
+    @genome_attr = ["chromosomes", "genome_size", "ploidy", "ploidy_type",
+      "gc_content_genome", "gc_content_transcriptome", "chloroplast_genome_size",
+      "chloroplast_accession_number","mitochondria_genome_size","mitochondria_accession_number"]
   end
 
   def edit

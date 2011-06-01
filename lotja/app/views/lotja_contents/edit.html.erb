@@ -18,17 +18,7 @@
         <%= f.select :season, [['--Select--',''], ['Warm','Warm'], ['Cool','Cool']] %>
     </p>
 	<p>
-        <%= f.label :economic_type, "Cultivated or Wild:" %>
-        <%= f.select :economic_type, [['--Select--',''],['Cultivated','Cultivated'],['Wild','Wild']] %>
-    </p>
-	<div id="economic_importance">
-		<p>
-	        <%= f.label :economic_importance, "Economic Importance:" %><br />
-	        <%= f.text_area :economic_importance, :id => "ckeditor_economic_importance" %>
-	    </p>
-	</div>
-	<p>
-        <%= f.label :scientific_importance, "Scientific Importance:" %><br />
+        <%= f.label :scientific_importance, "Scientific and Economic Importance:" %><br />
         <%= f.text_area :scientific_importance, :id => "ckeditor_scientific_importance" %>
     </p>
 	<p>
@@ -45,12 +35,12 @@
 	</p>
 	<p>
 		<%= f.label :nodulation_type, "Nodulation Type:" %>
-        <%= f.select :nodulation_type, [['--Select--',''],['Determinant','Determinant'],['Non-Determinant','Non-Determinant']] %>
+        <%= f.select :nodulation_type, [['--Select--',''],['Determinate','Determinate'],['Nondeterminate','Nondeterminate']] %>
     </p>
-	<div id="nodulation_information">
+	<div id="nodulation_type_information">
         <p>
-            <%= f.label :nodulation_information, "Nodulation Information:" %><br />
-            <%= f.text_area :nodulation_information, :id => "ckeditor_nodulation_information" %>
+            <%= f.label :nodulation_type_information, "Nodulation Information:" %><br />
+            <%= f.text_area :nodulation_type_information, :id => "ckeditor_nodulation_information" %>
         </p>
     </div>
 	<p>
@@ -67,20 +57,20 @@
         <%= f.label :flowering_type, "Flowering Type:" %>
         <%= f.select :flowering_type, [['--Select--',''],['Short Day','Short Day'],['Long Day','Long Day']] %>
     </p>
-    <div id="flowering_information">
+    <div id="flowering_type_information">
         <p>
-            <%= f.label :flowering_information, "Flowering Information:" %><br />
-            <%= f.text_area :flowering_information, :id => "ckeditor_flowering_information" %>
+            <%= f.label :flowering_type_information, "Flowering Information:" %><br />
+            <%= f.text_area :flowering_type_information, :id => "ckeditor_flowering_information" %>
         </p>
     </div>
 	<p>
         <%= f.label :pollination_type, "Pollination Type:" %>
         <%= f.select :pollination_type, [['--Select--',''],['Wind','Wind'],['Insect','Insect']] %>
     </p>
-    <div id="pollination_information">
+    <div id="pollination_type_information">
         <p>
-            <%= f.label :pollination_information, "Pollination Information:" %><br />
-            <%= f.text_area :pollination_information, :id => "ckeditor_pollination_information" %>
+            <%= f.label :pollination_type_information, "Pollination Information:" %><br />
+            <%= f.text_area :pollination_type_information, :id => "ckeditor_pollination_information" %>
         </p>
     </div>
 	<p>
@@ -90,7 +80,7 @@
     <div id="inbreeding">
         <p>
             <%= f.label :inbreeding, "Percent Inbreeding:" %><br />
-            <%= f.text_field :inbreeding %>%
+            <%= f.text_field :inbreeding %>
         </p>
     </div>
 	
@@ -116,7 +106,7 @@
         2n = <%= f.text_field :chromosomes %>
     </p>
 	<p>
-        <%= f.label :genome_size, "Genome Size (Mb):" %><br />
+        <%= f.label :genome_size, "Genome Size (kbp):" %><br />
         <%= f.text_field :genome_size %>
     </p>
 	<p>
@@ -128,15 +118,15 @@
         <%= f.select :ploidy_type, [['--Select--',''],['Auto','Auto'],['Allo-Tetraploid','Allo-Tetraploid']] %>
     </p>
 	<p>
-        <%= f.label :gc_content_genome, "GC Content of Genome:" %><br />
+        <%= f.label :gc_content_genome, "% GC Content of Genome:" %><br />
         <%= f.text_field :gc_content_genome %>
     </p>
 	<p>
-        <%= f.label :gc_content_transcriptome, "GC Content of Transcriptome:" %><br />
+        <%= f.label :gc_content_transcriptome, "% GC Content of Transcriptome:" %><br />
         <%= f.text_field :gc_content_transcriptome %>
     </p>
 	<p>
-        <%= f.label :chloroplast_genome_size, "Chloroplast Genome Size (Mb):" %><br />
+        <%= f.label :chloroplast_genome_size, "Chloroplast Genome Size (kbp):" %><br />
         <%= f.text_field :chloroplast_genome_size %>
     </p>
 	<p>
@@ -144,7 +134,7 @@
         <%= f.text_field :chloroplast_accession_number %>
     </p>
 	<p>
-        <%= f.label :mitochondria_genome_size, "Mitochondria Genome Size (Mb):" %><br />
+        <%= f.label :mitochondria_genome_size, "Mitochondria Genome Size (kbp):" %><br />
         <%= f.text_field :mitochondria_genome_size %>
     </p>
 	<p>
@@ -161,6 +151,10 @@
 	<hr />
     
     <h3>References</h3>
+	<p>
+		Please add references in reverse chronological order using 
+		<%= link_to 'PubMed reference format', 'http://www.nlm.nih.gov/bsd/policy/cit_format.html' %>.
+	</p>
 	<p>
         <%= f.label :selected_references, "Selected References:" %><br />
         <%= f.text_area :selected_references, :id => "ckeditor_selected_references" %>
@@ -181,35 +175,23 @@
 <script type="text/javascript">
 	/** Text Editors **/
 	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_resources","ckeditor_selected_references",
-	       "ckeditor_economic_importance","ckeditor_scientific_importance","ckeditor_nodulation_information",
-		   "ckeditor_flowering_information","ckeditor_pollination_information"];
+	       "ckeditor_scientific_importance","ckeditor_nodulation_information","ckeditor_flowering_information",
+		   "ckeditor_pollination_information"];
 	ids.each(function (id) {
 	    CKEDITOR.replace(id, {
 	        toolbar : "<%= @tool_bar %>"
 	    });
     });
 	
-	/** Economic Type **/
-	if ($('lotja_content_economic_type').value != 'Cultivated') {
-		$('economic_importance').hide();
-	}
-	$('lotja_content_economic_type').observe('click', function(){
-		if (this.getValue() != 'Cultivated') {
-			$('economic_importance').hide();
-		} else {
-			$('economic_importance').show();
-		}
-	});
-	
 	/** Nodulation Type **/
     if ($('lotja_content_nodulation_type').value == '') {
-        $('nodulation_information').hide();
+        $('nodulation_type_information').hide();
     }
     $('lotja_content_nodulation_type').observe('click', function(){
         if (this.getValue() == '') {
-            $('nodulation_information').hide();
+            $('nodulation_type_information').hide();
         } else {
-            $('nodulation_information').show();
+            $('nodulation_type_information').show();
         }
     });
 	
@@ -229,25 +211,25 @@
 	
 	/** Flowering Time **/
 	if ($('lotja_content_flowering_type').value == '') {
-        $('flowering_information').hide();
+        $('flowering_type_information').hide();
     }
     $('lotja_content_flowering_type').observe('click', function(){
         if (this.getValue() == '') {
-            $('flowering_information').hide();
+            $('flowering_type_information').hide();
         } else {
-            $('flowering_information').show();
+            $('flowering_type_information').show();
         }
     });
 	
 	/** Pollination **/
     if ($('lotja_content_pollination_type').value == '') {
-        $('pollination_information').hide();
+        $('pollination_type_information').hide();
     }
     $('lotja_content_pollination_type').observe('click', function(){
         if (this.getValue() == '') {
-            $('pollination_information').hide();
+            $('pollination_type_information').hide();
         } else {
-            $('pollination_information').show();
+            $('pollination_type_information').show();
         }
     });
 	

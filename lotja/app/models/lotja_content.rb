@@ -15,6 +15,8 @@ class LotjaContent < ActiveRecord::Base
     :allow_blank => true, :message => ' not valid'
   validates_format_of :origin_long, :with => /^[-+]?\d{1,3}\.\d{2,6}$/,
     :allow_blank => true, :message => ' not valid'
+  validates_format_of :wiki_link, :with => URI::regexp(%w(http https)),
+    :allow_blank => true, :message => ' is not valid. Please include http(s)://'
   
   before_save :clean_attribute_values
   after_update :save_pathogens
@@ -27,7 +29,7 @@ class LotjaContent < ActiveRecord::Base
     file_ext = File.extname(File.basename(file.original_filename)).downcase
     content_type = file.content_type.downcase
     if file_ext != '.txt' || content_type != 'text/plain'
-      raise ArgumentError, "File extension and Content-Type must be .txt and text/plain."
+      raise RuntimeError, "File extension and Content-Type must be .txt and text/plain."
     end
     
     name = self.class.to_s.downcase + '.txt'
@@ -71,9 +73,9 @@ class LotjaContent < ActiveRecord::Base
   # Cleans attribute values.
   #
   def clean_attribute_values
-    unless self.inbreeding.blank?
-      self.inbreeding.gsub!('%', '')
-    end
+    self.inbreeding.gsub!('%', '') unless self.inbreeding.blank?
+    self.gc_content_genome.gsub!('%', '') unless self.gc_content_genome.blank?
+    self.gc_content_transcriptome.gsub!('%', '') unless self.gc_content_transcriptome.blank?
   end
   
   #

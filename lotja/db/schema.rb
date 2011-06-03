@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "lotja_contents", :force => true do |t|
     t.text     "overview"
+    t.string   "taxon_id"
     t.string   "season"
     t.text     "scientific_importance"
     t.string   "origin_lat"
@@ -42,23 +43,40 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "self_incompatibility"
     t.string   "inbreeding"
     t.string   "wiki_link"
-    t.text     "genome_summary"
-    t.string   "chromosomes"
-    t.string   "genome_size"
-    t.string   "ploidy"
-    t.string   "ploidy_type"
-    t.string   "gc_content_genome"
-    t.string   "gc_content_transcriptome"
-    t.string   "chloroplast_genome_size"
-    t.string   "chloroplast_accession_number"
-    t.string   "mitochondria_genome_size"
-    t.string   "mitochondria_accession_number"
-    t.text     "resources"
-    t.text     "selected_references"
     t.string   "file_name"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "legume_id",                     :null => false
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "lotja_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "lotja_content_id",                     :null => false
+  end
+
+  create_table "lotja_resources", :force => true do |t|
+    t.text    "resources"
+    t.integer "lotja_content_id"
+  end
+
+  create_table "lotja_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "lotja_content_id"
   end
 
   create_table "medtr_contents", :force => true do |t|

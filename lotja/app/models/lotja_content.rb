@@ -1,8 +1,11 @@
 
 class LotjaContent < ActiveRecord::Base
 
-  belongs_to :user
-  belongs_to :legume
+  belongs_to  :user
+  belongs_to  :legume
+  has_one     :lotja_resource
+  has_one     :lotja_genome_summary
+  has_one     :lotja_selected_reference
   
   has_many :pathogens, 
     :primary_key => "legume_id", 
@@ -35,6 +38,21 @@ class LotjaContent < ActiveRecord::Base
     name = self.class.to_s.downcase + '.txt'
     self.file_name = name
     File.open("#{DATA_FILE_ROOT}#{name}", 'w') {|f| f.write(file.read)}
+  end
+  
+  #
+  # Read data file
+  #
+  def read_data_file
+    data = []
+    return data if self.file_name.blank?
+    
+    file = DATA_FILE_ROOT + self.file_name
+    if File.exists?(file) && File.readable?(file)
+      data = File.readlines(file)
+      data.each {|l| l.chomp!}
+    end
+    data
   end
   
   #
@@ -74,8 +92,6 @@ class LotjaContent < ActiveRecord::Base
   #
   def clean_attribute_values
     self.inbreeding.gsub!('%', '') unless self.inbreeding.blank?
-    self.gc_content_genome.gsub!('%', '') unless self.gc_content_genome.blank?
-    self.gc_content_transcriptome.gsub!('%', '') unless self.gc_content_transcriptome.blank?
   end
   
   #

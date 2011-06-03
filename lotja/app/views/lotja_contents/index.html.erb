@@ -1,4 +1,4 @@
-<h1><%= @name %></h1>
+<h1><%= @content.legume.name %></h1>
 
 <% permitted_to? :update, :lotja_contents do %>
     <p><%= link_to raw("Edit Contents &raquo;"), edit_lotja_content_path(@content.id) %></p>
@@ -39,23 +39,23 @@
     <div id="tabs-2">
 		<h2>Genome summary</h2>
 		<div id="genome_summary">
-			<%= raw(@content.genome_summary) %>
+			<%= raw(@content.lotja_genome_summary.genome_summary) %>
 		</div>
 		
-		<%= parse_model_attributes(@content, @genome_attr) %>
+		<%= parse_model_attributes(@content.lotja_genome_summary, @genome_attr) %>
 	</div>
 
     <div id="tabs-3">
 		<h2>Resources</h2>
 		<div id="resources">
-			<%= raw(@content.resources) %>
+			<%= raw(@content.lotja_resource.resources) %>
 		</div>
     </div>	
 
     <div id="tabs-4">
 	<h2>Selected references</h2>
 	    <div id="selected_references">
-	        <%= raw(@content.selected_references) %>
+	        <%= raw(@content.lotja_selected_reference.selected_references) %>
 	    </div>
     </div>
 </div>
@@ -73,7 +73,7 @@
 	</div>
 	<hr />
     <h2>Reference datasets</h2>
-	<%= parse_data_file(@data_file) %>
+	<%= parse_data_file(@content.read_data_file) %>
 <% end %>
 
 <script type="text/javascript">

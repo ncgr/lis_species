@@ -69,17 +69,26 @@ module LotjaContentsHelper
         descriptor = a.humanize
         
         # Custom descriptor substitutions
-        descriptor.gsub!('Gc', 'GC')
+        descriptor.gsub!(/(G|g)(C|c)/, 'GC')
         descriptor.gsub!('accession', 'NCBI accession')
-        descriptor.gsub!('size', 'size (kbp)')
+        descriptor.gsub!(/(T|t)axon/, 'NCBI taxon ID')
+        
+        ## Column One ##
         data << "<td>#{descriptor}</td>"
         
         # Custom values
+        ## Column Two ##
         case a.to_sym
           when :gc_content_genome
             data << "<td>#{object[a.to_sym]}%</td>"
           when :gc_content_transcriptome
             data << "<td>#{object[a.to_sym]}%</td>"
+          when :genome_size
+            data << "<td>#{object[a.to_sym]} (Mbp)</td>"
+          when :chloroplast_genome_size
+            data << "<td>#{object[a.to_sym]} (kbp)</td>"
+          when :mitochondria_genome_size
+            data << "<td>#{object[a.to_sym]} (kbp)</td>"
           else
             data << "<td>#{object[a.to_sym]}</td>"
         end
@@ -89,7 +98,7 @@ module LotjaContentsHelper
         unless object[information].blank?
           data << "<td>"
           details = object[information]
-          title = information.to_s.humanize
+          title = information.to_s.humanize.gsub(/(G|g)(C|c)/, 'GC')
           # Text container
           data << "<div id='#{a}_information_dialog' title='#{title}'>#{details}</div>"
           data << " <a id='#{a}_information_opener' href='#'>Read More &raquo;</a>"
@@ -101,7 +110,8 @@ module LotjaContentsHelper
             "</script>"
           data << "</td>"
         else
-          if object[a.to_sym].downcase == "inbreeding" && !object[:inbreeding].nil?
+          ## Column Three ##
+          if object[a.to_sym].downcase == "inbreeding" && !object[:inbreeding].blank?
             data << "<td>#{object[:inbreeding]}%</td>"
           else
             data << "<td></td>"

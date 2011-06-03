@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Create a tar ball of the species sites ready for deployment.
+# Create a tar ball of the species sites for deployment.
 # Ken Seal - NCGR
 #
 
@@ -18,6 +18,8 @@ do
         # log/
         # startServer
         # tmp
+        # .gitignore
+        # .rspec
         # data/ ## Retain uploaded files on the server.
         tar czf $dir-release.tar.gz \
             $dir/app \
@@ -33,6 +35,7 @@ do
             $dir/README \
             $dir/script \
             $dir/test \
+            $dir/spec \
             $dir/vendor
      fi
 done

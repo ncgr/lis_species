@@ -1,10 +1,8 @@
 # Be sure to restart your server when you modify this file.
 
-Rails.env.production? ? domain = '.comparative-legumes.org' : domain = 'aztec.ncgr.org'
-
 Phavu::Application.config.session_store :active_record_store, 
   :key    => '_lis_site_session',
-  :domain => domain
+  :domain => :all
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

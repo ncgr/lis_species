@@ -14,6 +14,10 @@
         <%= f.text_area :overview, :id => "ckeditor_overview" %>
 	</p>
 	<p>
+        <%= f.label :taxon_id, "NCBI Taxon ID:" %><br />
+        <%= f.text_field :taxon_id %>
+    </p>
+	<p>
         <%= f.label :season, "Season:" %>
         <%= f.select :season, [['--Select--',''], ['Warm','Warm'], ['Cool','Cool']] %>
     </p>
@@ -44,12 +48,12 @@
         </p>
     </div>
 	<p>
-        <%= f.label :nodulator_species, "Main Nodulator Species:" %><br />
+        <%= f.label :nodulator_species, "Primary Nodulator Species:" %><br />
         <%= f.text_field :nodulator_species %>
     </p>
 	<div id="nodulator_id">
         <p>
-            <%= f.label :nodulator_taxon_id, "Main Nodulator Taxon ID:" %><br />
+            <%= f.label :nodulator_taxon_id, "Primary Nodulator Taxon ID:" %><br />
             <%= f.text_field :nodulator_taxon_id %>
         </p>
     </div>
@@ -96,69 +100,105 @@
     </p>
 	<hr />
 	
-	<h3>Genome Summary</h3>
-	<p>
-        <%= f.label :genome_summary, "Summary:" %><br />
-        <%= f.text_area :genome_summary, :id => "ckeditor_genome_summary" %>
-    </p>
-	<p>
-        <%= f.label :chromosomes, "Number of Chromosomes:" %><br />
-        2n = <%= f.text_field :chromosomes %>
-    </p>
-	<p>
-        <%= f.label :genome_size, "Genome Size (kbp):" %><br />
-        <%= f.text_field :genome_size %>
-    </p>
-	<p>
-        <%= f.label :ploidy, "Ploidy:" %><br />
-        <%= f.text_field :ploidy %>
-    </p>
-	<p>
-        <%= f.label :ploidy_type, "Ploidy Type:" %>
-        <%= f.select :ploidy_type, [['--Select--',''],['Auto','Auto'],['Allo-Tetraploid','Allo-Tetraploid']] %>
-    </p>
-	<p>
-        <%= f.label :gc_content_genome, "% GC Content of Genome:" %><br />
-        <%= f.text_field :gc_content_genome %>
-    </p>
-	<p>
-        <%= f.label :gc_content_transcriptome, "% GC Content of Transcriptome:" %><br />
-        <%= f.text_field :gc_content_transcriptome %>
-    </p>
-	<p>
-        <%= f.label :chloroplast_genome_size, "Chloroplast Genome Size (kbp):" %><br />
-        <%= f.text_field :chloroplast_genome_size %>
-    </p>
-	<p>
-        <%= f.label :chloroplast_accession_number, "Chloroplast NCBI Accession Number:" %><br />
-        <%= f.text_field :chloroplast_accession_number %>
-    </p>
-	<p>
-        <%= f.label :mitochondria_genome_size, "Mitochondria Genome Size (kbp):" %><br />
-        <%= f.text_field :mitochondria_genome_size %>
-    </p>
-	<p>
-        <%= f.label :mitochondria_accession_number, "Mitochondria NCBI Accession Number:" %><br />
-        <%= f.text_field :mitochondria_accession_number %>
-    </p>
+	<%= fields_for @content.lotja_genome_summary do |g| %>
+		<h3>Genome Summary</h3>
+		<p>
+	        <%= g.label :genome_summary, "Summary:" %><br />
+	        <%= g.text_area :genome_summary, :id => "ckeditor_genome_summary" %>
+	    </p>
+		<p>
+	        <%= g.label :chromosomes, "Number of Chromosomes:" %><br />
+	        <%= g.text_field :chromosomes %>
+	    </p>
+		<p>
+	        <%= g.label :genome_size, "Genome Size (Mbp):" %><br />
+	        <%= g.text_field :genome_size %>
+	    </p>
+		<div id="genome_size_information">
+	        <p>
+	            <%= g.label :genome_size_information, "Genome Size Information:" %><br />
+	            <%= g.text_area :genome_size_information, :id => "ckeditor_genome_size_information" %>
+	        </p>
+	    </div>
+		<p>
+	        <%= g.label :ploidy, "Ploidy:" %><br />
+	        <%= g.text_field :ploidy %>
+	    </p>
+		<p>
+	        <%= g.label :ploidy_type, "Ploidy Type:" %>
+	        <%= g.select :ploidy_type, [['--Select--',''],['Auto','Auto'],['Allo-Tetraploid','Allo-Tetraploid']] %>
+	    </p>
+		<p>
+	        <%= g.label :gc_content_genome, "% GC Content of Genome:" %><br />
+	        <%= g.text_field :gc_content_genome %>
+	    </p>
+		<div id="gc_content_genome_information">
+	        <p>
+	            <%= g.label :gc_content_genome_information, "GC Content of Genome Information:" %><br />
+	            <%= g.text_area :gc_content_genome_information, :id => "ckeditor_gc_content_genome_information" %>
+	        </p>
+	    </div>
+		<p>
+	        <%= g.label :gc_content_transcriptome, "% GC Content of Transcriptome:" %><br />
+	        <%= g.text_field :gc_content_transcriptome %>
+	    </p>
+		<div id="gc_content_transcriptome_information">
+	        <p>
+	            <%= g.label :gc_content_transcriptome_information, "GC Content of Transcriptome Information:" %><br />
+	            <%= g.text_area :gc_content_transcriptome_information, :id => "ckeditor_gc_content_transcriptome_information" %>
+	        </p>
+	    </div>
+		<p>
+	        <%= g.label :chloroplast_genome_size, "Chloroplast Genome Size (kbp):" %><br />
+	        <%= g.text_field :chloroplast_genome_size %>
+	    </p>
+		<div id="chloroplast_genome_size_information">
+	        <p>
+	            <%= g.label :chloroplast_genome_size_information, "Chloroplast Genome Size Information:" %><br />
+	            <%= g.text_area :chloroplast_genome_size_information, :id => "ckeditor_chloroplast_genome_size_information" %>
+	        </p>
+	    </div>
+		<p>
+	        <%= g.label :chloroplast_accession_number, "Chloroplast NCBI Accession Number:" %><br />
+	        <%= g.text_field :chloroplast_accession_number %>
+	    </p>
+		<p>
+	        <%= g.label :mitochondria_genome_size, "Mitochondria Genome Size (kbp):" %><br />
+	        <%= g.text_field :mitochondria_genome_size %>
+	    </p>
+		<div id="mitochondria_genome_size_information">
+	        <p>
+	            <%= g.label :mitochondria_genome_size_information, "Mitochondria Genome Size Information:" %><br />
+	            <%= g.text_area :mitochondria_genome_size_information, :id => "ckeditor_mitochondria_genome_size_information" %>
+	        </p>
+	    </div>
+		<p>
+	        <%= g.label :mitochondria_accession_number, "Mitochondria NCBI Accession Number:" %><br />
+	        <%= g.text_field :mitochondria_accession_number %>
+	    </p>
+    <% end %>
     <hr />
     
-    <h3>Resources</h3>
-	<p>
-        <%= f.label :resources, "Resources:" %><br />
-        <%= f.text_area :resources, :id => "ckeditor_resources" %>
-    </p>
+	<%= fields_for @content.lotja_resource do |r| %>
+	    <h3>Resources</h3>
+		<p>
+	        <%= r.label :resources, "Resources:" %><br />
+	        <%= r.text_area :resources, :id => "ckeditor_resources" %>
+	    </p>
+	<% end %>
 	<hr />
     
-    <h3>References</h3>
-	<p>
-		Please add references in reverse chronological order using 
-		<%= link_to 'PubMed reference format', 'http://www.nlm.nih.gov/bsd/policy/cit_format.html' %>.
-	</p>
-	<p>
-        <%= f.label :selected_references, "Selected References:" %><br />
-        <%= f.text_area :selected_references, :id => "ckeditor_selected_references" %>
-    </p>
+	<%= fields_for @content.lotja_selected_reference do |s| %>
+	    <h3>References</h3>
+		<p>
+			Please add references in reverse chronological order using 
+			<%= link_to 'PubMed reference format', 'http://www.nlm.nih.gov/bsd/policy/cit_format.html' %>.
+		</p>
+		<p>
+	        <%= s.label :selected_references, "Selected References:" %><br />
+	        <%= s.text_area :selected_references, :id => "ckeditor_selected_references" %>
+	    </p>
+	<% end %>
 	
 	<% if has_role? :superuser %>
 		<% unless @content.file_name.blank? %>
@@ -176,7 +216,9 @@
 	/** Text Editors **/
 	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_resources","ckeditor_selected_references",
 	       "ckeditor_scientific_importance","ckeditor_nodulation_information","ckeditor_flowering_information",
-		   "ckeditor_pollination_information"];
+		   "ckeditor_pollination_information","ckeditor_genome_size_information","ckeditor_gc_content_genome_information",
+		   "ckeditor_gc_content_transcriptome_information","ckeditor_chloroplast_genome_size_information",
+		   "ckeditor_mitochondria_genome_size_information"];
 	ids.each(function (id) {
 	    CKEDITOR.replace(id, {
 	        toolbar : "<%= @tool_bar %>"
@@ -230,6 +272,66 @@
             $('pollination_type_information').hide();
         } else {
             $('pollination_type_information').show();
+        }
+    });
+	
+	/** Genome Size **/
+    if ($('lotja_genome_summary_genome_size').value == '') {
+        $('genome_size_information').hide();
+    }
+    $('lotja_genome_summary_genome_size').observe('blur', function(){
+        if (this.getValue() == '') {
+            $('genome_size_information').hide();
+        } else {
+            $('genome_size_information').show();
+        }
+    });
+	
+	/** GC Genome Content **/
+    if ($('lotja_genome_summary_gc_content_genome').value == '') {
+        $('gc_content_genome_information').hide();
+    }
+    $('lotja_genome_summary_gc_content_genome').observe('blur', function(){
+        if (this.getValue() == '') {
+            $('gc_content_genome_information').hide();
+        } else {
+            $('gc_content_genome_information').show();
+        }
+    });
+	
+	/** GC Transcriptome Content **/
+    if ($('lotja_genome_summary_gc_content_transcriptome').value == '') {
+        $('gc_content_transcriptome_information').hide();
+    }
+    $('lotja_genome_summary_gc_content_transcriptome').observe('blur', function(){
+        if (this.getValue() == '') {
+            $('gc_content_transcriptome_information').hide();
+        } else {
+            $('gc_content_transcriptome_information').show();
+        }
+    });
+	
+	/** Chloroplast Genome Content **/
+    if ($('lotja_genome_summary_chloroplast_genome_size').value == '') {
+        $('chloroplast_genome_size_information').hide();
+    }
+    $('lotja_genome_summary_chloroplast_genome_size').observe('blur', function(){
+        if (this.getValue() == '') {
+            $('chloroplast_genome_size_information').hide();
+        } else {
+            $('chloroplast_genome_size_information').show();
+        }
+    });
+	
+	/** Mitochondria Genome Content **/
+    if ($('lotja_genome_summary_mitochondria_genome_size').value == '') {
+        $('mitochondria_genome_size_information').hide();
+    }
+    $('lotja_genome_summary_mitochondria_genome_size').observe('blur', function(){
+        if (this.getValue() == '') {
+            $('mitochondria_genome_size_information').hide();
+        } else {
+            $('mitochondria_genome_size_information').show();
         }
     });
 	

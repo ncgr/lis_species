@@ -9,11 +9,9 @@ class LotjaContentsController < ApplicationController
   
   def index
     @content = LotjaContent.first
-    @name = @content.legume.name
-    @data_file = read_data_file(@content.file_name)
     
     # Attributes for tables
-    @overview_attr = ["season", "nodulation_type", "nodulator_species", "nodulator_taxon_id",
+    @overview_attr = ["taxon_id", "season", "nodulation_type", "nodulator_species", "nodulator_taxon_id",
       "flowering_type", "pollination_type", "self_incompatibility"]
     @genome_attr = ["chromosomes", "genome_size", "ploidy", "ploidy_type",
       "gc_content_genome", "gc_content_transcriptome", "chloroplast_genome_size",
@@ -38,8 +36,11 @@ class LotjaContentsController < ApplicationController
       end
     end
     @content.updated_at = Time.now
-    @content.user_id = current_user.id
-    if @content.update_attributes(params[:lotja_content])
+    @content.user_id    = current_user.id
+    if @content.update_attributes(params[:lotja_content]) && 
+      @content.lotja_genome_summary.update_attributes(params[:lotja_genome_summary]) &&
+      @content.lotja_resource.update_attributes(params[:lotja_resource]) &&
+      @content.lotja_selected_reference.update_attributes(params[:lotja_selected_reference])
       flash[:error] = "Successfully updated contents."
       redirect_to root_path
     else
@@ -61,18 +62,6 @@ class LotjaContentsController < ApplicationController
     else
       "application"
     end
-  end
-  
-  def read_data_file(file)
-    data = []
-    return data if file.blank?
-    
-    file = LotjaContent::DATA_FILE_ROOT + file
-    if File.exists?(file) && File.readable?(file)
-      data = File.readlines(file)
-      data.each {|l| l.chomp!}
-    end
-    data
   end
   
 end

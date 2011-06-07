@@ -26,9 +26,8 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "legumes", ["short_name"], :name => "short_name_UNIQUE", :unique => true
 
   create_table "lotja_contents", :force => true do |t|
-    t.text     "overview"
     t.string   "taxon_id"
-    t.string   "season"
+    t.text     "overview"
     t.text     "scientific_importance"
     t.string   "origin_lat"
     t.string   "origin_long"
@@ -54,7 +53,6 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string  "chromosomes"
     t.string  "genome_size"
     t.text    "genome_size_information"
-    t.string  "ploidy"
     t.string  "ploidy_type"
     t.string  "gc_content_genome"
     t.text    "gc_content_genome_information"
@@ -71,12 +69,12 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "lotja_resources", :force => true do |t|
     t.text    "resources"
-    t.integer "lotja_content_id"
+    t.integer "lotja_content_id", :null => false
   end
 
   create_table "lotja_selected_references", :force => true do |t|
     t.text    "selected_references"
-    t.integer "lotja_content_id"
+    t.integer "lotja_content_id",    :null => false
   end
 
   create_table "medtr_contents", :force => true do |t|

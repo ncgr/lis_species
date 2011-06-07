@@ -3,7 +3,7 @@ class LotjaContentsController < ApplicationController
 
   layout :set_layout
   before_filter :authenticate_user!, :except => :index
-  filter_access_to :edit, :update
+  filter_access_to :edit, :update, :send_data_file
   
   before_filter :set_tool_bar, :only => [:edit, :update]
   

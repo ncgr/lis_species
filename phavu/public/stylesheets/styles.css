@@ -13,12 +13,12 @@ body {
 }
 
 a {
-	color: #ff6700;
+	color: #c34a18;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #ff6700;
+	color: #c34a18;
 	text-decoration: underline;
 	cursor: pointer;
 }

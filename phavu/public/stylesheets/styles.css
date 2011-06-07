@@ -13,12 +13,12 @@ body {
 }
 
 a {
-	color: #ff6600;
+	color: #ff6700;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #ff6600;
+	color: #ff6700;
 	text-decoration: underline;
 	cursor: pointer;
 }
@@ -74,7 +74,7 @@ hr, hr.small {
 }
 
 h1 {
-	font-size: 26px;
+	font-size: 24px;
 	letter-spacing: 1px;
 	
 	margin-top: 16px;
@@ -82,7 +82,7 @@ h1 {
 }
 
 h2 {
-	font-size: 24px;
+	font-size: 22px;
 	letter-spacing: 1px;
 	
 	margin-top: 16px;
@@ -262,7 +262,7 @@ ol.web li {
 #content {
 	margin: 0;
 	padding: 0;
-	background-color: #c2df00;
+	background-color: #bbd1a6;
 	
 	width: 100%;
 	

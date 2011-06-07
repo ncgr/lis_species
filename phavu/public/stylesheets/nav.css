@@ -67,7 +67,7 @@
 
 #nav ul li a:hover {
     color: #ffffff;
-    background: #ff6600;
+    background: #ff6700;
     text-decoration: none;
 }
 
@@ -107,7 +107,7 @@
 
 #nav ul.level2 li a:hover,#nav  ul.level3 li a:hover {
     font-weight: normal;
-    background-color: #ff6600;
+    background-color: #ff6700;
 }
 
 /*** End ***/

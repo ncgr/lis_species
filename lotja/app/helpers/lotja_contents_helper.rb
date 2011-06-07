@@ -70,8 +70,9 @@ module LotjaContentsHelper
         
         # Custom descriptor substitutions
         descriptor.gsub!(/(G|g)(C|c)/, 'GC')
-        descriptor.gsub!('accession', 'NCBI accession')
+        descriptor.gsub!(/accession/, 'NCBI accession')
         descriptor.gsub!(/(T|t)axon/, 'NCBI taxon ID')
+        descriptor.gsub!(/(S|s)elf incompatibility/, 'Mating system')
         
         ## Column One ##
         data << "<td>#{descriptor}</td>"
@@ -95,6 +96,7 @@ module LotjaContentsHelper
         
         information = "#{a}_information".to_sym
         # If the attribute has additional information, add the dialog box.
+        ## Column Three ##
         unless object[information].blank?
           data << "<td>"
           details = object[information]
@@ -110,12 +112,7 @@ module LotjaContentsHelper
             "</script>"
           data << "</td>"
         else
-          ## Column Three ##
-          if object[a.to_sym].downcase == "inbreeding" && !object[:inbreeding].blank?
-            data << "<td>#{object[:inbreeding]}%</td>"
-          else
-            data << "<td></td>"
-          end
+          data << "<td></td>"
         end
         data << "</tr>"
         i += 1

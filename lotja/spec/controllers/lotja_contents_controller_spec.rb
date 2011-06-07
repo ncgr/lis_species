@@ -52,6 +52,23 @@ describe LotjaContentsController do
     end
   end
   
+  describe "GET edit and PUT update lotja_content while logged in as admin" do
+    login_admin
+    before(:each) do
+      @lotja = Factory.build(:lotja_content)
+      LotjaContent.should_receive(:find).with("212").and_return(@lotja)
+    end
+    it "should find lotja_content and return object" do
+      get :edit, :id => "212"
+      response.should render_template('edit')
+    end
+    it "should update object" do
+      put :update, :id => "212", :lotja_content => {}, :lotja_selected_reference => {},
+        :lotja_genome_summary => {}, :lotja_resource => {}
+      response.should be_redirect
+    end
+  end
+  
   describe "GET send_data_file as superuser" do
     login_superuser
     before(:each) do
@@ -64,6 +81,14 @@ describe LotjaContentsController do
     it "should send data file" do
       get :send_data_file, :id => "43"
       response.should be_success
+    end
+  end
+  
+  describe "GET send_data_file as admin" do
+    login_admin
+    it "should redirect" do
+      get :send_data_file, :id => "47"
+      response.should be_redirect
     end
   end
   

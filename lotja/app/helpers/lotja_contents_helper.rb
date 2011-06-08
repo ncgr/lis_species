@@ -166,7 +166,7 @@ module LotjaContentsHelper
       data << "<td>#{d.reference_dataset_type unless d.reference_dataset_type.blank?}</td>"
       data << "<td>#{d.description unless d.description.blank?}</td>"
       data << "<td>#{d.source unless d.source.blank?}</td>"
-      data << "<td>#{link_to 'Download', d.url unless d.url.blank?}</td>"
+      data << "<td>#{link_to raw('Download &raquo;'), d.url unless d.url.blank?}</td>"
       data << "</tr>"
       i += 1
     end
@@ -183,18 +183,12 @@ module LotjaContentsHelper
     i = 1
     data = "<table  class='data-table'>"
     
-    data << "<tr>"
-    data << "<th>Type</th>"
-    data << "<th>Description</th>"
-    data << "<th>URL</th>"
-    data << "</tr>"
-    
     resources.each do |r|
       i.modulo(2) == 0 ? style = "even" : style = "odd"
       data << "<tr class='#{style}'>"
       data << "<td>#{r.resource_type unless r.resource_type.blank?}</td>"
       data << "<td>#{r.description unless r.description.blank?}</td>"
-      data << "<td>#{link_to 'Download', r.url unless r.url.blank?}</td>"
+      data << "<td>#{link_to raw('Linkout &raquo;'), r.url unless r.url.blank?}</td>"
       data << "</tr>"
       i += 1
     end

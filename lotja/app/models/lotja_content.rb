@@ -11,50 +11,26 @@ class LotjaContent < ActiveRecord::Base
     :primary_key => "legume_id", 
     :foreign_key => "legume_id",
     :dependent => :destroy
+  has_many :reference_datasets, 
+    :primary_key => "legume_id", 
+    :foreign_key => "legume_id",
+    :dependent => :destroy
+  has_many :resources, 
+    :primary_key => "legume_id", 
+    :foreign_key => "legume_id",
+    :dependent => :destroy
   
-  DATA_FILE_ROOT = ::Rails.root.to_s + "/data/"
-  
+  validates_associated :resources, :reference_datasets
   validates_format_of :origin_lat, :with => /^[-+]?\d{1,3}\.\d{2,6}$/,
     :allow_blank => true, :message => ' not valid'
   validates_format_of :origin_long, :with => /^[-+]?\d{1,3}\.\d{2,6}$/,
     :allow_blank => true, :message => ' not valid'
   validates_format_of :wiki_link, :with => URI::regexp(%w(http https)),
-    :allow_blank => true, :message => ' is not valid. Please include http(s)://'
+    :allow_blank => true, :message => ' is not valid. Please include a valid protocol.'
   
   before_save :clean_attribute_values
-  after_update :save_pathogens
+  after_update :save_pathogens, :save_reference_datasets, :save_resources
 
-  #
-  # Upload the data file for Reference Datasets.
-  #
-  def upload_data_file(file)
-    # Check content type and file extension.
-    file_ext = File.extname(File.basename(file.original_filename)).downcase
-    content_type = file.content_type.downcase
-    if file_ext != '.txt' || content_type != 'text/plain'
-      raise RuntimeError, "File extension and Content-Type must be .txt and text/plain."
-    end
-    
-    name = self.class.to_s.downcase + '.txt'
-    self.file_name = name
-    File.open("#{DATA_FILE_ROOT}#{name}", 'w') {|f| f.write(file.read)}
-  end
-  
-  #
-  # Read data file
-  #
-  def read_data_file
-    data = []
-    return data if self.file_name.blank?
-    
-    file = DATA_FILE_ROOT + self.file_name
-    if File.exists?(file) && File.readable?(file)
-      data = File.readlines(file)
-      data.each {|l| l.chomp!}
-    end
-    data
-  end
-  
   #
   # Build submitted pathogen attributes.
   #
@@ -84,6 +60,70 @@ class LotjaContent < ActiveRecord::Base
   def save_pathogens
     pathogens.each do |p|
       p.save(:validate => false)
+    end
+  end
+  
+  #
+  # Build submitted reference datasets attributes.
+  #
+  def new_reference_datasets_attributes=(reference_datasets_attributes)
+    reference_datasets_attributes.each do |a|
+      reference_datasets.build(a) unless attributes_empty?(a)
+    end
+  end
+  
+  #
+  # Edit reference datasets attributes.
+  #
+  def existing_reference_datasets_attributes=(reference_datasets_attributes)
+    reference_datasets.reject(&:new_record?).each do |reference_dataset|
+      attributes = reference_datasets_attributes[reference_dataset.id.to_s]
+      if attributes && !attributes_empty?(attributes)
+        reference_dataset.attributes = attributes
+      else
+        reference_datasets.delete(reference_dataset)
+      end
+    end
+  end
+  
+  #
+  # Save the edits after update.
+  #
+  def save_reference_datasets
+    reference_datasets.each do |r|
+      r.save(:validate => false)
+    end
+  end
+  
+  #
+  # Build submitted resources attributes.
+  #
+  def new_resources_attributes=(resources_attributes)
+    resources_attributes.each do |a|
+      resources.build(a) unless attributes_empty?(a)
+    end
+  end
+  
+  #
+  # Edit resources attributes.
+  #
+  def existing_resources_attributes=(resources_attributes)
+    resources.reject(&:new_record?).each do |resource|
+      attributes = resources_attributes[resource.id.to_s]
+      if attributes && !attributes_empty?(attributes)
+        resource.attributes = attributes
+      else
+        resources.delete(resource)
+      end
+    end
+  end
+  
+  #
+  # Save the edits after update.
+  #
+  def save_resources
+    resources.each do |r|
+      r.save(:validate => false)
     end
   end
   

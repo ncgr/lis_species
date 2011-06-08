@@ -1,12 +1,41 @@
 module LotjaContentsHelper
   
   #
+  # Italicize species name.
+  #
+  def format_species_name(name)
+    name = name.insert(0, '<em>')
+    name.sub!('(', '</em>(')
+    raw(name)
+  end
+  
+  #
   # Helper to add additional pathogens.
   #
   def add_pathogen_link(name)
     button_to_function name, :id => "add_pathogen" do |page|
       page.insert_html :bottom, :pathogens, :partial => "pathogens", 
             :object => Pathogen.new
+    end
+  end
+  
+  #
+  # Helper to add additional reference datasets.
+  #
+  def add_reference_dataset_link(name)
+    button_to_function name, :id => "add_reference_dataset" do |page|
+      page.insert_html :bottom, :reference_datasets, :partial => "reference_datasets", 
+            :object => ReferenceDataset.new
+    end
+  end
+  
+  #
+  # Helper to add additional resources.
+  #
+  def add_resource_link(name)
+    button_to_function name, :id => "add_resource" do |page|
+      page.insert_html :bottom, :resources, :partial => "resources", 
+            :object => Resource.new
     end
   end
   
@@ -19,48 +48,15 @@ module LotjaContentsHelper
     prefix = model + "[#{new_or_existing}_#{name}_attributes][]"
     fields_for(prefix, object, &block)
   end
-  
+    
   #
-  # Parse the data file into a table.
-  #
-  def parse_data_file(data_file)
-    return "" if data_file.blank?
-    
-    i = 1
-    data = "<table id='datasets'>"
-    
-    # Set the headers
-    headers = data_file.shift
-    data << "<tr>"
-    headers.split("|").each do |h|
-      data << "<th>#{h.strip}</th>"
-    end
-    data << "</tr>"
-    
-    # Set the data
-    data_file.each do |d|
-      i.modulo(2) == 0 ? style = "even" : style = "odd"
-      data << "<tr class='#{style}'>"
-      d.split("|").each do |l|
-        data << "<td>#{l.strip}</td>"
-      end
-      data << "</tr>"
-      i += 1
-    end
-    data << "</table>"
-    
-    # Send the table
-    raw(data)
-  end
-  
-  #
-  # Parse object attributes into table.
+  # Parse object attributes into a three column table.
   #
   def parse_model_attributes(object, attributes = [])
     return "" unless attributes.length > 0
     
     i = 1
-    data = "<table>"
+    data = "<table class='data-table'>"
     attributes.each do |a|
       unless object[a.to_sym].blank?
         i.modulo(2) == 0 ? style = "even" : style = "odd"
@@ -129,7 +125,7 @@ module LotjaContentsHelper
   #
   def parse_major_pathogens(pathogens)
     i = 1
-    data = "<table id='pathogens'>"
+    data = "<table  class='data-table'>"
     
     data << "<tr>"
     data << "<th>Pathogen</th>"
@@ -150,5 +146,62 @@ module LotjaContentsHelper
     raw(data)
   end
   
+  #
+  # Parse reference datasets into table.
+  #
+  def parse_reference_datasets(datasets)
+    i = 1
+    data = "<table  class='data-table'>"
+    
+    data << "<tr>"
+    data << "<th>Type</th>"
+    data << "<th>Description</th>"
+    data << "<th>Source</th>"
+    data << "<th>URL</th>"
+    data << "</tr>"
+    
+    datasets.each do |d|
+      i.modulo(2) == 0 ? style = "even" : style = "odd"
+      data << "<tr class='#{style}'>"
+      data << "<td>#{d.reference_dataset_type unless d.reference_dataset_type.blank?}</td>"
+      data << "<td>#{d.description unless d.description.blank?}</td>"
+      data << "<td>#{d.source unless d.source.blank?}</td>"
+      data << "<td>#{link_to 'Download', d.url unless d.url.blank?}</td>"
+      data << "</tr>"
+      i += 1
+    end
+    data << "</table>"
+    
+    # Send the table
+    raw(data)
+  end
+  
+  #
+  # Parse resources into table.
+  #
+  def parse_resources(resources)
+    i = 1
+    data = "<table  class='data-table'>"
+    
+    data << "<tr>"
+    data << "<th>Type</th>"
+    data << "<th>Description</th>"
+    data << "<th>URL</th>"
+    data << "</tr>"
+    
+    resources.each do |r|
+      i.modulo(2) == 0 ? style = "even" : style = "odd"
+      data << "<tr class='#{style}'>"
+      data << "<td>#{r.resource_type unless r.resource_type.blank?}</td>"
+      data << "<td>#{r.description unless r.description.blank?}</td>"
+      data << "<td>#{link_to 'Download', r.url unless r.url.blank?}</td>"
+      data << "</tr>"
+      i += 1
+    end
+    data << "</table>"
+    
+    # Send the table
+    raw(data)
+  end
   
 end

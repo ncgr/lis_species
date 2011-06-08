@@ -1,7 +1,10 @@
-<h1><%= @content.legume.name %></h1>
+<h1><%= format_species_name(@content.legume.name) %></h1>
 
 <% permitted_to? :update, :lotja_contents do %>
-    <p><%= link_to raw("Edit Contents &raquo;"), edit_lotja_content_path(@content.id) %></p>
+    <p>
+    	<%= link_to raw("Edit Contents &raquo;"), 
+            edit_lotja_content_path(@content.id) %>
+    </p>
 <% end %>
 
 <div id="tabs">
@@ -10,7 +13,8 @@
         <li><a href="#tabs-1">Overview</a></li>
         <li><a href="#tabs-2">Genome Summary</a></li>
         <li><a href="#tabs-3">Resources</a></li>
-        <li><a href="#tabs-4">Selected References</a></li>
+		<li><a href="#tabs-4">Reference Data</a></li>
+        <li><a href="#tabs-5">Selected References</a></li>
     </ul>
 
     <div id="tabs-1">
@@ -19,9 +23,9 @@
 			<%= raw(@content.overview) %>
 		</div>
 		
-		<% unless @content.scientific_importance.blank? %>
-		    <p><strong>Scientific and Economic Importance</strong></p>
-		    <%= raw(@content.scientific_importance) %>
+		<% unless @content.special_interest.blank? %>
+		    <p><strong>Of Special Interest</strong></p>
+		    <%= raw(@content.special_interest) %>
 		<% end %>
 		
 		<%= parse_model_attributes(@content, @overview_attr) %>
@@ -37,7 +41,7 @@
 	</div>
 
     <div id="tabs-2">
-		<h2>Genome summary</h2>
+		<h2>Genome Summary</h2>
 		<div id="genome_summary">
 			<%= raw(@content.lotja_genome_summary.genome_summary) %>
 		</div>
@@ -48,33 +52,28 @@
     <div id="tabs-3">
 		<h2>Resources</h2>
 		<div id="resources">
-			<%= raw(@content.lotja_resource.resources) %>
+			 <% unless @content.resources.blank? %>
+                <%= parse_resources(@content.resources) %>
+            <% end %>
 		</div>
     </div>	
-
-    <div id="tabs-4">
-	<h2>Selected references</h2>
-	    <div id="selected_references">
-	        <%= raw(@content.lotja_selected_reference.selected_references) %>
-	    </div>
+	
+	<div id="tabs-4">
+    <h2>Reference Data</h2>
+        <div id="reference_datasets">
+            <% unless @content.reference_datasets.blank? %>
+	            <%= parse_reference_datasets(@content.reference_datasets) %>
+	        <% end %>
+        </div>
+    </div>
+	
+	<div id="tabs-5">
+    <h2>Selected References</h2>
+        <div id="selected_references">
+            <%= raw(@content.lotja_selected_reference.selected_references) %>
+        </div>
     </div>
 </div>
-
-<% content_for :rightcol do %>
-    <div id="photo">
-        <% title = "Lotus japonicus" %>
-	    <% caption = "Lotus japonicus" %>
-	    <%= link_to image_tag("lotja_small.png", :alt => title, :class => "photo"), 
-	        "#lotja", :class => "photo-link" %>
-	</div>
-	<div id="lotja" style="display: none;">
-	    <%= image_tag "lotja.png", :alt => title %><br />
-	    <span class="caption"><%= caption %></span>
-	</div>
-	<hr />
-    <h2>Reference datasets</h2>
-	<%= parse_data_file(@content.read_data_file) %>
-<% end %>
 
 <script type="text/javascript">
     $j(function($) {

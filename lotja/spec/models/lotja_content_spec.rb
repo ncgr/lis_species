@@ -16,6 +16,16 @@ describe LotjaContent do
     @lotja.respond_to?(:pathogens).should == true
   end
   
+  it "should respond to reference_datasets" do
+    @lotja = LotjaContent.new
+    @lotja.respond_to?(:reference_datasets).should == true
+  end
+  
+  it "should respond to resources" do
+    @lotja = LotjaContent.new
+    @lotja.respond_to?(:resources).should == true
+  end
+  
   it "fails validation on poorly formatted origin_lat (using errors_on)" do
     LotjaContent.new({
       :origin_lat => 0.0
@@ -50,10 +60,6 @@ describe LotjaContent do
     LotjaContent.new({
       :wiki_link => 'http://en.wikipedia.org'
     }).should have(0).error_on(:wiki_link)
-  end
-  
-  it "data file directory exists" do
-    File.directory?(LotjaContent::DATA_FILE_ROOT).should == true
   end
   
   it "removes % after self.inbreeding" do

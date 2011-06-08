@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 0) do
   create_table "lotja_contents", :force => true do |t|
     t.string   "taxon_id"
     t.text     "overview"
-    t.text     "scientific_importance"
+    t.text     "special_interest"
     t.string   "origin_lat"
     t.string   "origin_long"
     t.string   "nodulation_type"
@@ -65,11 +65,6 @@ ActiveRecord::Schema.define(:version => 0) do
     t.text    "mitochondria_genome_size_information"
     t.string  "mitochondria_accession_number"
     t.integer "lotja_content_id",                     :null => false
-  end
-
-  create_table "lotja_resources", :force => true do |t|
-    t.text    "resources"
-    t.integer "lotja_content_id", :null => false
   end
 
   create_table "lotja_selected_references", :force => true do |t|
@@ -123,6 +118,23 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "file_name"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "reference_datasets", :force => true do |t|
+    t.integer "legume_id",                                          :null => false
+    t.string  "reference_dataset_type"
+    t.string  "description"
+    t.string  "source"
+    t.string  "url"
+    t.integer "is_public",              :limit => 1, :default => 1
+  end
+
+  create_table "resources", :force => true do |t|
+    t.integer "legume_id",                                 :null => false
+    t.string  "resource_type"
+    t.string  "description"
+    t.string  "url"
+    t.integer "is_public",     :limit => 1, :default => 1
   end
 
   create_table "roles", :force => true do |t|

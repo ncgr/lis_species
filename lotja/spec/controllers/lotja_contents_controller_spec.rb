@@ -29,10 +29,6 @@ describe LotjaContentsController do
       put :update, :id => "10", :news_article => {}
       response.should be_redirect
     end
-    it "/:id/send_data_file should redirect" do
-      get :send_data_file, :id => "31"
-      response.should be_redirect
-    end
   end
   
   describe "GET edit and PUT update lotja_content while logged in as superuser" do
@@ -47,7 +43,7 @@ describe LotjaContentsController do
     end
     it "should update object" do
       put :update, :id => "21", :lotja_content => {}, :lotja_selected_reference => {},
-        :lotja_genome_summary => {}, :lotja_resource => {}
+        :lotja_genome_summary => {}
       response.should be_redirect
     end
   end
@@ -64,30 +60,7 @@ describe LotjaContentsController do
     end
     it "should update object" do
       put :update, :id => "212", :lotja_content => {}, :lotja_selected_reference => {},
-        :lotja_genome_summary => {}, :lotja_resource => {}
-      response.should be_redirect
-    end
-  end
-  
-  describe "GET send_data_file as superuser" do
-    login_superuser
-    before(:each) do
-      @lotja = Factory.build(:lotja_content)
-      LotjaContent.should_receive(:find).with("43").and_return(@lotja)
-      @lotja.should_receive(:file_name).and_return("")
-      controller.should_receive(:send_file)
-      controller.stub!(:render)
-    end
-    it "should send data file" do
-      get :send_data_file, :id => "43"
-      response.should be_success
-    end
-  end
-  
-  describe "GET send_data_file as admin" do
-    login_admin
-    it "should redirect" do
-      get :send_data_file, :id => "47"
+        :lotja_genome_summary => {}
       response.should be_redirect
     end
   end

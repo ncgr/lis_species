@@ -102,7 +102,7 @@ module LotjaContentsHelper
           data << " <a id='#{a}_information_opener' href='#'>Read More &raquo;</a>"
           # jQuery dialog box
           data << "<script>$j(function($){$('##{a}_information_dialog').dialog(" + 
-            "{autoOpen:false,show:'blind',hide:'blind',width:400});" + 
+            "{autoOpen:false,show:'blind',hide:'blind',width:450});" + 
             "$('##{a}_information_opener').click(function(){" + 
             "$('##{a}_information_dialog').dialog('open');return false;});});" + 
             "</script>"

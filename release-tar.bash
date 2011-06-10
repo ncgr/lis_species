@@ -20,7 +20,6 @@ do
         # tmp
         # .gitignore
         # .rspec
-        # data ## Retain uploaded files on the server.
         tar czf $dir-release.tar.gz \
             $dir/app \
             $dir/config \

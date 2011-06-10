@@ -22,18 +22,6 @@
         <%= f.text_area :special_interest %>
     </p>
 	<p>
-		<strong>Center of Origin</strong><br />
-	    Please provide latitude and longitude to 6 decimal places (ex: Lat 35.637476, Long -105.959908).
-	</p>
-	<p>
-		<%= f.label :origin_lat, "Latitude:" %><br />
-		<%= f.text_field :origin_lat %>
-	</p>
-	<p>
-		<%= f.label :origin_long, "Longitude:" %><br />
-        <%= f.text_field :origin_long %>
-	</p>
-	<p>
 		<%= f.label :nodulation_type, "Nodulation Type:" %>
         <%= f.select :nodulation_type, [['--Select--',''],['Determinate','Determinate'],['Indeterminate','Indeterminate']] %>
     </p>
@@ -90,7 +78,7 @@
     </p>
 	<hr />
 	
-	<%= fields_for @content.lotja_genome_summary do |g| %>
+	<%= f.fields_for :lotja_genome_summary do |g| %>
 		<h3>Genome Summary</h3>
 		<p>
 	        <%= g.label :genome_summary, "Summary:" %><br />
@@ -179,7 +167,7 @@
     <p><%= add_reference_dataset_link "Add Reference Dataset" %></p>
     <hr />
     
-	<%= fields_for @content.lotja_selected_reference do |s| %>
+	<%= f.fields_for :lotja_selected_reference do |s| %>
 	    <h3>References</h3>
 		<p>
 			Please add references in reverse chronological order using 
@@ -251,10 +239,10 @@
     });
 	
 	/** Genome Size **/
-    if ($('lotja_genome_summary_genome_size').value == '') {
+    if ($('lotja_content_lotja_genome_summary_attributes_genome_size').value == '') {
         $('genome_size_information').hide();
     }
-    $('lotja_genome_summary_genome_size').observe('blur', function(){
+    $('lotja_content_lotja_genome_summary_attributes_genome_size').observe('blur', function(){
         if (this.getValue() == '') {
             $('genome_size_information').hide();
         } else {
@@ -263,10 +251,10 @@
     });
 	
 	/** GC Genome Content **/
-    if ($('lotja_genome_summary_gc_content_genome').value == '') {
+    if ($('lotja_content_lotja_genome_summary_attributes_gc_content_genome').value == '') {
         $('gc_content_genome_information').hide();
     }
-    $('lotja_genome_summary_gc_content_genome').observe('blur', function(){
+    $('lotja_content_lotja_genome_summary_attributes_gc_content_genome').observe('blur', function(){
         if (this.getValue() == '') {
             $('gc_content_genome_information').hide();
         } else {
@@ -275,10 +263,10 @@
     });
 	
 	/** GC Transcriptome Content **/
-    if ($('lotja_genome_summary_gc_content_transcriptome').value == '') {
+    if ($('lotja_content_lotja_genome_summary_attributes_gc_content_transcriptome').value == '') {
         $('gc_content_transcriptome_information').hide();
     }
-    $('lotja_genome_summary_gc_content_transcriptome').observe('blur', function(){
+    $('lotja_content_lotja_genome_summary_attributes_gc_content_transcriptome').observe('blur', function(){
         if (this.getValue() == '') {
             $('gc_content_transcriptome_information').hide();
         } else {
@@ -287,10 +275,10 @@
     });
 	
 	/** Chloroplast Genome Content **/
-    if ($('lotja_genome_summary_chloroplast_genome_size').value == '') {
+    if ($('lotja_content_lotja_genome_summary_attributes_chloroplast_genome_size').value == '') {
         $('chloroplast_genome_size_information').hide();
     }
-    $('lotja_genome_summary_chloroplast_genome_size').observe('blur', function(){
+    $('lotja_content_lotja_genome_summary_attributes_chloroplast_genome_size').observe('blur', function(){
         if (this.getValue() == '') {
             $('chloroplast_genome_size_information').hide();
         } else {
@@ -299,10 +287,10 @@
     });
 	
 	/** Mitochondria Genome Content **/
-    if ($('lotja_genome_summary_mitochondria_genome_size').value == '') {
+    if ($('lotja_content_lotja_genome_summary_attributes_mitochondria_genome_size').value == '') {
         $('mitochondria_genome_size_information').hide();
     }
-    $('lotja_genome_summary_mitochondria_genome_size').observe('blur', function(){
+    $('lotja_content_lotja_genome_summary_attributes_mitochondria_genome_size').observe('blur', function(){
         if (this.getValue() == '') {
             $('mitochondria_genome_size_information').hide();
         } else {

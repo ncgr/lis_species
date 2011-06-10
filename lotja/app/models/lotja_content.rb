@@ -20,11 +20,10 @@ class LotjaContent < ActiveRecord::Base
     :foreign_key => "legume_id",
     :dependent => :destroy
   
+  accepts_nested_attributes_for :lotja_selected_reference, 
+    :lotja_genome_summary, :update_only => true
+  
   validates_associated :resources, :reference_datasets
-  validates_format_of :origin_lat, :with => /^[-+]?\d{1,3}\.\d{2,6}$/,
-    :allow_blank => true, :message => ' not valid'
-  validates_format_of :origin_long, :with => /^[-+]?\d{1,3}\.\d{2,6}$/,
-    :allow_blank => true, :message => ' not valid'
   validates_format_of :wiki_link, :with => URI::regexp(%w(http https)),
     :allow_blank => true, :message => ' is not valid. Please include a valid protocol.'
   
@@ -131,7 +130,7 @@ class LotjaContent < ActiveRecord::Base
   # Cleans attribute values.
   #
   def clean_attribute_values
-    self.inbreeding.gsub!('%', '') unless self.inbreeding.blank?
+    
   end
   
   #

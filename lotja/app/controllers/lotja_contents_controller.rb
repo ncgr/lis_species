@@ -31,9 +31,7 @@ class LotjaContentsController < ApplicationController
     @content.updated_at = Time.now
     @content.user_id    = current_user.id
     
-    if @content.update_attributes(params[:lotja_content]) && 
-      @content.lotja_genome_summary.update_attributes(params[:lotja_genome_summary]) &&
-      @content.lotja_selected_reference.update_attributes(params[:lotja_selected_reference])
+    if @content.update_attributes(params[:lotja_content])
       flash[:error] = "Successfully updated contents."
       redirect_to root_path
     else

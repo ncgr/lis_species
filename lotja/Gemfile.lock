@@ -126,6 +126,7 @@ DEPENDENCIES
   kaminari (~> 0.12.4)
   mysql2 (~> 0.2.7)
   rails (= 3.0.7)
+  rake (~> 0.8.7)
   rspec-rails (~> 2.6)
   ruby-debug19
   rubycas-client (~> 2.2.1)

@@ -14,7 +14,7 @@ authorization do
     
   role :superuser do
     includes :base
-    has_permission_on :medtr_contents, :to => [:manage, :send_data_file]
+    has_permission_on :medtr_contents, :to => [:manage]
   end
     
   role :admin do
@@ -39,8 +39,5 @@ privileges do
   privilege :create, :includes => :new
   privilege :update, :includes => :edit
   privilege :delete, :includes => :destroy
-  
-  # Others
-  privilege :send_data_file
 end
 

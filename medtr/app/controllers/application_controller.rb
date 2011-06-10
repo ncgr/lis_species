@@ -1,7 +1,7 @@
 
 class ApplicationController < ActionController::Base
  
-  before_filter :check_existing_cas_session
+ before_filter :check_existing_cas_session
   protect_from_forgery
 
   # 
@@ -19,6 +19,19 @@ class ApplicationController < ActionController::Base
   def check_existing_cas_session
     unless request.cookies["tgt"].blank?
       authenticate_user!
+    end
+  end
+  
+  private
+  
+  #
+  # Set the CKEditor tool bar based on role.
+  #
+  def set_tool_bar
+    if (has_role? :superuser)
+      @tool_bar = "AdminToolbar"
+    else
+      @tool_bar = "MemberToolbar"
     end
   end
 

@@ -103,7 +103,7 @@ PLATFORMS
 DEPENDENCIES
   declarative_authorization (~> 0.5.2)
   devise (~> 1.2.1)
-  devise_cas_authenticatable
+  devise_cas_authenticatable (= 1.0.0.alpha6)
   kaminari (~> 0.11.0)
   mysql2 (~> 0.2.7)
   rails (= 3.0.7)

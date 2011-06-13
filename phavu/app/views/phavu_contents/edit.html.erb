@@ -1,4 +1,5 @@
 <script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckfinder/ckfinder.js"></script>
 
 <h1>Edit Contents</h1>
 <% unless @phavu.user_id.blank? %>
@@ -9,19 +10,19 @@
 <%= form_for @phavu, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
     <p>
     	<%= f.label :overview, "Overview:" %><br />
-        <%= f.text_area :overview, :id => "ckeditor_overview" %>
+        <%= f.text_area :overview %>
 	</p>
 	<p>
         <%= f.label :genome_summary, "Genome Summary:" %><br />
-        <%= f.text_area :genome_summary, :id => "ckeditor_genome_summary" %>
+        <%= f.text_area :genome_summary %>
     </p>
 	<p>
         <%= f.label :resources, "Resources:" %><br />
-        <%= f.text_area :resources, :id => "ckeditor_resources" %>
+        <%= f.text_area :resources %>
     </p>
 	<p>
         <%= f.label :selected_references, "Selected References:" %><br />
-        <%= f.text_area :selected_references, :id => "ckeditor_selected_references" %>
+        <%= f.text_area :selected_references %>
     </p>
 	<% if has_role? :superuser %>
 		<% unless @phavu.file_name.blank? %>
@@ -36,10 +37,9 @@
 <% end %>
 
 <script type="text/javascript">
-	var ids = ["ckeditor_overview","ckeditor_genome_summary","ckeditor_resources","ckeditor_selected_references"];
-	ids.each(function (id) {
-	    CKEDITOR.replace(id, {
-	        toolbar : "<%= @tool_bar %>"
-	    });
+    /** Load CKEditor Instances **/
+    CKEDITOR.replaceAll( function(textarea, config){ 
+        config.toolbar = "<%= @tool_bar %>";
     });
+	CKFinder.setupCKEditor( null, 'http://comparative-legumes.org/javascripts/ckfinder/');
 </script>

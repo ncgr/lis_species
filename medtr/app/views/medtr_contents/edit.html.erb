@@ -175,7 +175,7 @@
 		</p>
 		<p>
 	        <%= s.label :selected_references, "Selected References:" %><br />
-	        <%= s.text_area :selected_references, :id => "ckeditor_selected_references" %>
+	        <%= s.text_area :selected_references %>
 	    </p>
 	<% end %>
 	
@@ -186,7 +186,7 @@
 	/** Load CKEditor Instances **/
 	CKEDITOR.replaceAll( function(textarea, config){ 
         config.toolbar = "<%= @tool_bar %>";
-     });
+    });
 
 	/** Nodulation Type **/
     if ($('medtr_content_nodulation_type').value == '') {

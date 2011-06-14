@@ -1,4 +1,5 @@
 <script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/javascripts/ckfinder/ckfinder.js"></script>
 
 <h1>Edit Contents</h1>
 <% unless @content.user_id.blank? %>
@@ -53,7 +54,7 @@
     </div>
 	<p>
         <%= f.label :pollination_type, "Pollination Type:" %>
-        <%= f.select :pollination_type, [['--Select--',''],['Wind','Wind'],['Insect','Insect']] %>
+        <%= f.select :pollination_type, [['--Select--',''],['Wind','Wind'],['Insect','Insect'],['Self','Self'],['Bird','Bird'],['Bat','Bat']] %>
     </p>
     <div id="pollination_type_information">
         <p>
@@ -160,12 +161,14 @@
     <p><%= add_resource_link "Add Resource" %></p>
     <hr />
 	
-	<div id="reference_datasets">
-        <h3>Reference Datasets</h3>
-        <%= render :partial => "reference_datasets", :collection => @content.reference_datasets %>
-    </div>
-    <p><%= add_reference_dataset_link "Add Reference Dataset" %></p>
-    <hr />
+	<% if has_role? :superuser %>
+        <div id="reference_datasets">
+            <h3>Reference Datasets</h3>
+            <%= render :partial => "reference_datasets", :collection => @content.reference_datasets %>
+        </div>
+        <p><%= add_reference_dataset_link "Add Reference Dataset" %></p>
+        <hr />
+    <% end %>
     
 	<%= f.fields_for :lotja_selected_reference do |s| %>
 	    <h3>References</h3>
@@ -184,9 +187,10 @@
 
 <script type="text/javascript">
 	/** Load CKEditor Instances **/
-	CKEDITOR.replaceAll( function(textarea, config){ 
+    CKEDITOR.replaceAll( function(textarea, config){ 
         config.toolbar = "<%= @tool_bar %>";
     });
+    CKFinder.setupCKEditor( null, '/javascripts/ckfinder/');
 
 	/** Nodulation Type **/
     if ($('lotja_content_nodulation_type').value == '') {

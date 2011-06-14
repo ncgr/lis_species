@@ -163,9 +163,9 @@ ActiveRecord::Schema.define(:version => 0) do
   end
 
   create_table "news_articles", :force => true do |t|
-    t.string    "title",     :null => false
-    t.text      "body"
-    t.timestamp "timestamp", :null => false
+    t.string   "title",      :null => false
+    t.text     "body"
+    t.datetime "created_at"
   end
 
   create_table "pages", :force => true do |t|

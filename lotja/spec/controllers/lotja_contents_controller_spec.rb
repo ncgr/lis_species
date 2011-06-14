@@ -42,8 +42,7 @@ describe LotjaContentsController do
       response.should render_template('edit')
     end
     it "should update object" do
-      put :update, :id => "21", :lotja_content => {}, :lotja_selected_reference => {},
-        :lotja_genome_summary => {}
+      put :update, :id => "21", :lotja_content => {}
       response.should be_redirect
     end
   end
@@ -59,8 +58,7 @@ describe LotjaContentsController do
       response.should render_template('edit')
     end
     it "should update object" do
-      put :update, :id => "212", :lotja_content => {}, :lotja_selected_reference => {},
-        :lotja_genome_summary => {}
+      put :update, :id => "212", :lotja_content => {}
       response.should be_redirect
     end
   end

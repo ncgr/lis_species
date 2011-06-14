@@ -42,8 +42,7 @@ describe MedtrContentsController do
       response.should render_template('edit')
     end
     it "should update object" do
-      put :update, :id => "21", :medtr_content => {}, :medtr_selected_reference => {},
-        :medtr_genome_summary => {}
+      put :update, :id => "21", :medtr_content => {}
       response.should be_redirect
     end
   end
@@ -59,8 +58,7 @@ describe MedtrContentsController do
       response.should render_template('edit')
     end
     it "should update object" do
-      put :update, :id => "212", :medtr_content => {}, :medtr_selected_reference => {},
-        :medtr_genome_summary => {}
+      put :update, :id => "212", :medtr_content => {}
       response.should be_redirect
     end
   end

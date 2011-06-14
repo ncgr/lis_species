@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
     flash[:error] = 'Sorry, your account has insufficient privileges for the requested resource.'
     redirect_to :root
   end
+  
+  private
  
   #
   # Determine whether an existing CAS session was created by checking

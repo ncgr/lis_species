@@ -10,7 +10,9 @@ class ApplicationController < ActionController::Base
     flash[:error] = 'Sorry, your account has insufficient privileges for the requested resource.'
     redirect_to :root
   end
- 
+  
+  private
+  
   #
   # Determine whether an existing CAS session was created by checking
   # the cookie tgt (ticket generating ticket).
@@ -18,19 +20,6 @@ class ApplicationController < ActionController::Base
   def check_existing_cas_session
     unless request.cookies["tgt"].blank?
       authenticate_user!
-    end
-  end
-  
-  private
-  
-  #
-  # Set the CKEditor tool bar based on role.
-  #
-  def set_tool_bar
-    if (has_role? :superuser)
-      @tool_bar = "AdminToolbar"
-    else
-      @tool_bar = "MemberToolbar"
     end
   end
   
@@ -44,6 +33,17 @@ class ApplicationController < ActionController::Base
       cookies.signed[:ckfinder_role] = { :value => roles[0].name.downcase, :domain => :all }
     else
       cookies.delete :ckfinder_role, :domain => :all
+    end
+  end
+  
+  #
+  # Set the CKEditor tool bar based on role.
+  #
+  def set_tool_bar
+    if (has_role? :superuser)
+      @tool_bar = "AdminToolbar"
+    else
+      @tool_bar = "MemberToolbar"
     end
   end
   

@@ -1,5 +1,5 @@
 <script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="http://comparative-legumes.org/javascripts/ckfinder/ckfinder.js"></script>
+<script type="text/javascript" src="/javascripts/ckfinder/ckfinder.js"></script>
 
 <h1>Edit Contents</h1>
 <% unless @phavu.user_id.blank? %>
@@ -41,5 +41,5 @@
     CKEDITOR.replaceAll( function(textarea, config){ 
         config.toolbar = "<%= @tool_bar %>";
     });
-	CKFinder.setupCKEditor( null, 'http://comparative-legumes.org/javascripts/ckfinder/');
+	CKFinder.setupCKEditor( null, '/javascripts/ckfinder/');
 </script>

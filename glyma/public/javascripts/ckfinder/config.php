@@ -40,8 +40,8 @@ function CheckAuthentication()
 
 // LicenseKey : Paste your license key here. If left blank, CKFinder will be
 // fully functional, in demo mode.
-$config['LicenseName'] = '';
-$config['LicenseKey'] = '';
+$config['LicenseName'] = 'National Center for Genome Resources';
+$config['LicenseKey'] = 'PWAA-PDKF-9FVT-X5B6-PLDK-EVRF-FV9B';
 
 /*
  Uncomment lines below to enable PHP error reporting and displaying PHP errors.

@@ -12,6 +12,182 @@
 
 ActiveRecord::Schema.define(:version => 0) do
 
+  create_table "arahy_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "arahy_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "arahy_content_id",                     :null => false
+  end
+
+  create_table "arahy_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "arahy_content_id",    :null => false
+  end
+
+  create_table "cajca_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "cajca_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "cajca_content_id",                     :null => false
+  end
+
+  create_table "cajca_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "cajca_content_id",    :null => false
+  end
+
+  create_table "chafs_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "chafs_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "chafs_content_id",                     :null => false
+  end
+
+  create_table "chafs_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "chafs_content_id",    :null => false
+  end
+
+  create_table "cicar_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "cicar_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "cicar_content_id",                     :null => false
+  end
+
+  create_table "cicar_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "cicar_content_id",    :null => false
+  end
+
   create_table "development_activities", :force => true do |t|
     t.text   "body"
     t.string "date"
@@ -69,6 +245,50 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "legumes", ["name"], :name => "name_UNIQUE", :unique => true
   add_index "legumes", ["short_name"], :name => "short_name_UNIQUE", :unique => true
 
+  create_table "lencu_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "lencu_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "lencu_content_id",                     :null => false
+  end
+
+  create_table "lencu_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "lencu_content_id",    :null => false
+  end
+
   create_table "lotja_contents", :force => true do |t|
     t.string   "taxon_id"
     t.text     "overview"
@@ -110,6 +330,138 @@ ActiveRecord::Schema.define(:version => 0) do
   create_table "lotja_selected_references", :force => true do |t|
     t.text    "selected_references"
     t.integer "lotja_content_id",    :null => false
+  end
+
+  create_table "lupal_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "lupal_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "lupal_content_id",                     :null => false
+  end
+
+  create_table "lupal_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "lupal_content_id",    :null => false
+  end
+
+  create_table "lupan_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "lupan_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "lupan_content_id",                     :null => false
+  end
+
+  create_table "lupan_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "lupan_content_id",    :null => false
+  end
+
+  create_table "medsa_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "medsa_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "medsa_content_id",                     :null => false
+  end
+
+  create_table "medsa_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "medsa_content_id",    :null => false
   end
 
   create_table "medtr_contents", :force => true do |t|
@@ -183,14 +535,141 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string  "ncbi_taxon_id"
   end
 
-  create_table "phavu_contents", :force => true do |t|
+  create_table "pea_contents", :force => true do |t|
     t.text     "overview"
-    t.text     "genome_summary"
-    t.text     "resources"
-    t.text     "selected_references"
-    t.string   "file_name"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "pea_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "pea_content_id",                       :null => false
+  end
+
+  create_table "pea_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "pea_content_id",      :null => false
+  end
+
+  create_table "phacn_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "phacn_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "phacn_content_id",                     :null => false
+  end
+
+  create_table "phacn_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "phacn_content_id",    :null => false
+  end
+
+  create_table "phavu_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "phavu_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "phavu_content_id",                     :null => false
+  end
+
+  create_table "phavu_resources", :force => true do |t|
+    t.text    "resources"
+    t.integer "phavu_content_id", :null => false
+  end
+
+  create_table "phavu_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "phavu_content_id",    :null => false
   end
 
   create_table "reference_datasets", :force => true do |t|
@@ -224,6 +703,50 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "tripr_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "tripr_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "tripr_content_id",                     :null => false
+  end
+
+  create_table "tripr_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "tripr_content_id",    :null => false
+  end
+
   create_table "user_roles", :force => true do |t|
     t.integer "user_id", :null => false
     t.integer "role_id", :null => false
@@ -253,5 +776,137 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  create_table "vicfa_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "vicfa_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "vicfa_content_id",                     :null => false
+  end
+
+  create_table "vicfa_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "vicfa_content_id",    :null => false
+  end
+
+  create_table "vigra_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "vigra_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "vigra_content_id",                     :null => false
+  end
+
+  create_table "vigra_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "vigra_content_id",    :null => false
+  end
+
+  create_table "vigun_contents", :force => true do |t|
+    t.text     "overview"
+    t.string   "taxon_id"
+    t.text     "special_interest"
+    t.string   "nodulation_type"
+    t.text     "nodulation_type_information"
+    t.string   "nodulator_species"
+    t.string   "nodulator_taxon_id"
+    t.string   "flowering_type"
+    t.text     "flowering_type_information"
+    t.string   "pollination_type"
+    t.text     "pollination_type_information"
+    t.string   "self_incompatibility"
+    t.string   "inbreeding"
+    t.string   "wiki_link"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "legume_id",                    :null => false
+  end
+
+  create_table "vigun_genome_summaries", :force => true do |t|
+    t.text    "genome_summary"
+    t.string  "chromosomes"
+    t.string  "genome_size"
+    t.text    "genome_size_information"
+    t.string  "ploidy_type"
+    t.string  "gc_content_genome"
+    t.text    "gc_content_genome_information"
+    t.string  "gc_content_transcriptome"
+    t.text    "gc_content_transcriptome_information"
+    t.string  "chloroplast_genome_size"
+    t.text    "chloroplast_genome_size_information"
+    t.string  "chloroplast_accession_number"
+    t.string  "mitochondria_genome_size"
+    t.text    "mitochondria_genome_size_information"
+    t.string  "mitochondria_accession_number"
+    t.integer "vigun_content_id",                     :null => false
+  end
+
+  create_table "vigun_selected_references", :force => true do |t|
+    t.text    "selected_references"
+    t.integer "vigun_content_id",    :null => false
+  end
 
 end

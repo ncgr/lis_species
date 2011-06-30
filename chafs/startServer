@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rails s --environment=development --port=7757 --debugger
+

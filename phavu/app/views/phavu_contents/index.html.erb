@@ -1,33 +1,82 @@
-<h1>Phaseolus vulgaris (common bean)</h1>
+<h1><%= format_species_name(@content.legume.name) %></h1>
 
 <% permitted_to? :update, :phavu_contents do %>
-    <p><%= link_to raw("Edit Contents &raquo;"), edit_phavu_content_path(@phavu.id) %></p>
+    <p>
+    	<%= link_to raw("Edit Contents &raquo;"), 
+            edit_phavu_content_path(@content.id) %>
+    </p>
 <% end %>
 
-<h3>Overview</h3>
-<%= raw(@phavu.overview) %>
+<div id="tabs">
 
-<h3>Genome summary</h3>
-<%= raw(@phavu.genome_summary) %>
+    <ul>
+        <li><a href="#tabs-1">Overview</a></li>
+        <li><a href="#tabs-2">Genome Summary</a></li>
+        <li><a href="#tabs-3">Resources</a></li>
+		<li><a href="#tabs-4">Reference Data</a></li>
+        <li><a href="#tabs-5">Selected References</a></li>
+    </ul>
 
-<h3>Resources</h3>
-<%= raw(@phavu.resources) %>
-
-<h3>Selected references</h3>
-<%= raw(@phavu.selected_references) %>
-
-<% content_for :rightcol do %>
-    <div id="photo">
-        <% title = "Phaseolus vulgaris" %>
-	    <% caption = "Phaseolus vulgaris L. - kidney bean" %>
-	    <%= link_to image_tag("phaseolus_small.png", :alt => title, :class => "photo"), 
-	        "#phaseolus", :class => "photo-link" %>
+    <div id="tabs-1">
+	<h2>Overview</h2>
+		<div id="overview">
+			<%= raw(@content.overview) %>
+		</div>
+		
+		<% unless @content.special_interest.blank? %>
+		    <p><strong>Of Special Interest</strong></p>
+		    <%= raw(@content.special_interest) %>
+		<% end %>
+		
+		<%= parse_model_attributes(@content, @overview_attr) %>
+		
+		<% unless @content.pathogens.empty? %>
+		    <p><strong>Major Pathogens</strong></p>
+			<%= parse_major_pathogens(@content.pathogens) %>
+		<% end %>
+		
+		<% unless @content.wiki_link.blank? %>
+		    <p><%= link_to 'Wikipedia entry', @content.wiki_link %></p>
+		<% end %>
 	</div>
-	<div id="phaseolus" style="display: none;">
-	    <%= image_tag "phaseolus.png", :alt => title %><br />
-	    <span class="caption"><%= caption %></span>
+
+    <div id="tabs-2">
+		<h2>Genome Summary</h2>
+		<div id="genome_summary">
+			<%= raw(@content.phavu_genome_summary.genome_summary) %>
+		</div>
+		
+		<%= parse_model_attributes(@content.phavu_genome_summary, @genome_attr) %>
 	</div>
-	<hr />
-    <h3>Reference datasets</h3>
-	<%= parse_data_file(@data_file) %>
-<% end %>
+
+    <div id="tabs-3">
+		<h2>Resources</h2>
+		<div id="resources">
+			 <% unless @content.resources.blank? %>
+                <%= parse_resources(@content.resources.public_resources) %>
+            <% end %>
+		</div>
+    </div>	
+	
+	<div id="tabs-4">
+    <h2>Reference Data</h2>
+        <div id="reference_datasets">
+            <% unless @content.reference_datasets.blank? %>
+	            <%= parse_reference_datasets(@content.reference_datasets.public_reference_datasets) %>
+	        <% end %>
+        </div>
+    </div>
+	
+	<div id="tabs-5">
+    <h2>Selected References</h2>
+        <div id="selected_references">
+            <%= raw(@content.phavu_selected_reference.selected_references) %>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $j(function($) {
+        $("#tabs").tabs();
+    });
+</script>

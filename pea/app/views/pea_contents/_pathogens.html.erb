@@ -1,0 +1,17 @@
+<div class="pathogen">
+    <%= fields_for_form("pathogens", pathogens) do |p| %>
+	    <%= hidden_field_tag :legume_id, @content.legume_id %>
+	    <p>
+	   	   <%= p.label :name, "Name" %><br />
+		   <%= p.text_field :name %>
+		</p>
+		<p>
+			<%= p.label :ncbi_taxon_id, "NCBI Taxon ID" %><br />
+           <%= p.text_field :ncbi_taxon_id %>
+		</p>
+	    <p>
+	    	<%= button_to_function "Remove Pathogen", "this.up('.pathogen').remove()", 
+                :class => "remove_pathogen" %>
+		</p>
+	<% end %>
+</div>

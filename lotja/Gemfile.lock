@@ -38,10 +38,9 @@ GEM
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
-    devise_cas_authenticatable (1.0.0.alpha6)
+    devise_cas_authenticatable (1.0.0.alpha10)
       devise
       devise (>= 1.0.6)
-      devise_cas_authenticatable
       rubycas-client (>= 2.2.1)
     diff-lcs (1.1.2)
     erubis (2.6.6)
@@ -121,7 +120,7 @@ PLATFORMS
 DEPENDENCIES
   declarative_authorization (~> 0.5.2)
   devise (~> 1.2.1)
-  devise_cas_authenticatable (= 1.0.0.alpha6)
+  devise_cas_authenticatable (= 1.0.0.alpha10)
   factory_girl_rails (~> 1.1.beta1)
   kaminari (~> 0.12.4)
   mysql2 (~> 0.2.7)

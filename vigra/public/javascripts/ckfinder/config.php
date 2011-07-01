@@ -84,7 +84,7 @@ Examples:
 
 ATTENTION: The trailing slash is required.
 */
-$baseDir = '/user/legs/web/phavu.comparative-legumes.org/htdocs/phavu/public' . $baseUrl;
+$baseDir = '/user/legs/web/vigra.comparative-legumes.org/htdocs/vigra/public' . $baseUrl;
 
 /*
  * ### Advanced Settings

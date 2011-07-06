@@ -1,17 +1,17 @@
-<div class="pathogen">
-  <%= fields_for_form("pathogens", pathogens) do |p| %>
+<div class="nodulator">
+  <%= fields_for_form("nodulators", nodulators) do |p| %>
     <%= hidden_field_tag :legume_id, @content.legume_id %>
     <p>
-      <%= p.label :name, "Name" %><br />
-      <%= p.text_field :name %>
+      <%= p.label :species, "Species" %><br />
+      <%= p.text_field :species %>
     </p>
     <p>
       <%= p.label :ncbi_taxon_id, "NCBI Taxon ID" %><br />
       <%= p.text_field :ncbi_taxon_id , :class => "ncbi_taxon_ids" %>
     </p>
     <p>
-      <%= button_to_function "Remove Pathogen", "this.up('.pathogen').remove()", 
-      :class => "remove_pathogen" %>
+      <%= button_to_function "Remove Nodulator", "this.up('.nodulator').remove()", 
+      :class => "remove_nodulator" %>
     </p>
   <% end %>
   <script type="text/javascript">

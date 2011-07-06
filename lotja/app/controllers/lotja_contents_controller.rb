@@ -10,7 +10,7 @@ class LotjaContentsController < ApplicationController
     @content = LotjaContent.first
     
     # Attributes for table helper
-    @overview_attr = ["taxon_id","season","nodulation_type","nodulator_species","nodulator_taxon_id",
+    @overview_attr = ["ncbi_taxon_id","grin_taxon_id","season","nodulation_type",
       "flowering_type","pollination_type","self_incompatibility"]
     @genome_attr = ["chromosomes","genome_size","ploidy","ploidy_type",
       "gc_content_genome","gc_content_transcriptome","chloroplast_genome_size",
@@ -23,6 +23,7 @@ class LotjaContentsController < ApplicationController
   
   def update
     params[:lotja_content][:existing_pathogens_attributes] ||= {}
+    params[:lotja_content][:existing_nodulators_attributes] ||= {}
     params[:lotja_content][:existing_reference_datasets_attributes] ||= {}
     params[:lotja_content][:existing_resources_attributes] ||= {}
     

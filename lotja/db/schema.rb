@@ -290,7 +290,8 @@ ActiveRecord::Schema.define(:version => 0) do
   end
 
   create_table "lotja_contents", :force => true do |t|
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "overview"
     t.text     "special_interest"
     t.string   "nodulation_type"
@@ -518,6 +519,12 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "title",      :null => false
     t.text     "body"
     t.datetime "created_at"
+  end
+
+  create_table "nodulators", :force => true do |t|
+    t.string "legume_id",     :null => false
+    t.string "species"
+    t.string "ncbi_taxon_id"
   end
 
   create_table "pages", :force => true do |t|

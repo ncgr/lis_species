@@ -1,36 +1,36 @@
 <div class="reference_dataset">
-	<% 
-        type_select = [['--Select--',''],['Genomic Sequence','Genomic Sequence'],
-            ['Transcript Assembly','Transcript Assembly'],['Genome','Genome'],
-            ['Genetic Map','Genetic Map'],['Physical Map','Physical Map'],
-            ['Short Read Data','Short Read Data'],['GFF3 Annotations','GFF3 Annotations']] 
-        yes_no = [['Yes',1],['No',0]] 
-    %>
-    <%= fields_for_form("reference_datasets", reference_datasets) do |p| %>
-        <%= hidden_field_tag :legume_id, @content.legume_id %>
-        <p>
-           <%= p.label :reference_dataset_type, "Type:" %>
-           <%= p.select :reference_dataset_type, type_select %>
-        </p>
-        <p>
-           <%= p.label :description, "Brief Description:" %><br />
-           <%= p.text_field :description %>
-        </p>
-		<p>
-           <%= p.label :source, "Source:" %><br />
-           <%= p.text_field :source %>
-        </p>
-		<p>
-           <%= p.label :url, "URL (include protocol http://, ftp://, etc.):" %><br />
-           <%= p.text_field :url %>
-        </p>
-		<p>
-           <%= p.label :is_public, "Is the data public?" %>
-           <%= p.select :is_public, yes_no %>
-        </p>
-        <p>
-           <%= button_to_function "Remove Reference Dataset", "this.up('.reference_dataset').remove()", 
-               :class => "remove_reference_dataset" %>
-        </p>
-    <% end %>
+  <% 
+    type_select = [['--Select--',''],['Genomic Sequence','Genomic Sequence'],
+      ['Transcript Assembly','Transcript Assembly'],['Genome','Genome'],
+      ['Genetic Map','Genetic Map'],['Physical Map','Physical Map'],
+      ['Short Read Data','Short Read Data'],['GFF3 Annotations','GFF3 Annotations']] 
+    yes_no = [['Yes',1],['No',0]] 
+  %>
+  <%= fields_for_form("reference_datasets", reference_datasets) do |p| %>
+    <%= hidden_field_tag :legume_id, @content.legume_id %>
+    <p>
+      <%= p.label :reference_dataset_type, "Type:" %>
+      <%= p.select :reference_dataset_type, type_select %>
+    </p>
+    <p>
+      <%= p.label :description, "Brief Description:" %><br />
+      <%= p.text_field :description %>
+    </p>
+    <p>
+      <%= p.label :source, "Source:" %><br />
+      <%= p.text_field :source %>
+    </p>
+    <p>
+      <%= p.label :url, "URL (include protocol http://, ftp://, etc.):" %><br />
+      <%= p.text_field :url %>
+    </p>
+    <p>
+      <%= p.label :is_public, "Is the data public?" %>
+      <%= p.select :is_public, yes_no %>
+    </p>
+    <p>
+      <%= button_to_function "Remove Reference Dataset", "this.up('.reference_dataset').remove()", 
+        :class => "remove_reference_dataset" %>
+    </p>
+  <% end %>
 </div>

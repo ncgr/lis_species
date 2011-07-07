@@ -14,12 +14,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "arahy_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -58,12 +57,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "cajca_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -102,12 +100,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "chafs_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -146,12 +143,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "cicar_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -195,12 +191,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "glyma_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -247,12 +242,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "lencu_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -335,12 +329,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "lupal_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -379,12 +372,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "lupan_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -423,12 +415,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "medsa_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -467,12 +458,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "medtr_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -544,12 +534,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "pea_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -588,12 +577,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "phacn_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -632,12 +620,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "phavu_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -712,12 +699,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "tripr_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -786,12 +772,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "vicfa_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -830,12 +815,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "vigra_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"
@@ -874,12 +858,11 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "vigun_contents", :force => true do |t|
     t.text     "overview"
-    t.string   "taxon_id"
+    t.string   "ncbi_taxon_id"
+    t.string   "grin_taxon_id"
     t.text     "special_interest"
     t.string   "nodulation_type"
     t.text     "nodulation_type_information"
-    t.string   "nodulator_species"
-    t.string   "nodulator_taxon_id"
     t.string   "flowering_type"
     t.text     "flowering_type_information"
     t.string   "pollination_type"

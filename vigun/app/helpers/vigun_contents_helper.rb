@@ -1,44 +1,57 @@
 module VigunContentsHelper
 
+  NCBI_URL = "http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id="
+  GRIN_URL = "http://www.ars-grin.gov/cgi-bin/npgs/html/taxon.pl?"
+
   #
   # Italicize species name.
   #
   def format_species_name(name)
     name = name.insert(0, '<em>')
     name.sub!('(', '</em>(')
-    raw(name)
+    name.html_safe
   end
-  
+
   #
   # Helper to add additional pathogens.
   #
   def add_pathogen_link(name)
     button_to_function name, :id => "add_pathogen" do |page|
       page.insert_html :bottom, :pathogens, :partial => "pathogens", 
-            :object => Pathogen.new
+        :object => Pathogen.new
     end
   end
-  
+
+  #
+  # Helper to add additional nodulators.
+  #
+  def add_nodulator_link(name)
+    button_to_function name, :id => "add_nodulator" do |page|
+      page.insert_html :bottom, :nodulators, :partial => "nodulators", 
+        :object => Nodulator.new
+    end
+  end
+
   #
   # Helper to add additional reference datasets.
   #
   def add_reference_dataset_link(name)
     button_to_function name, :id => "add_reference_dataset" do |page|
       page.insert_html :bottom, :reference_datasets, :partial => "reference_datasets", 
-            :object => ReferenceDataset.new
+        :object => ReferenceDataset.new
     end
   end
-  
+
   #
   # Helper to add additional resources.
   #
   def add_resource_link(name)
     button_to_function name, :id => "add_resource" do |page|
       page.insert_html :bottom, :resources, :partial => "resources", 
-            :object => Resource.new
+        :object => Resource.new
     end
   end
-  
+
   #
   # Fields for helper.
   #
@@ -48,48 +61,53 @@ module VigunContentsHelper
     prefix = model + "[#{new_or_existing}_#{name}_attributes][]"
     fields_for(prefix, object, &block)
   end
-    
+
   #
   # Parse object attributes into a three column table.
   #
   def parse_model_attributes(object, attributes = [])
     return "" unless attributes.length > 0
-    
+
     i = 1
-    data = "<table class='data-table'>"
+    data = "<table class='attributes-table'>"
     attributes.each do |a|
       unless object[a.to_sym].blank?
         i.modulo(2) == 0 ? style = "even" : style = "odd"
         data << "<tr class='#{style}'>"
-        
+
         descriptor = a.humanize
-        
+
         # Custom descriptor substitutions
         descriptor.gsub!(/(G|g)(C|c)/, 'GC')
         descriptor.gsub!(/accession/, 'NCBI accession')
-        descriptor.gsub!(/(T|t)axon/, 'NCBI taxon ID')
+        descriptor.gsub!(/(N|n)cbi/, 'NCBI')
+        descriptor.gsub!(/(G|g)rin/, 'GRIN')
         descriptor.gsub!(/(S|s)elf incompatibility/, 'Mating system')
-        
+
         ## Column One ##
         data << "<td>#{descriptor}</td>"
-        
+
         # Custom values
         ## Column Two ##
         case a.to_sym
-          when :gc_content_genome
-            data << "<td>#{object[a.to_sym]}%</td>"
-          when :gc_content_transcriptome
-            data << "<td>#{object[a.to_sym]}%</td>"
-          when :genome_size
-            data << "<td>#{object[a.to_sym]} (Mbp)</td>"
-          when :chloroplast_genome_size
-            data << "<td>#{object[a.to_sym]} (kbp)</td>"
-          when :mitochondria_genome_size
-            data << "<td>#{object[a.to_sym]} (kbp)</td>"
-          else
-            data << "<td>#{object[a.to_sym]}</td>"
+        when :ncbi_taxon_id
+          data << "<td>#{link_to object[a.to_sym], NCBI_URL + object[a.to_sym]}</td>"
+        when :grin_taxon_id
+          data << "<td>#{link_to object[a.to_sym], GRIN_URL + object[a.to_sym]}</td>"
+        when :gc_content_genome
+          data << "<td>#{object[a.to_sym]}%</td>"
+        when :gc_content_transcriptome
+          data << "<td>#{object[a.to_sym]}%</td>"
+        when :genome_size
+          data << "<td>#{object[a.to_sym]} (Mbp)</td>"
+        when :chloroplast_genome_size
+          data << "<td>#{object[a.to_sym]} (kbp)</td>"
+        when :mitochondria_genome_size
+          data << "<td>#{object[a.to_sym]} (kbp)</td>"
+        else
+          data << "<td>#{object[a.to_sym]}</td>"
         end
-        
+
         information = "#{a}_information".to_sym
         # If the attribute has additional information, add the dialog box.
         ## Column Three ##
@@ -115,51 +133,74 @@ module VigunContentsHelper
       end
     end
     data << "</table>"
-    
-    # Send the table
-    raw(data)
+
+    data.html_safe
   end
-  
+
   #
   # Parse major pathogens into table.
   #
   def parse_major_pathogens(pathogens)
     i = 1
-    data = "<table  class='data-table'>"
-    
+    data = "<table  class='pathogens-table'>"
+
     data << "<tr>"
     data << "<th>Pathogen</th>"
     data << "<th>NCBI Taxon ID</th>"
     data << "</tr>"
-    
+
     pathogens.each do |p|
       i.modulo(2) == 0 ? style = "even" : style = "odd"
       data << "<tr class='#{style}'>"
       data << "<td>#{p.name unless p.name.blank?}</td>"
-      data << "<td>#{p.ncbi_taxon_id unless p.ncbi_taxon_id.blank?}</td>"
+      data << "<td>#{link_to p.ncbi_taxon_id, NCBI_URL + p.ncbi_taxon_id unless p.ncbi_taxon_id.blank?}</td>"
       data << "</tr>"
       i += 1
     end
     data << "</table>"
-    
-    # Send the table
-    raw(data)
+
+    data.html_safe
   end
-  
+
+  #
+  # Parse nodulators into table.
+  #
+  def parse_nodulators(nodulators)
+    i = 1
+    data = "<table  class='nodulators-table'>"
+
+    data << "<tr>"
+    data << "<th>Species</th>"
+    data << "<th>NCBI Taxon ID</th>"
+    data << "</tr>"
+
+    nodulators.each do |n|
+      i.modulo(2) == 0 ? style = "even" : style = "odd"
+      data << "<tr class='#{style}'>"
+      data << "<td>#{n.species unless n.species.blank?}</td>"
+      data << "<td>#{link_to n.ncbi_taxon_id, NCBI_URL + n.ncbi_taxon_id unless n.ncbi_taxon_id.blank?}</td>"
+      data << "</tr>"
+      i += 1
+    end
+    data << "</table>"
+
+    data.html_safe
+  end
+
   #
   # Parse reference datasets into table.
   #
   def parse_reference_datasets(datasets)
     i = 1
-    data = "<table  class='data-table'>"
-    
+    data = "<table  class='datasets-table'>"
+
     data << "<tr>"
     data << "<th>Type</th>"
     data << "<th>Description</th>"
     data << "<th>Source</th>"
     data << "<th>URL</th>"
     data << "</tr>"
-    
+
     datasets.each do |d|
       i.modulo(2) == 0 ? style = "even" : style = "odd"
       data << "<tr class='#{style}'>"
@@ -171,18 +212,17 @@ module VigunContentsHelper
       i += 1
     end
     data << "</table>"
-    
-    # Send the table
-    raw(data)
+
+    data.html_safe
   end
-  
+
   #
   # Parse resources into table.
   #
   def parse_resources(resources)
     i = 1
-    data = "<table  class='data-table'>"
-    
+    data = "<table  class='resources-table'>"
+
     resources.each do |r|
       i.modulo(2) == 0 ? style = "even" : style = "odd"
       data << "<tr class='#{style}'>"
@@ -193,10 +233,8 @@ module VigunContentsHelper
       i += 1
     end
     data << "</table>"
-    
-    # Send the table
-    raw(data)
+
+    data.html_safe
   end
-  
 
 end

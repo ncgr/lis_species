@@ -3,69 +3,73 @@
 
 <h1>Edit Contents</h1>
 <% unless @content.user_id.blank? %>
-    <p>Last updated by <%= @content.user.first_name %> <%= @content.user.last_name %> on 
+  <p>Last updated by <%= @content.user.first_name %> <%= @content.user.last_name %> on 
 	<%= @content.updated_at.to_s(:date_time_long) %>.</p>
 <% end %>
 <p><%= link_to raw("Return Home &raquo;"), root_path %></p>
 <%= form_for @content, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
-    <%= render "shared/error_messages", :target => @content %>
-	<h3>Overview</h3>
-    <p>
-    	<%= f.label :overview, "Overview:" %><br />
-        <%= f.text_area :overview %>
+  <%= render "shared/error_messages", :target => @content %>
+
+	<p><%= f.submit "Update Contents", :id => "submit", :class => "submit" %></p>
+  
+  <h3>Overview</h3>
+  <p>
+    <%= f.label :overview, "Overview:" %><br />
+    <%= f.text_area :overview %>
 	</p>
 	<p>
-        <%= f.label :taxon_id, "NCBI Taxon ID:" %><br />
-        <%= f.text_field :taxon_id %>
-    </p>
+    <%= f.label :ncbi_taxon_id, "NCBI Taxon ID:" %><br />
+    <%= f.text_field :ncbi_taxon_id %> 
+  </p>
 	<p>
-        <%= f.label :special_interest, "Of Special Interest:" %><br />
-        <%= f.text_area :special_interest %>
-    </p>
+    <%= f.label :grin_taxon_id, "USDA-ARS GRIN Taxon ID:" %><br />
+    <%= f.text_field :grin_taxon_id %> 
+  </p>
+	<p>
+    <%= f.label :special_interest, "Of Special Interest:" %><br />
+    <%= f.text_area :special_interest %>
+  </p>
 	<p>
 		<%= f.label :nodulation_type, "Nodulation Type:" %>
-        <%= f.select :nodulation_type, [['--Select--',''],['Determinate','Determinate'],['Indeterminate','Indeterminate']] %>
-    </p>
+    <%= f.select :nodulation_type, [['--Select--',''],['Determinate','Determinate'],['Indeterminate','Indeterminate']] %>
+  </p>
 	<div id="nodulation_type_information">
-        <p>
-            <%= f.label :nodulation_type_information, "Nodulation Information:" %><br />
-            <%= f.text_area :nodulation_type_information %>
-        </p>
-    </div>
+     <p>
+        <%= f.label :nodulation_type_information, "Nodulation Information:" %><br />
+        <%= f.text_area :nodulation_type_information %>
+     </p>
+  </div>
+
+	<div id="nodulators">
+		<p><strong>Primary Nodulator(s)</strong></p>
+		<%= render :partial => "nodulators", :collection => @content.nodulators %>
+	</div>
+	<p><%= add_nodulator_link "Add Nodulator" %></p>
+	
 	<p>
-        <%= f.label :nodulator_species, "Primary Nodulator Species:" %><br />
-        <%= f.text_field :nodulator_species %>
-    </p>
-	<div id="nodulator_id">
-        <p>
-            <%= f.label :nodulator_taxon_id, "Primary Nodulator Taxon ID:" %><br />
-            <%= f.text_field :nodulator_taxon_id %>
-        </p>
-    </div>
+    <%= f.label :flowering_type, "Flowering Type:" %>
+    <%= f.select :flowering_type, [['--Select--',''],['Short Day','Short Day'],['Long Day','Long Day']] %>
+  </p>
+  <div id="flowering_type_information">
+     <p>
+       <%= f.label :flowering_type_information, "Flowering Information:" %><br />
+       <%= f.text_area :flowering_type_information %>
+     </p>
+  </div>
 	<p>
-        <%= f.label :flowering_type, "Flowering Type:" %>
-        <%= f.select :flowering_type, [['--Select--',''],['Short Day','Short Day'],['Long Day','Long Day']] %>
-    </p>
-    <div id="flowering_type_information">
-        <p>
-            <%= f.label :flowering_type_information, "Flowering Information:" %><br />
-            <%= f.text_area :flowering_type_information %>
-        </p>
-    </div>
+     <%= f.label :pollination_type, "Pollination Type:" %>
+     <%= f.select :pollination_type, [['--Select--',''],['Wind','Wind'],['Insect','Insect'],['Self','Self'],['Bird','Bird'],['Bat','Bat']] %>
+  </p>
+  <div id="pollination_type_information">
+     <p>
+       <%= f.label :pollination_type_information, "Pollination Information:" %><br />
+       <%= f.text_area :pollination_type_information %>
+     </p>
+  </div>
 	<p>
-        <%= f.label :pollination_type, "Pollination Type:" %>
-        <%= f.select :pollination_type, [['--Select--',''],['Wind','Wind'],['Insect','Insect'],['Self','Self'],['Bird','Bird'],['Bat','Bat']] %>
-    </p>
-    <div id="pollination_type_information">
-        <p>
-            <%= f.label :pollination_type_information, "Pollination Information:" %><br />
-            <%= f.text_area :pollination_type_information %>
-        </p>
-    </div>
-	<p>
-        <%= f.label :self_incompatibility, "Mating System:" %>
-        <%= f.select :self_incompatibility, [['--Select--',''],['Predominately Inbreeding','Predominately Inbreeding'],['Predominantly Outcrossing','Predominantly Outcrossing']] %>
-    </p>
+    <%= f.label :self_incompatibility, "Mating System:" %>
+    <%= f.select :self_incompatibility, [['--Select--',''],['Predominately Inbreeding','Predominately Inbreeding'],['Predominantly Outcrossing','Predominantly Outcrossing']] %>
+  </p>
 	
 	<div id="pathogens">
 		<p><strong>Known Pathogens</strong></p>
@@ -74,112 +78,112 @@
 	<p><%= add_pathogen_link "Add Pathogen" %></p>
 	
 	<p>
-        <%= f.label :wiki_link, "Link to Wikipedia Page (include http://):" %><br />
-        <%= f.text_field :wiki_link %>
-    </p>
+    <%= f.label :wiki_link, "Link to Wikipedia Page (include http://):" %><br />
+    <%= f.text_field :wiki_link %>
+  </p>
 	<hr />
 	
 	<%= f.fields_for :tripr_genome_summary do |g| %>
 		<h3>Genome Summary</h3>
 		<p>
-	        <%= g.label :genome_summary, "Summary:" %><br />
-	        <%= g.text_area :genome_summary %>
-	    </p>
+	    <%= g.label :genome_summary, "Summary:" %><br />
+	    <%= g.text_area :genome_summary %>
+	  </p>
+	  <p>
+	    <%= g.label :chromosomes, "Number of Chromosomes:" %><br />
+	    <%= g.text_field :chromosomes %>
+	  </p>
 		<p>
-	        <%= g.label :chromosomes, "Number of Chromosomes:" %><br />
-	        <%= g.text_field :chromosomes %>
-	    </p>
-		<p>
-	        <%= g.label :genome_size, "Genome Size (Mbp):" %><br />
-	        <%= g.text_field :genome_size %>
-	    </p>
+	    <%= g.label :genome_size, "Genome Size (Mbp):" %><br />
+	    <%= g.text_field :genome_size %>
+	  </p>
 		<div id="genome_size_information">
-	        <p>
-	            <%= g.label :genome_size_information, "Genome Size Information:" %><br />
-	            <%= g.text_area :genome_size_information %>
-	        </p>
-	    </div>
-		<p>
-	        <%= g.label :ploidy_type, "Ploidy Type:" %>
-	        <%= g.select :ploidy_type, [['--Select--',''],['Auto','Auto'],['Allo-Tetraploid','Allo-Tetraploid']] %>
+	    <p>
+	      <%= g.label :genome_size_information, "Genome Size Information:" %><br />
+	      <%= g.text_area :genome_size_information %>
 	    </p>
+	  </div>
 		<p>
-	        <%= g.label :gc_content_genome, "% GC Content of Genome:" %><br />
-	        <%= g.text_field :gc_content_genome %>
-	    </p>
+	    <%= g.label :ploidy_type, "Ploidy Type:" %>
+	    <%= g.select :ploidy_type, [['--Select--',''],['Auto','Auto'],['Allo-Tetraploid','Allo-Tetraploid']] %>
+	  </p>
+		<p>
+	    <%= g.label :gc_content_genome, "% GC Content of Genome:" %><br />
+	    <%= g.text_field :gc_content_genome %>
+	  </p>
 		<div id="gc_content_genome_information">
-	        <p>
-	            <%= g.label :gc_content_genome_information, "GC Content of Genome Information:" %><br />
-	            <%= g.text_area :gc_content_genome_information %>
-	        </p>
-	    </div>
+	     <p>
+	       <%= g.label :gc_content_genome_information, "GC Content of Genome Information:" %><br />
+	       <%= g.text_area :gc_content_genome_information %>
+	     </p>
+	  </div>
 		<p>
-	        <%= g.label :gc_content_transcriptome, "% GC Content of Transcriptome:" %><br />
-	        <%= g.text_field :gc_content_transcriptome %>
-	    </p>
+	    <%= g.label :gc_content_transcriptome, "% GC Content of Transcriptome:" %><br />
+	    <%= g.text_field :gc_content_transcriptome %>
+	  </p>
 		<div id="gc_content_transcriptome_information">
-	        <p>
-	            <%= g.label :gc_content_transcriptome_information, "GC Content of Transcriptome Information:" %><br />
-	            <%= g.text_area :gc_content_transcriptome_information %>
-	        </p>
-	    </div>
+	     <p>
+	       <%= g.label :gc_content_transcriptome_information, "GC Content of Transcriptome Information:" %><br />
+	       <%= g.text_area :gc_content_transcriptome_information %>
+	     </p>
+	  </div>
 		<p>
-	        <%= g.label :chloroplast_genome_size, "Chloroplast Genome Size (kbp):" %><br />
-	        <%= g.text_field :chloroplast_genome_size %>
-	    </p>
+	    <%= g.label :chloroplast_genome_size, "Chloroplast Genome Size (kbp):" %><br />
+	    <%= g.text_field :chloroplast_genome_size %>
+	  </p>
 		<div id="chloroplast_genome_size_information">
-	        <p>
-	            <%= g.label :chloroplast_genome_size_information, "Chloroplast Genome Size Information:" %><br />
-	            <%= g.text_area :chloroplast_genome_size_information %>
-	        </p>
-	    </div>
+	     <p>
+	       <%= g.label :chloroplast_genome_size_information, "Chloroplast Genome Size Information:" %><br />
+	       <%= g.text_area :chloroplast_genome_size_information %>
+	     </p>
+	  </div>
 		<p>
-	        <%= g.label :chloroplast_accession_number, "Chloroplast NCBI Accession Number:" %><br />
-	        <%= g.text_field :chloroplast_accession_number %>
-	    </p>
+	    <%= g.label :chloroplast_accession_number, "Chloroplast NCBI Accession Number:" %><br />
+	    <%= g.text_field :chloroplast_accession_number %>
+	  </p>
 		<p>
-	        <%= g.label :mitochondria_genome_size, "Mitochondria Genome Size (kbp):" %><br />
-	        <%= g.text_field :mitochondria_genome_size %>
-	    </p>
+	    <%= g.label :mitochondria_genome_size, "Mitochondria Genome Size (kbp):" %><br />
+	    <%= g.text_field :mitochondria_genome_size %>
+	  </p>
 		<div id="mitochondria_genome_size_information">
-	        <p>
-	            <%= g.label :mitochondria_genome_size_information, "Mitochondria Genome Size Information:" %><br />
-	            <%= g.text_area :mitochondria_genome_size_information %>
-	        </p>
-	    </div>
+	     <p>
+	       <%= g.label :mitochondria_genome_size_information, "Mitochondria Genome Size Information:" %><br />
+	       <%= g.text_area :mitochondria_genome_size_information %>
+	     </p>
+	  </div>
 		<p>
-	        <%= g.label :mitochondria_accession_number, "Mitochondria NCBI Accession Number:" %><br />
-	        <%= g.text_field :mitochondria_accession_number %>
-	    </p>
-    <% end %>
-    <hr />
+	    <%= g.label :mitochondria_accession_number, "Mitochondria NCBI Accession Number:" %><br />
+	    <%= g.text_field :mitochondria_accession_number %>
+	  </p>
+  <% end %>
+  <hr />
     
-	<div id="resources">
-        <h3>Resources</h3>
-        <%= render :partial => "resources", :collection => @content.resources %>
-    </div>
-    <p><%= add_resource_link "Add Resource" %></p>
-    <hr />
+  <div id="resources">
+     <h3>Resources</h3>
+     <%= render :partial => "resources", :collection => @content.resources %>
+  </div>
+  <p><%= add_resource_link "Add Resource" %></p>
+  <hr />
 	
 	<% if has_role? :superuser %>
-        <div id="reference_datasets">
-            <h3>Reference Datasets</h3>
-            <%= render :partial => "reference_datasets", :collection => @content.reference_datasets %>
-        </div>
-        <p><%= add_reference_dataset_link "Add Reference Dataset" %></p>
-        <hr />
-    <% end %>
+    <div id="reference_datasets">
+      <h3>Reference Datasets</h3>
+         <%= render :partial => "reference_datasets", :collection => @content.reference_datasets %>
+    </div>
+    <p><%= add_reference_dataset_link "Add Reference Dataset" %></p>
+    <hr />
+  <% end %>
     
 	<%= f.fields_for :tripr_selected_reference do |s| %>
-	    <h3>References</h3>
-		<p>
-			Please add references in reverse chronological order using 
-			<%= link_to 'PubMed reference format', 'http://www.nlm.nih.gov/bsd/policy/cit_format.html' %>.
-		</p>
-		<p>
-	        <%= s.label :selected_references, "Selected References:" %><br />
-	        <%= s.text_area :selected_references %>
-	    </p>
+	  <h3>References</h3>
+	  <p>
+		  Please add references in reverse chronological order using 
+		  <%= link_to 'PubMed reference format', 'http://www.nlm.nih.gov/bsd/policy/cit_format.html' %>.
+	  </p>
+	  <p>
+	     <%= s.label :selected_references, "Selected References:" %><br />
+	     <%= s.text_area :selected_references %>
+	  </p>
 	<% end %>
 	
 	<p><%= f.submit "Update Contents", :id => "submit", :class => "submit" %></p>
@@ -187,118 +191,74 @@
 
 <script type="text/javascript">
 	/** Load CKEditor Instances **/
-    CKEDITOR.replaceAll( function(textarea, config){ 
-        config.toolbar = "<%= @tool_bar %>";
-    });
-    CKFinder.setupCKEditor( null, '/javascripts/ckfinder/');
+  CKEDITOR.replaceAll( function(textarea, config){ 
+    config.toolbar = "<%= @tool_bar %>";
+  });
+  CKFinder.setupCKEditor( null, '/javascripts/ckfinder/');
 
 	/** Nodulation Type **/
-    if ($('tripr_content_nodulation_type').value == '') {
-        $('nodulation_type_information').hide();
-    }
-    $('tripr_content_nodulation_type').observe('click', function(){
-        if (this.getValue() == '') {
-            $('nodulation_type_information').hide();
-        } else {
-            $('nodulation_type_information').show();
-        }
-    });
-	
-	/** Nodulator Species **/
-	if ($('tripr_content_nodulator_species').value == '') {
-		$('nodulator_id').hide();
-	}
-	$('tripr_content_nodulator_species').observe('keyup', function(){
-        str = this.getValue();
-		min = 3;
-		if (str.length < min) {
-            $('nodulator_id').hide();
-        } else {
-            $('nodulator_id').show();
-        }
-    });
-	
+  showHideElementHelper(
+    'tripr_content_nodulation_type',
+    'nodulation_type_information'
+  );
+
 	/** Flowering Time **/
-	if ($('tripr_content_flowering_type').value == '') {
-        $('flowering_type_information').hide();
-    }
-    $('tripr_content_flowering_type').observe('click', function(){
-        if (this.getValue() == '') {
-            $('flowering_type_information').hide();
-        } else {
-            $('flowering_type_information').show();
-        }
-    });
+  showHideElementHelper(
+    'tripr_content_flowering_type',
+    'flowering_type_information'
+  );
 	
 	/** Pollination **/
-    if ($('tripr_content_pollination_type').value == '') {
-        $('pollination_type_information').hide();
-    }
-    $('tripr_content_pollination_type').observe('click', function(){
-        if (this.getValue() == '') {
-            $('pollination_type_information').hide();
-        } else {
-            $('pollination_type_information').show();
-        }
-    });
+  showHideElementHelper(
+    'tripr_content_pollination_type',
+    'pollination_type_information'
+  );
 	
 	/** Genome Size **/
-    if ($('tripr_content_tripr_genome_summary_attributes_genome_size').value == '') {
-        $('genome_size_information').hide();
-    }
-    $('tripr_content_tripr_genome_summary_attributes_genome_size').observe('blur', function(){
-        if (this.getValue() == '') {
-            $('genome_size_information').hide();
-        } else {
-            $('genome_size_information').show();
-        }
-    });
+  showHideElementHelper(
+    'tripr_content_tripr_genome_summary_attributes_genome_size',
+    'genome_size_information'
+  );
 	
 	/** GC Genome Content **/
-    if ($('tripr_content_tripr_genome_summary_attributes_gc_content_genome').value == '') {
-        $('gc_content_genome_information').hide();
-    }
-    $('tripr_content_tripr_genome_summary_attributes_gc_content_genome').observe('blur', function(){
-        if (this.getValue() == '') {
-            $('gc_content_genome_information').hide();
-        } else {
-            $('gc_content_genome_information').show();
-        }
-    });
+  showHideElementHelper(
+    'tripr_content_tripr_genome_summary_attributes_gc_content_genome',
+    'gc_content_genome_information'
+  );
 	
 	/** GC Transcriptome Content **/
-    if ($('tripr_content_tripr_genome_summary_attributes_gc_content_transcriptome').value == '') {
-        $('gc_content_transcriptome_information').hide();
-    }
-    $('tripr_content_tripr_genome_summary_attributes_gc_content_transcriptome').observe('blur', function(){
-        if (this.getValue() == '') {
-            $('gc_content_transcriptome_information').hide();
-        } else {
-            $('gc_content_transcriptome_information').show();
-        }
-    });
+  showHideElementHelper(
+    'tripr_content_tripr_genome_summary_attributes_gc_content_transcriptome',
+    'gc_content_transcriptome_information'
+  );
 	
 	/** Chloroplast Genome Content **/
-    if ($('tripr_content_tripr_genome_summary_attributes_chloroplast_genome_size').value == '') {
-        $('chloroplast_genome_size_information').hide();
-    }
-    $('tripr_content_tripr_genome_summary_attributes_chloroplast_genome_size').observe('blur', function(){
-        if (this.getValue() == '') {
-            $('chloroplast_genome_size_information').hide();
-        } else {
-            $('chloroplast_genome_size_information').show();
-        }
-    });
+  showHideElementHelper(
+    'tripr_content_tripr_genome_summary_attributes_chloroplast_genome_size',
+    'chloroplast_genome_size_information'
+  );
 	
 	/** Mitochondria Genome Content **/
-    if ($('tripr_content_tripr_genome_summary_attributes_mitochondria_genome_size').value == '') {
-        $('mitochondria_genome_size_information').hide();
-    }
-    $('tripr_content_tripr_genome_summary_attributes_mitochondria_genome_size').observe('blur', function(){
-        if (this.getValue() == '') {
-            $('mitochondria_genome_size_information').hide();
-        } else {
-            $('mitochondria_genome_size_information').show();
-        }
-    });
+  showHideElementHelper(
+    'tripr_content_tripr_genome_summary_attributes_mitochondria_genome_size',
+    'mitochondria_genome_size_information'
+  );
+
+  /**
+   * Base URLs
+   */
+  var ncbi_base_url = "http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=";
+  var grin_base_url = "http://www.ars-grin.gov/cgi-bin/npgs/html/taxon.pl?";
+
+  /** NCBI Taxon URL **/
+  $('tripr_content_ncbi_taxon_id').observe('blur', function(e) {
+    el = e.element();
+    verifyTaxonIdUrl(el, el.value, ncbi_base_url);
+  });
+
+  /** GRIN Taxon URL **/
+  $('tripr_content_grin_taxon_id').observe('blur', function(e) {
+    el = e.element();  
+    verifyTaxonIdUrl(el, el.value, grin_base_url);    
+  });
 </script>

@@ -1,0 +1,24 @@
+<div class="nodulator">
+  <%= fields_for_form("nodulators", nodulators) do |p| %>
+    <%= hidden_field_tag :legume_id, @content.legume_id %>
+    <p>
+      <%= p.label :species, "Species" %><br />
+      <%= p.text_field :species %>
+    </p>
+    <p>
+      <%= p.label :ncbi_taxon_id, "NCBI Taxon ID" %><br />
+      <%= p.text_field :ncbi_taxon_id , :class => "ncbi_taxon_ids" %>
+    </p>
+    <p>
+      <%= button_to_function "Remove Nodulator", "this.up('.nodulator').remove()", 
+      :class => "remove_nodulator" %>
+    </p>
+  <% end %>
+  <script type="text/javascript">
+    /** Dynamic Taxon URLs **/
+    $$('.ncbi_taxon_ids').invoke('on', 'blur', function(e) {
+      el = e.element();
+      verifyTaxonIdUrl(el, el.value, ncbi_base_url);
+    });
+  </script>
+</div>

@@ -1,26 +1,26 @@
 <div class="resource">
-	<% yes_no = [['Yes',1],['No',0]] %>
-    <%= fields_for_form("resources", resources) do |p| %>
-        <%= hidden_field_tag :legume_id, @content.legume_id %>
-        <p>
-           <%= p.label :resource_type, "Type:" %><br />
-           <%= p.text_field :resource_type %>
-        </p>
-        <p>
-           <%= p.label :description, "Brief Description:" %><br />
-           <%= p.text_field :description %>
-        </p>
-        <p>
-           <%= p.label :url, "URL (include protocol http://, ftp://, etc.):" %><br />
-           <%= p.text_field :url %>
-        </p>
-        <p>
-           <%= p.label :is_public, "Is the data public?: " %>
-           <%= p.select :is_public, yes_no %>
-        </p>
-        <p>
-           <%= button_to_function "Remove Resource", "this.up('.resource').remove()", 
-               :class => "remove_resource" %>
-        </p>
-    <% end %>
+  <% yes_no = [['Yes',1],['No',0]] %>
+  <%= fields_for_form("resources", resources) do |p| %>
+    <%= hidden_field_tag :legume_id, @content.legume_id %>
+    <p>
+      <%= p.label :resource_type, "Type:" %><br />
+      <%= p.text_field :resource_type %>
+    </p>
+    <p>
+      <%= p.label :description, "Brief Description:" %><br />
+      <%= p.text_field :description %>
+    </p>
+    <p>
+      <%= p.label :url, "URL (include protocol http://, ftp://, etc.):" %><br />
+      <%= p.text_field :url %>
+    </p>
+    <p>
+      <%= p.label :is_public, "Is the data public?: " %>
+      <%= p.select :is_public, yes_no %>
+    </p>
+    <p>
+      <%= button_to_function "Remove Resource", "this.up('.resource').remove()", 
+        :class => "remove_resource" %>
+    </p>
+  <% end %>
 </div>

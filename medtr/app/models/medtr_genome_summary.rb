@@ -1,3 +1,4 @@
+
 class MedtrGenomeSummary < ActiveRecord::Base
   belongs_to :medtr_content
   

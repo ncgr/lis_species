@@ -1,3 +1,4 @@
+
 class MedsaGenomeSummary < ActiveRecord::Base
   belongs_to :medsa_content
   

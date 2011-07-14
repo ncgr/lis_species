@@ -7,10 +7,11 @@
 ## Files to ignore ##
 SCRIPT=`basename $0`
 INFO="INFO"
+COPY="copy_files.bash"
 
 for dir in $(ls -d *)
 do
-    if [[ $dir == $SCRIPT || $dir == $INFO ]]
+    if [[ $dir == $SCRIPT || $dir == $INFO || $dir == $COPY ]]
     then
         continue
     else

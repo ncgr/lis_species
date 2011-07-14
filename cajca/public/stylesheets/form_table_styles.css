@@ -44,6 +44,10 @@ form input {
   font-size: 12px;
 }
 
+form input[type="submit"], form input[type="button"] {
+  padding: 2px;
+}
+
 form input.submit, form input.reset {
   width: auto;
 }

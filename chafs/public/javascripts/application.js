@@ -34,8 +34,10 @@ Effect.Accordion = function (contentId) {
  * Change value of the button and disable on submit.
  */
 function processingOnSubmit () {
-  $('submit').value = 'Processing...';
-  Form.Element.disable('submit');
+  $$('.submit').each(function(s) {
+    s.value = 'Processing...';
+    Form.Element.disable(s);
+  });
   return true;
 }
 

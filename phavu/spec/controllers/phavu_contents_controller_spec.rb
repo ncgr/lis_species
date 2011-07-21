@@ -14,9 +14,7 @@ describe PhavuContentsController do
     Base64.decode64(cookie.split('--').first).gsub(/[^a-z]/, '')
   end
 
-  before(:all) do
-    create_roles
-  end
+  before(:all) { create_roles }
   
   describe "GET index without logging in" do
     before(:each) do
@@ -111,8 +109,6 @@ describe PhavuContentsController do
     end
   end
   
-  after(:all) do
-    destroy_roles  
-  end
+  after(:all) { destroy_roles }
   
 end

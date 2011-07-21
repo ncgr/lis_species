@@ -4,33 +4,40 @@
       ['Transcript Assembly','Transcript Assembly'],['Genome','Genome'],
       ['Genetic Map','Genetic Map'],['Physical Map','Physical Map'],
       ['Short Read Data','Short Read Data'],['GFF3 Annotations','GFF3 Annotations']] 
-    yes_no = [['Yes',1],['No',0]] 
+    yes_no = [['--Select--',''],['Yes',1],['No',0]] 
   %>
   <%= fields_for_form("reference_datasets", reference_datasets) do |p| %>
     <%= hidden_field_tag :legume_id, @content.legume_id %>
+    <% unless has_role?(:superuser) %>
+      <%= p.hidden_field :reference_dataset_type %>
+      <%= p.hidden_field :description %>
+      <%= p.hidden_field :source %>
+      <%= p.hidden_field :url %>
+      <%= p.hidden_field :is_public %>
+    <% end %>
     <p>
       <%= p.label :reference_dataset_type, "Type:" %>
-      <%= p.select :reference_dataset_type, type_select %>
+      <%= p.select :reference_dataset_type, type_select, {}, :disabled => !has_role?(:superuser) %>
     </p>
     <p>
       <%= p.label :description, "Brief Description:" %><br />
-      <%= p.text_field :description %>
+      <%= p.text_field :description, :disabled => !has_role?(:superuser) %>
     </p>
     <p>
       <%= p.label :source, "Source:" %><br />
-      <%= p.text_field :source %>
+      <%= p.text_field :source, :disabled => !has_role?(:superuser) %>
     </p>
     <p>
       <%= p.label :url, "URL (include protocol http://, ftp://, etc.):" %><br />
-      <%= p.text_field :url %>
+      <%= p.text_field :url, :disabled => !has_role?(:superuser) %>
     </p>
     <p>
       <%= p.label :is_public, "Is the data public?" %>
-      <%= p.select :is_public, yes_no %>
+      <%= p.select :is_public, yes_no, {}, :disabled => !has_role?(:superuser)%>
     </p>
     <p>
       <%= button_to_function "Remove Reference Dataset", "this.up('.reference_dataset').remove()", 
-        :class => "remove_reference_dataset" %>
+        :class => "remove_reference_dataset", :disabled => !has_role?(:superuser) %>
     </p>
   <% end %>
 </div>

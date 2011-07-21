@@ -667,20 +667,20 @@ ActiveRecord::Schema.define(:version => 0) do
   end
 
   create_table "reference_datasets", :force => true do |t|
-    t.integer "legume_id",                                          :null => false
+    t.integer "legume_id",                           :null => false
     t.string  "reference_dataset_type"
     t.string  "description"
     t.string  "source"
     t.string  "url"
-    t.integer "is_public",              :limit => 1, :default => 1
+    t.integer "is_public",              :limit => 1
   end
 
   create_table "resources", :force => true do |t|
-    t.integer "legume_id",                                 :null => false
+    t.integer "legume_id",                  :null => false
     t.string  "resource_type"
     t.string  "description"
     t.string  "url"
-    t.integer "is_public",     :limit => 1, :default => 1
+    t.integer "is_public",     :limit => 1
   end
 
   create_table "roles", :force => true do |t|

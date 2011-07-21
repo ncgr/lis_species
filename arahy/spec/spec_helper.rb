@@ -21,9 +21,6 @@ RSpec.configure do |config|
   # config.mock_with :rr
   config.mock_with :rspec
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -32,15 +29,9 @@ RSpec.configure do |config|
   ## Added by KAS ##
 
   # Controller Macros
-  config.extend ControllerMacros, :type => :controller
+  config.extend DeviseMacros, :type => :controller
 
-  # Create and destroy roles for declarative_authorization.
-  def create_roles
-    ["superuser","admin","editor","system_user"].each {|r| Role.create!(:name => r)}
-  end
-
-  def destroy_roles
-    Role.all.each {|r| r.destroy}
-  end
+  # Role Macros
+  config.include(RoleMacros)
   
 end

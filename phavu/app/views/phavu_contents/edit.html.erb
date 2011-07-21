@@ -165,14 +165,12 @@
   <p><%= add_resource_link "Add Resource" %></p>
   <hr />
 	
-	<% if has_role? :superuser %>
-    <div id="reference_datasets">
-      <h3>Reference Datasets</h3>
-         <%= render :partial => "reference_datasets", :collection => @content.reference_datasets %>
-    </div>
-    <p><%= add_reference_dataset_link "Add Reference Dataset" %></p>
-    <hr />
-  <% end %>
+  <div id="reference_datasets">
+    <h3>Reference Datasets</h3>
+      <%= render :partial => "reference_datasets", :collection => @content.reference_datasets %>
+  </div>
+  <p><%= add_reference_dataset_link "Add Reference Dataset", !has_role?(:superuser) %></p>
+  <hr />
     
 	<%= f.fields_for :phavu_selected_reference do |s| %>
 	  <h3>References</h3>

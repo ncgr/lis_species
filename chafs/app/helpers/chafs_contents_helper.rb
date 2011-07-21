@@ -15,8 +15,8 @@ module ChafsContentsHelper
   #
   # Helper to add additional pathogens.
   #
-  def add_pathogen_link(name)
-    button_to_function name, :id => "add_pathogen" do |page|
+  def add_pathogen_link(name, disabled = false)
+    button_to_function name, :id => "add_pathogen", :disabled => disabled do |page|
       page.insert_html :bottom, :pathogens, :partial => "pathogens", 
         :object => Pathogen.new
     end
@@ -25,8 +25,8 @@ module ChafsContentsHelper
   #
   # Helper to add additional nodulators.
   #
-  def add_nodulator_link(name)
-    button_to_function name, :id => "add_nodulator" do |page|
+  def add_nodulator_link(name, disabled = false)
+    button_to_function name, :id => "add_nodulator", :disabled => disabled do |page|
       page.insert_html :bottom, :nodulators, :partial => "nodulators", 
         :object => Nodulator.new
     end
@@ -35,8 +35,8 @@ module ChafsContentsHelper
   #
   # Helper to add additional reference datasets.
   #
-  def add_reference_dataset_link(name)
-    button_to_function name, :id => "add_reference_dataset" do |page|
+  def add_reference_dataset_link(name, disable = false)
+    button_to_function name, :id => "add_reference_dataset", :disabled => disable do |page|
       page.insert_html :bottom, :reference_datasets, :partial => "reference_datasets", 
         :object => ReferenceDataset.new
     end
@@ -45,8 +45,8 @@ module ChafsContentsHelper
   #
   # Helper to add additional resources.
   #
-  def add_resource_link(name)
-    button_to_function name, :id => "add_resource" do |page|
+  def add_resource_link(name, disabled = false)
+    button_to_function name, :id => "add_resource", :disabled => disabled do |page|
       page.insert_html :bottom, :resources, :partial => "resources", 
         :object => Resource.new
     end

@@ -14,9 +14,7 @@ describe LotjaContentsController do
     Base64.decode64(cookie.split('--').first).gsub(/[^a-z]/, '')
   end
 
-  before(:all) do
-    create_roles
-  end
+  before(:all) { create_roles }
   
   describe "GET index without logging in" do
     before(:each) do
@@ -38,7 +36,7 @@ describe LotjaContentsController do
       response.should be_redirect
     end
   end
-  
+
   describe "GET index while logged in as superuser" do
     login_superuser
     it "should get index and set ckfinder_role cookie" do
@@ -78,7 +76,7 @@ describe LotjaContentsController do
       decode_signed_cookie(response.cookies['ckfinder_role']).should == "systemuser"
     end
   end
-
+  
   describe "GET edit and PUT update lotja_content while logged in as superuser" do
     login_superuser
     before(:each) do
@@ -111,8 +109,6 @@ describe LotjaContentsController do
     end
   end
   
-  after(:all) do
-    destroy_roles  
-  end
+  after(:all) { destroy_roles }
   
 end

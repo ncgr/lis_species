@@ -1,4 +1,4 @@
-module ControllerMacros
+module DeviseMacros
   def login_superuser
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]

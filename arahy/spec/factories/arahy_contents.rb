@@ -12,7 +12,6 @@ FactoryGirl.define do
     pollination_type "pollination"
     pollination_type_information "pollination is good"
     self_incompatibility "incompatibility"
-    inbreeding "inbreeding"
     wiki_link "http://en.wikipedia.org"
     user_id "1"
     arahy_selected_reference { association(:arahy_selected_reference) }

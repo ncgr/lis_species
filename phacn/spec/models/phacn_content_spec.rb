@@ -40,14 +40,12 @@ describe PhacnContent do
   
   it "returns true if attributes are empty" do
     @phacn = PhacnContent.new
-    @pathogens = [] << Pathogen.new
-    @phacn.attributes_empty?(@pathogens).should == true
+    @phacn.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @phacn = PhacnContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @phacn.attributes_empty?(@pathogens).should == true
+    @phacn.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

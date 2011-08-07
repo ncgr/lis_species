@@ -40,14 +40,12 @@ describe LupalContent do
   
   it "returns true if attributes are empty" do
     @lupal = LupalContent.new
-    @pathogens = [] << Pathogen.new
-    @lupal.attributes_empty?(@pathogens).should == true
+    @lupal.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @lupal = LupalContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @lupal.attributes_empty?(@pathogens).should == true
+    @lupal.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

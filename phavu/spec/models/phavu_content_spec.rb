@@ -40,14 +40,12 @@ describe PhavuContent do
   
   it "returns true if attributes are empty" do
     @phavu = PhavuContent.new
-    @pathogens = [] << Pathogen.new
-    @phavu.attributes_empty?(@pathogens).should == true
+    @phavu.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @phavu = PhavuContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @phavu.attributes_empty?(@pathogens).should == true
+    @phavu.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

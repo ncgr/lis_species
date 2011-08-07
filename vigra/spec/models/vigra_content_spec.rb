@@ -40,14 +40,12 @@ describe VigraContent do
   
   it "returns true if attributes are empty" do
     @vigra = VigraContent.new
-    @pathogens = [] << Pathogen.new
-    @vigra.attributes_empty?(@pathogens).should == true
+    @vigra.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @vigra = VigraContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @vigra.attributes_empty?(@pathogens).should == true
+    @vigra.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

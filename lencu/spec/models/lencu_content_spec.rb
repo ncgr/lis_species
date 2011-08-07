@@ -40,14 +40,12 @@ describe LencuContent do
   
   it "returns true if attributes are empty" do
     @lencu = LencuContent.new
-    @pathogens = [] << Pathogen.new
-    @lencu.attributes_empty?(@pathogens).should == true
+    @lencu.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @lencu = LencuContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @lencu.attributes_empty?(@pathogens).should == true
+    @lencu.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

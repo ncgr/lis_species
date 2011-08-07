@@ -75,13 +75,4 @@ class UserInformation < ActiveRecord::Base
     user_role.save!
   end
 
-  #
-  # Devise expects email to be our username. 
-  # Ruby CAS Server expects username to be username.
-  # So...
-  #
-  def email
-    self.username if self.username
-  end
-
 end

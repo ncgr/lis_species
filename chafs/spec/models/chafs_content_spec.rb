@@ -40,14 +40,12 @@ describe ChafsContent do
   
   it "returns true if attributes are empty" do
     @chafs = ChafsContent.new
-    @pathogens = [] << Pathogen.new
-    @chafs.attributes_empty?(@pathogens).should == true
+    @chafs.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @chafs = ChafsContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @chafs.attributes_empty?(@pathogens).should == true
+    @chafs.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

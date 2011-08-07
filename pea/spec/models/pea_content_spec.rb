@@ -40,14 +40,12 @@ describe PeaContent do
   
   it "returns true if attributes are empty" do
     @pea = PeaContent.new
-    @pathogens = [] << Pathogen.new
-    @pea.attributes_empty?(@pathogens).should == true
+    @pea.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @pea = PeaContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @pea.attributes_empty?(@pathogens).should == true
+    @pea.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

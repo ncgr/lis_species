@@ -40,14 +40,12 @@ describe LupanContent do
   
   it "returns true if attributes are empty" do
     @lupan = LupanContent.new
-    @pathogens = [] << Pathogen.new
-    @lupan.attributes_empty?(@pathogens).should == true
+    @lupan.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @lupan = LupanContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @lupan.attributes_empty?(@pathogens).should == true
+    @lupan.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

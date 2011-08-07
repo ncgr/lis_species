@@ -40,14 +40,12 @@ describe VigunContent do
   
   it "returns true if attributes are empty" do
     @vigun = VigunContent.new
-    @pathogens = [] << Pathogen.new
-    @vigun.attributes_empty?(@pathogens).should == true
+    @vigun.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @vigun = VigunContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @vigun.attributes_empty?(@pathogens).should == true
+    @vigun.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

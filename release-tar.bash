@@ -7,7 +7,7 @@
 ## Files to ignore ##
 SCRIPT=`basename $0`
 INFO="INFO"
-COPY="copy_files.bash"
+COPY="utils.bash"
 
 for dir in $(ls -d *)
 do

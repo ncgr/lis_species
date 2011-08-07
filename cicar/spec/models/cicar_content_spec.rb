@@ -40,14 +40,12 @@ describe CicarContent do
   
   it "returns true if attributes are empty" do
     @cicar = CicarContent.new
-    @pathogens = [] << Pathogen.new
-    @cicar.attributes_empty?(@pathogens).should == true
+    @cicar.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @cicar = CicarContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @cicar.attributes_empty?(@pathogens).should == true
+    @cicar.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

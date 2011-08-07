@@ -1,17 +1,9 @@
-<% if Rails.env.production? %>
-  <% base_url = "http://comparative-legumes.org/" %>
-<% else %>
-  <% base_url = "http://aztec.ncgr.org:7650/" %>
-<% end %>
-
 <ul class="level1" id="root">
-	<li><%= link_to "Home", base_url %></li> 
+	<li><%= link_to "Home", URLS['root_url'] %></li> 
 	<li class="sep">|</li>
-	<li><%= link_to "About", "#{base_url}pages/about" %></li> 
+	<li><%= link_to "About", "#{URLS['root_url']}pages/about" %></li> 
 	<li class="sep">|</li>
-	<li><%= link_to "News", "#{base_url}news_articles" %></li> 
-	<li class="sep">|</li>
-	<li><%= link_to "Development", "#{base_url}development_activities" %></li> 
+	<li><%= link_to "News", "#{URLS['root_url']}news_articles" %></li> 
 	<li class="sep">|</li>
 	<li>
 		<a href="#" class="no_cursor">Search</a> 
@@ -28,7 +20,7 @@
 	</li> 
 	<li class="sep">|</li>
 	<li>
-    <%= link_to "Species", "#{base_url}pages/species" %>
+    <%= link_to "Species", "#{URLS['root_url']}pages/species" %>
     <ul class="level2"> 
       <li><%= link_to "Arachis hypogaea", "http://arahy.comparative-legumes.org" %></li>
       <li><%= link_to "Cajanus cajan", "http://cajca.comparative-legumes.org" %></li>
@@ -51,5 +43,5 @@
     </ul> 
   </li>
 	<li class="sep">|</li>
-	<li><%= link_to "Collaborators", "#{base_url}pages/collaborators" %></li> 
+	<li><%= link_to "Collaborators", "#{URLS['root_url']}pages/collaborators" %></li> 
 </ul> 

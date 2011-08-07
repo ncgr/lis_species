@@ -40,14 +40,12 @@ describe MedtrContent do
   
   it "returns true if attributes are empty" do
     @medtr = MedtrContent.new
-    @pathogens = [] << Pathogen.new
-    @medtr.attributes_empty?(@pathogens).should == true
+    @medtr.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @medtr = MedtrContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @medtr.attributes_empty?(@pathogens).should == true
+    @medtr.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

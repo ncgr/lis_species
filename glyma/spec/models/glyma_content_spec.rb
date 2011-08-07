@@ -40,14 +40,12 @@ describe GlymaContent do
   
   it "returns true if attributes are empty" do
     @glyma = GlymaContent.new
-    @pathogens = [] << Pathogen.new
-    @glyma.attributes_empty?(@pathogens).should == true
+    @glyma.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @glyma = GlymaContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @glyma.attributes_empty?(@pathogens).should == true
+    @glyma.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

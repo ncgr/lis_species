@@ -40,14 +40,12 @@ describe VicfaContent do
   
   it "returns true if attributes are empty" do
     @vicfa = VicfaContent.new
-    @pathogens = [] << Pathogen.new
-    @vicfa.attributes_empty?(@pathogens).should == true
+    @vicfa.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @vicfa = VicfaContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @vicfa.attributes_empty?(@pathogens).should == true
+    @vicfa.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

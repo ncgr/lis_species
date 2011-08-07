@@ -40,14 +40,12 @@ describe CajcaContent do
   
   it "returns true if attributes are empty" do
     @cajca = CajcaContent.new
-    @pathogens = [] << Pathogen.new
-    @cajca.attributes_empty?(@pathogens).should == true
+    @cajca.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @cajca = CajcaContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @cajca.attributes_empty?(@pathogens).should == true
+    @cajca.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

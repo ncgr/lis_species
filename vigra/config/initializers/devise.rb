@@ -1,19 +1,10 @@
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
 
-# Set the CAS Server URL
-if Rails.env.production?
-  cas_url = "https://cas.comparative-legumes.org"
-  cas_validate = "https://velarde.ncgr.org:8055/proxyValidate"
-else
-  cas_url = "https://aztec.ncgr.org:7777"
-  cas_validate = "https://aztec.ncgr.org:7777/proxyValidate"
-end
-
 Devise.setup do |config|
   # ==> CAS Configuration
-  config.cas_base_url = cas_url
-  config.cas_validate_url = cas_validate
+  config.cas_base_url = URLS['cas_url']
+  config.cas_validate_url = URLS['cas_validate']
   config.cas_create_user = false
 
   # ==> Mailer Configuration
@@ -37,7 +28,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [ :email ]
+  config.authentication_keys = [ :username ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the

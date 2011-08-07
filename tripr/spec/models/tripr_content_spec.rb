@@ -40,14 +40,12 @@ describe TriprContent do
   
   it "returns true if attributes are empty" do
     @tripr = TriprContent.new
-    @pathogens = [] << Pathogen.new
-    @tripr.attributes_empty?(@pathogens).should == true
+    @tripr.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @tripr = TriprContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @tripr.attributes_empty?(@pathogens).should == true
+    @tripr.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

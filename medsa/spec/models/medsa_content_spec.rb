@@ -40,14 +40,12 @@ describe MedsaContent do
   
   it "returns true if attributes are empty" do
     @medsa = MedsaContent.new
-    @pathogens = [] << Pathogen.new
-    @medsa.attributes_empty?(@pathogens).should == true
+    @medsa.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @medsa = MedsaContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @medsa.attributes_empty?(@pathogens).should == true
+    @medsa.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

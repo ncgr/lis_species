@@ -40,14 +40,12 @@ describe ArahyContent do
   
   it "returns true if attributes are empty" do
     @arahy = ArahyContent.new
-    @pathogens = [] << Pathogen.new
-    @arahy.attributes_empty?(@pathogens).should == true
+    @arahy.attributes_empty?({}).should == true
   end
   
   it "returns false if attributes are not empty" do
     @arahy = ArahyContent.new
-    @pathogens = [] << Factory.build(:pathogen)
-    @arahy.attributes_empty?(@pathogens).should == true
+    @arahy.attributes_empty?({"key"=>"val"}).should == false 
   end
   
 end

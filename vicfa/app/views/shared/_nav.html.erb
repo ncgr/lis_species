@@ -6,14 +6,14 @@
 	<li><%= link_to "News", "#{URLS['root_url']}news_articles" %></li> 
 	<li class="sep">|</li>
 	<li>
-		<a href="#" class="no_cursor">Search</a> 
+    <%= link_to "Search", "#{URLS['root_url']}pages/search" %>
 		<ul class="level2"> 
 			<li><%= link_to "Seqqle search by sequence", "http://search.comparative-legumes.org" %></li> 
 		</ul> 
 	</li> 
 	<li class="sep">|</li>
 	<li>
-		<a href="#" class="no_cursor">Maps</a> 
+    <%= link_to "Maps", "#{URLS['root_url']}pages/maps" %>
 		<ul class="level2"> 
 			<li><%= link_to "Comparative map views", "http://cmap.comparative-legumes.org/index.html" %></li> 
 		</ul> 

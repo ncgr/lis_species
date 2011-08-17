@@ -1,4 +1,4 @@
-<ul class="level1" id="root">
+<ul class="level1" id="dropdown">
 	<li><%= link_to "Home", URLS['root_url'] %></li> 
 	<li class="sep">|</li>
 	<li><%= link_to "About", "#{URLS['root_url']}pages/about" %></li> 
@@ -8,7 +8,8 @@
 	<li>
     <%= link_to "Search", "#{URLS['root_url']}pages/search" %>
 		<ul class="level2"> 
-			<li><%= link_to "Seqqle search by sequence", "http://search.comparative-legumes.org" %></li> 
+			<li><%= link_to "Seqqle search by sequence", "http://search.comparative-legumes.org/seqqle/" %></li> 
+			<li><%= link_to "CViT search by sequence", "http://search.comparative-legumes.org/cvit/" %></li> 
 		</ul> 
 	</li> 
 	<li class="sep">|</li>

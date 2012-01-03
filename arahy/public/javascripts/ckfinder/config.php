@@ -1,4 +1,7 @@
 <?php
+
+require_once 'license.php';
+
 /*
  * ### CKFinder : Configuration File - Basic Instructions
  *
@@ -40,8 +43,8 @@ function CheckAuthentication()
 
 // LicenseKey : Paste your license key here. If left blank, CKFinder will be
 // fully functional, in demo mode.
-$config['LicenseName'] = '';
-$config['LicenseKey'] = '';
+$config['LicenseName'] = $license_name;
+$config['LicenseKey']  = $license_key;
 
 /*
  Uncomment lines below to enable PHP error reporting and displaying PHP errors.

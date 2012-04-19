@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe LupalContentsController do
-  
+
   def mock_lupal_content(stubs={})
     @mock_lupal_content ||= mock_model(LupalContent, stubs).as_null_object
   end
@@ -14,18 +14,18 @@ describe LupalContentsController do
     Base64.decode64(cookie.split('--').first).gsub(/[^a-z]/, '')
   end
 
-  before(:all) { create_roles }
-  
+  before(:each) { create_roles }
+
   describe "GET index without logging in" do
     before(:each) do
-      @lupal = Factory.build(:lupal_content)
+      @lupal = FactoryGirl.build(:lupal_content)
     end
     it "should get index" do
       get :index
       response.should be_success
     end
   end
-  
+
   describe "access restricted without logging in" do
     it "edit/:id should redirect" do
       get :edit, :id => "10"
@@ -46,7 +46,7 @@ describe LupalContentsController do
       decode_signed_cookie(response.cookies['ckfinder_role']).should == "superuser"
     end
   end
-  
+
   describe "GET index while logged in as admin" do
     login_admin
     it "should get index and set ckfinder_role cookie" do
@@ -56,7 +56,7 @@ describe LupalContentsController do
       decode_signed_cookie(response.cookies['ckfinder_role']).should == "admin"
     end
   end
-  
+
   describe "GET index while logged in as editor" do
     login_editor
     it "should get index and set ckfinder_role cookie" do
@@ -66,7 +66,7 @@ describe LupalContentsController do
       decode_signed_cookie(response.cookies['ckfinder_role']).should == "editor"
     end
   end
-  
+
   describe "GET index while logged in as system_user" do
     login_system_user
     it "should get index and set ckfinder_role cookie" do
@@ -76,39 +76,7 @@ describe LupalContentsController do
       decode_signed_cookie(response.cookies['ckfinder_role']).should == "systemuser"
     end
   end
-  
-  describe "GET edit and PUT update lupal_content while logged in as superuser" do
-    login_superuser
-    before(:each) do
-      @lupal = Factory.build(:lupal_content)
-      LupalContent.should_receive(:find).with("21").and_return(@lupal)
-    end
-    it "should find lupal_content and return object" do
-      get :edit, :id => "21"
-      response.should render_template('edit')
-    end
-    it "should update object" do
-      put :update, :id => "21", :lupal_content => {}
-      response.should be_redirect
-    end
-  end
-  
-  describe "GET edit and PUT update lupal_content while logged in as admin" do
-    login_admin
-    before(:each) do
-      @lupal = Factory.build(:lupal_content)
-      LupalContent.should_receive(:find).with("212").and_return(@lupal)
-    end
-    it "should find lupal_content and return object" do
-      get :edit, :id => "212"
-      response.should render_template('edit')
-    end
-    it "should update object" do
-      put :update, :id => "212", :lupal_content => {}
-      response.should be_redirect
-    end
-  end
-  
+
   after(:all) { destroy_roles }
-  
+
 end

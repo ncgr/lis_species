@@ -1,19 +1,19 @@
 
 class ApplicationController < ActionController::Base
-  
+
   before_filter :check_existing_cas_session, :set_ckfinder_cookie
   protect_from_forgery
 
-  # 
+  #
   # I pitty the fool!
   #
   def permission_denied
     flash[:error] = 'Sorry, your account has insufficient privileges for the requested resource.'
     redirect_to :root
   end
-  
+
   private
-  
+
   #
   # Determine whether an existing CAS session was created by checking
   # the cookie tgt (ticket generating ticket).
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       authenticate_user!
     end
   end
-  
+
   #
   # Set CKFinder_Role cookie to user's most privileged role.
   #
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
       cookies.delete :ckfinder_role, :domain => :all
     end
   end
-  
+
   #
   # Set the CKEditor tool bar based on role.
   #

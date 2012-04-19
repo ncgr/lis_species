@@ -3,12 +3,12 @@ class PhavuContentsController < ApplicationController
 
   before_filter :authenticate_user!, :except => :index
   filter_access_to :edit, :update
-  
+
   before_filter :set_tool_bar, :only => [:edit, :update]
-  
+
   def index
     @content = PhavuContent.first
-    
+
     # Attributes for table helper
     @overview_attr = ["ncbi_taxon_id","grin_taxon_id","season",
       "nodulation_type","flowering_type","pollination_type",
@@ -22,18 +22,18 @@ class PhavuContentsController < ApplicationController
   def edit
     @content = PhavuContent.find(params[:id])
   end
-  
+
   def update
     params[:phavu_content][:existing_pathogens_attributes] ||= {}
     params[:phavu_content][:existing_nodulators_attributes] ||= {}
     params[:phavu_content][:existing_reference_datasets_attributes] ||= {}
     params[:phavu_content][:existing_resources_attributes] ||= {}
-    
+
     @content = PhavuContent.find(params[:id])
-    
+
     @content.updated_at = Time.now
     @content.user_id    = current_user.id
-    
+
     if @content.update_attributes(params[:phavu_content])
       flash[:error] = "Successfully updated contents."
       redirect_to root_path
@@ -42,5 +42,5 @@ class PhavuContentsController < ApplicationController
       render :edit
     end
   end
-  
+
 end

@@ -3,12 +3,12 @@ class MedsaContentsController < ApplicationController
 
   before_filter :authenticate_user!, :except => :index
   filter_access_to :edit, :update
-  
+
   before_filter :set_tool_bar, :only => [:edit, :update]
-  
+
   def index
     @content = MedsaContent.first
-    
+
     # Attributes for table helper
     @overview_attr = ["ncbi_taxon_id","grin_taxon_id","season",
       "nodulation_type","flowering_type","pollination_type",
@@ -22,18 +22,18 @@ class MedsaContentsController < ApplicationController
   def edit
     @content = MedsaContent.find(params[:id])
   end
-  
+
   def update
     params[:medsa_content][:existing_pathogens_attributes] ||= {}
     params[:medsa_content][:existing_nodulators_attributes] ||= {}
     params[:medsa_content][:existing_reference_datasets_attributes] ||= {}
     params[:medsa_content][:existing_resources_attributes] ||= {}
-    
+
     @content = MedsaContent.find(params[:id])
-    
+
     @content.updated_at = Time.now
     @content.user_id    = current_user.id
-    
+
     if @content.update_attributes(params[:medsa_content])
       flash[:error] = "Successfully updated contents."
       redirect_to root_path
@@ -42,5 +42,5 @@ class MedsaContentsController < ApplicationController
       render :edit
     end
   end
-  
+
 end

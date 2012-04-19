@@ -7,16 +7,16 @@
 # '4', 'system_user'
 
 authorization do
-    
+
   role :base do
    has_permission_on :lencu_contents, :to => [:read]
   end
-    
+
   role :superuser do
     includes :base
     has_permission_on :lencu_contents, :to => [:manage]
   end
-    
+
   role :admin do
     includes :base
     has_permission_on :lencu_contents, :to => [:update]
@@ -25,11 +25,11 @@ authorization do
   role :editor do
     includes :base
   end
-    
+
   role :system_user do
     includes :base
   end
-    
+
 end
 
 privileges do

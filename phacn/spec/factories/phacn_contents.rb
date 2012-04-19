@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :phacn_content do
-    legume_id 1
     overview "this is the overview"
     ncbi_taxon_id "1234"
     grin_taxon_id "6789"
@@ -16,5 +15,7 @@ FactoryGirl.define do
     user_id "1"
     phacn_selected_reference { association(:phacn_selected_reference) }
     phacn_genome_summary { association(:phacn_genome_summary) }
+    legume
+    maps "nice map!"
   end
 end

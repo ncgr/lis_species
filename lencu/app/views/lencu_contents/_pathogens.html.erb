@@ -10,8 +10,8 @@
       <%= p.text_field :ncbi_taxon_id , :class => "ncbi_taxon_ids" %>
     </p>
     <p>
-      <%= button_to_function "Remove Pathogen", "this.up('.pathogen').remove()", 
-      :class => "remove_pathogen" %>
+      <%= button_to_function "Remove Pathogen",
+        "this.up('.pathogen').remove()", :class => "remove_pathogen" %>
     </p>
   <% end %>
   <script type="text/javascript">

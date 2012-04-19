@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :medsa_content do
-    legume_id 1
     overview "this is the overview"
     ncbi_taxon_id "1234"
     grin_taxon_id "6789"
@@ -16,5 +15,7 @@ FactoryGirl.define do
     user_id "1"
     medsa_selected_reference { association(:medsa_selected_reference) }
     medsa_genome_summary { association(:medsa_genome_summary) }
+    legume
+    maps "nice map!"
   end
 end

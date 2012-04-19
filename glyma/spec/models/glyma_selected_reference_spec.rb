@@ -4,9 +4,9 @@ describe GlymaSelectedReference do
   it "has zero records" do
     GlymaSelectedReference.count.should == 0
   end
-  
+
   it "has one record" do
-    Factory.create(:glyma_selected_reference)
+    FactoryGirl.create(:glyma_selected_reference)
     GlymaSelectedReference.count.should == 1
   end
 end

@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :vigun_content do
-    legume_id 1
     overview "this is the overview"
     ncbi_taxon_id "1234"
     grin_taxon_id "6789"
@@ -16,5 +15,7 @@ FactoryGirl.define do
     user_id "1"
     vigun_selected_reference { association(:vigun_selected_reference) }
     vigun_genome_summary { association(:vigun_genome_summary) }
+    legume
+    maps "nice map!"
   end
 end

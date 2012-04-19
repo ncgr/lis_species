@@ -1,9 +1,1 @@
-RSpec Test Suite
-
-Ken Seal - NCGR
-
-Species sites under lis_species contain duplicate models found under lis_site.
-The duplicate model tests can be found under lis_site/spec. The goal of
-the species test suite is to test unique models, controllers, etc.
-
-For more information see lis_site/spec.
+Start the test rubycas-server before running specs!

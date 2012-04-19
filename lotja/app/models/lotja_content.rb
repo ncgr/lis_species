@@ -6,32 +6,32 @@ class LotjaContent < ActiveRecord::Base
   has_one     :lotja_resource
   has_one     :lotja_genome_summary
   has_one     :lotja_selected_reference
-  
-  has_many :pathogens, 
-    :primary_key => "legume_id", 
+
+  has_many :pathogens,
+    :primary_key => "legume_id",
     :foreign_key => "legume_id",
     :dependent => :destroy
-  has_many :nodulators, 
-    :primary_key => "legume_id", 
+  has_many :nodulators,
+    :primary_key => "legume_id",
     :foreign_key => "legume_id",
     :dependent => :destroy
-  has_many :reference_datasets, 
-    :primary_key => "legume_id", 
+  has_many :reference_datasets,
+    :primary_key => "legume_id",
     :foreign_key => "legume_id",
     :dependent => :destroy
-  has_many :resources, 
-    :primary_key => "legume_id", 
+  has_many :resources,
+    :primary_key => "legume_id",
     :foreign_key => "legume_id",
     :dependent => :destroy
-  
-  accepts_nested_attributes_for :lotja_selected_reference, 
+
+  accepts_nested_attributes_for :lotja_selected_reference,
     :lotja_genome_summary, :update_only => true
-  
+
   validates_associated :resources, :reference_datasets
   validates_format_of :wiki_link, :with => URI::regexp(%w(http https)),
     :allow_blank => true, :message => ' is not valid. Please include a valid protocol.'
-  
-  after_update :save_pathogens, :save_nodulators, :save_reference_datasets, 
+
+  after_update :save_pathogens, :save_nodulators, :save_reference_datasets,
     :save_resources
 
   #
@@ -42,7 +42,7 @@ class LotjaContent < ActiveRecord::Base
       pathogens.build(a) unless attributes_empty?(a)
     end
   end
-  
+
   #
   # Edit pathogen attributes.
   #
@@ -56,7 +56,7 @@ class LotjaContent < ActiveRecord::Base
       end
     end
   end
-  
+
   #
   # Save the edits after update.
   #
@@ -65,7 +65,7 @@ class LotjaContent < ActiveRecord::Base
       p.save(:validate => false)
     end
   end
-  
+
   #
   # Build submitted nodulator attributes.
   #
@@ -74,7 +74,7 @@ class LotjaContent < ActiveRecord::Base
       nodulators.build(a) unless attributes_empty?(a)
     end
   end
-  
+
   #
   # Edit nodulator attributes.
   #
@@ -88,7 +88,7 @@ class LotjaContent < ActiveRecord::Base
       end
     end
   end
-  
+
   #
   # Save the edits after update.
   #
@@ -97,7 +97,7 @@ class LotjaContent < ActiveRecord::Base
       p.save(:validate => false)
     end
   end
-  
+
   #
   # Build submitted reference datasets attributes.
   #
@@ -106,7 +106,7 @@ class LotjaContent < ActiveRecord::Base
       reference_datasets.build(a) unless attributes_empty?(a)
     end
   end
-  
+
   #
   # Edit reference datasets attributes.
   #
@@ -120,7 +120,7 @@ class LotjaContent < ActiveRecord::Base
       end
     end
   end
-  
+
   #
   # Save the edits after update.
   #
@@ -129,7 +129,7 @@ class LotjaContent < ActiveRecord::Base
       r.save(:validate => false)
     end
   end
-  
+
   #
   # Build submitted resources attributes.
   #
@@ -138,7 +138,7 @@ class LotjaContent < ActiveRecord::Base
       resources.build(a) unless attributes_empty?(a)
     end
   end
-  
+
   #
   # Edit resources attributes.
   #
@@ -152,7 +152,7 @@ class LotjaContent < ActiveRecord::Base
       end
     end
   end
-  
+
   #
   # Save the edits after update.
   #
@@ -161,7 +161,7 @@ class LotjaContent < ActiveRecord::Base
       r.save(:validate => false)
     end
   end
-  
+
   #
   # Are the attributes empty?
   #

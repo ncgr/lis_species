@@ -17,7 +17,7 @@ module GlymaContentsHelper
   #
   def add_pathogen_link(name, disabled = false)
     button_to_function name, :id => "add_pathogen", :disabled => disabled do |page|
-      page.insert_html :bottom, :pathogens, :partial => "pathogens", 
+      page.insert_html :bottom, :pathogens, :partial => "pathogens",
         :object => Pathogen.new
     end
   end
@@ -27,7 +27,7 @@ module GlymaContentsHelper
   #
   def add_nodulator_link(name, disabled = false)
     button_to_function name, :id => "add_nodulator", :disabled => disabled do |page|
-      page.insert_html :bottom, :nodulators, :partial => "nodulators", 
+      page.insert_html :bottom, :nodulators, :partial => "nodulators",
         :object => Nodulator.new
     end
   end
@@ -37,7 +37,7 @@ module GlymaContentsHelper
   #
   def add_reference_dataset_link(name, disable = false)
     button_to_function name, :id => "add_reference_dataset", :disabled => disable do |page|
-      page.insert_html :bottom, :reference_datasets, :partial => "reference_datasets", 
+      page.insert_html :bottom, :reference_datasets, :partial => "reference_datasets",
         :object => ReferenceDataset.new
     end
   end
@@ -47,7 +47,7 @@ module GlymaContentsHelper
   #
   def add_resource_link(name, disabled = false)
     button_to_function name, :id => "add_resource", :disabled => disabled do |page|
-      page.insert_html :bottom, :resources, :partial => "resources", 
+      page.insert_html :bottom, :resources, :partial => "resources",
         :object => Resource.new
     end
   end
@@ -119,10 +119,10 @@ module GlymaContentsHelper
           data << "<div id='#{a}_information_dialog' title='#{title}'>#{details}</div>"
           data << " <a id='#{a}_information_opener' href='#'>Read More &raquo;</a>"
           # jQuery dialog box
-          data << "<script>$j(function($){$('##{a}_information_dialog').dialog(" + 
-            "{autoOpen:false,show:'blind',hide:'blind',width:450});" + 
-            "$('##{a}_information_opener').click(function(){" + 
-            "$('##{a}_information_dialog').dialog('open');return false;});});" + 
+          data << "<script>$j(function($){$('##{a}_information_dialog').dialog(" +
+            "{autoOpen:false,show:'blind',hide:'blind',width:450});" +
+            "$('##{a}_information_opener').click(function(){" +
+            "$('##{a}_information_dialog').dialog('open');return false;});});" +
             "</script>"
           data << "</td>"
         else

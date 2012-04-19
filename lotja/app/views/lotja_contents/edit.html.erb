@@ -3,15 +3,18 @@
 
 <h1>Edit Contents</h1>
 <% unless @content.user_id.blank? %>
-  <p>Last updated by <%= @content.user.first_name %> <%= @content.user.last_name %> on 
-	<%= @content.updated_at.to_s(:date_time_long) %>.</p>
+  <p>
+    Last updated by <%= @content.user.first_name %>
+    <%= @content.user.last_name %> on
+	  <%= @content.updated_at.to_s(:date_time_long) %>.
+  </p>
 <% end %>
 <p><%= link_to raw("Return Home &raquo;"), root_path %></p>
-<%= form_for @content, :html => {:multipart => true, :onsubmit => "processingOnSubmit()"} do |f| %>
+<%= form_for @content, :html => { :multipart => true, :onsubmit => "processingOnSubmit()" } do |f| %>
   <%= render "shared/error_messages", :target => @content %>
 
 	<p><%= f.submit "Update Contents", :id => "submit", :class => "submit" %></p>
-  
+
   <h3>Overview</h3>
   <p>
     <%= f.label :overview, "Overview:" %><br />
@@ -19,11 +22,11 @@
 	</p>
 	<p>
     <%= f.label :ncbi_taxon_id, "NCBI Taxon ID:" %><br />
-    <%= f.text_field :ncbi_taxon_id %> 
+    <%= f.text_field :ncbi_taxon_id %>
   </p>
 	<p>
     <%= f.label :grin_taxon_id, "USDA-ARS GRIN Taxon ID:" %><br />
-    <%= f.text_field :grin_taxon_id %> 
+    <%= f.text_field :grin_taxon_id %>
   </p>
 	<p>
     <%= f.label :special_interest, "Of Special Interest:" %><br />
@@ -31,13 +34,14 @@
   </p>
 	<p>
 		<%= f.label :nodulation_type, "Nodulation Type:" %>
-    <%= f.select :nodulation_type, [['--Select--',''],['Determinate','Determinate'],['Indeterminate','Indeterminate']] %>
+    <%= f.select :nodulation_type, MENUS['nodulation_type'] %>
   </p>
 	<div id="nodulation_type_information">
-     <p>
-        <%= f.label :nodulation_type_information, "Nodulation Information:" %><br />
-        <%= f.text_area :nodulation_type_information %>
-     </p>
+    <p>
+      <%= f.label :nodulation_type_information, "Nodulation Information:" %>
+      <br />
+      <%= f.text_area :nodulation_type_information %>
+    </p>
   </div>
 
 	<div id="nodulators">
@@ -45,44 +49,47 @@
 		<%= render :partial => "nodulators", :collection => @content.nodulators %>
 	</div>
 	<p><%= add_nodulator_link "Add Nodulator" %></p>
-	
+
 	<p>
     <%= f.label :flowering_type, "Flowering Type:" %>
-    <%= f.select :flowering_type, [['--Select--',''],['Short Day','Short Day'],['Long Day','Long Day']] %>
+    <%= f.select :flowering_type, MENUS['flowering_type'] %>
   </p>
   <div id="flowering_type_information">
-     <p>
-       <%= f.label :flowering_type_information, "Flowering Information:" %><br />
-       <%= f.text_area :flowering_type_information %>
-     </p>
+    <p>
+      <%= f.label :flowering_type_information, "Flowering Information:" %>
+      <br />
+      <%= f.text_area :flowering_type_information %>
+    </p>
   </div>
 	<p>
      <%= f.label :pollination_type, "Pollination Type:" %>
-     <%= f.select :pollination_type, [['--Select--',''],['Wind','Wind'],['Insect','Insect'],['Self','Self'],['Bird','Bird'],['Bat','Bat']] %>
+     <%= f.select :pollination_type, MENUS['pollination_type'] %>
   </p>
   <div id="pollination_type_information">
-     <p>
-       <%= f.label :pollination_type_information, "Pollination Information:" %><br />
-       <%= f.text_area :pollination_type_information %>
-     </p>
+    <p>
+      <%= f.label :pollination_type_information, "Pollination Information:" %>
+      <br />
+      <%= f.text_area :pollination_type_information %>
+    </p>
   </div>
 	<p>
     <%= f.label :self_incompatibility, "Mating System:" %>
-    <%= f.select :self_incompatibility, [['--Select--',''],['Predominately Inbreeding','Predominately Inbreeding'],['Predominantly Outcrossing','Predominantly Outcrossing']] %>
+    <%= f.select :self_incompatibility, MENUS['self_incompatibility'] %>
   </p>
-	
+
 	<div id="pathogens">
 		<p><strong>Known Pathogens</strong></p>
 		<%= render :partial => "pathogens", :collection => @content.pathogens %>
 	</div>
 	<p><%= add_pathogen_link "Add Pathogen" %></p>
-	
+
 	<p>
-    <%= f.label :wiki_link, "Link to Wikipedia Page (include http://):" %><br />
+    <%= f.label :wiki_link, "Link to Wikipedia Page (include http://):" %>
+    <br />
     <%= f.text_field :wiki_link %>
   </p>
 	<hr />
-	
+
 	<%= f.fields_for :lotja_genome_summary do |g| %>
 		<h3>Genome Summary</h3>
 		<p>
@@ -99,91 +106,115 @@
 	  </p>
 		<div id="genome_size_information">
 	    <p>
-	      <%= g.label :genome_size_information, "Genome Size Information:" %><br />
+        <%= g.label :genome_size_information, "Genome Size Information:" %>
+        <br />
 	      <%= g.text_area :genome_size_information %>
 	    </p>
 	  </div>
 		<p>
 	    <%= g.label :ploidy_type, "Ploidy Type:" %>
-	    <%= g.select :ploidy_type, [['--Select--',''],['Auto','Auto'],['Allo-Tetraploid','Allo-Tetraploid']] %>
+	    <%= g.select :ploidy_type, MENUS['ploidy_type'] %>
 	  </p>
 		<p>
 	    <%= g.label :gc_content_genome, "% GC Content of Genome:" %><br />
 	    <%= g.text_field :gc_content_genome %>
 	  </p>
 		<div id="gc_content_genome_information">
-	     <p>
-	       <%= g.label :gc_content_genome_information, "GC Content of Genome Information:" %><br />
-	       <%= g.text_area :gc_content_genome_information %>
-	     </p>
+	    <p>
+        <%= g.label :gc_content_genome_information,
+          "GC Content of Genome Information:" %>
+        <br />
+	      <%= g.text_area :gc_content_genome_information %>
+	    </p>
 	  </div>
 		<p>
-	    <%= g.label :gc_content_transcriptome, "% GC Content of Transcriptome:" %><br />
+      <%= g.label :gc_content_transcriptome,
+        "% GC Content of Transcriptome:" %>
+      <br />
 	    <%= g.text_field :gc_content_transcriptome %>
 	  </p>
 		<div id="gc_content_transcriptome_information">
-	     <p>
-	       <%= g.label :gc_content_transcriptome_information, "GC Content of Transcriptome Information:" %><br />
-	       <%= g.text_area :gc_content_transcriptome_information %>
-	     </p>
+	    <p>
+        <%= g.label :gc_content_transcriptome_information,
+          "GC Content of Transcriptome Information:" %>
+        <br />
+	      <%= g.text_area :gc_content_transcriptome_information %>
+	    </p>
 	  </div>
 		<p>
-	    <%= g.label :chloroplast_genome_size, "Chloroplast Genome Size (kbp):" %><br />
+      <%= g.label :chloroplast_genome_size,
+        "Chloroplast Genome Size (kbp):" %>
+      <br />
 	    <%= g.text_field :chloroplast_genome_size %>
 	  </p>
 		<div id="chloroplast_genome_size_information">
-	     <p>
-	       <%= g.label :chloroplast_genome_size_information, "Chloroplast Genome Size Information:" %><br />
-	       <%= g.text_area :chloroplast_genome_size_information %>
-	     </p>
+	    <p>
+        <%= g.label :chloroplast_genome_size_information,
+          "Chloroplast Genome Size Information:" %>
+        <br />
+	      <%= g.text_area :chloroplast_genome_size_information %>
+	    </p>
 	  </div>
 		<p>
-	    <%= g.label :chloroplast_accession_number, "Chloroplast NCBI Accession Number:" %><br />
+      <%= g.label :chloroplast_accession_number,
+        "Chloroplast NCBI Accession Number:" %>
+      <br />
 	    <%= g.text_field :chloroplast_accession_number %>
 	  </p>
 		<p>
-	    <%= g.label :mitochondria_genome_size, "Mitochondria Genome Size (kbp):" %><br />
+      <%= g.label :mitochondria_genome_size,
+        "Mitochondria Genome Size (kbp):" %>
+      <br />
 	    <%= g.text_field :mitochondria_genome_size %>
 	  </p>
 		<div id="mitochondria_genome_size_information">
-	     <p>
-	       <%= g.label :mitochondria_genome_size_information, "Mitochondria Genome Size Information:" %><br />
-	       <%= g.text_area :mitochondria_genome_size_information %>
-	     </p>
+	    <p>
+        <%= g.label :mitochondria_genome_size_information,
+          "Mitochondria Genome Size Information:" %>
+        <br />
+	      <%= g.text_area :mitochondria_genome_size_information %>
+	    </p>
 	  </div>
 		<p>
-	    <%= g.label :mitochondria_accession_number, "Mitochondria NCBI Accession Number:" %><br />
+      <%= g.label :mitochondria_accession_number,
+        "Mitochondria NCBI Accession Number:" %>
+      <br />
 	    <%= g.text_field :mitochondria_accession_number %>
 	  </p>
   <% end %>
   <hr />
-    
+
   <div id="resources">
      <h3>Resources</h3>
      <%= render :partial => "resources", :collection => @content.resources %>
   </div>
   <p><%= add_resource_link "Add Resource" %></p>
   <hr />
-	
+
   <div id="reference_datasets">
     <h3>Reference Datasets</h3>
-      <%= render :partial => "reference_datasets", :collection => @content.reference_datasets %>
+    <%= render :partial => "reference_datasets",
+      :collection => @content.reference_datasets %>
   </div>
-  <p><%= add_reference_dataset_link "Add Reference Dataset", !has_role?(:superuser) %></p>
+  <p>
+    <%= add_reference_dataset_link "Add Reference Dataset",
+      !has_role?(:superuser) %>
+  </p>
   <hr />
-    
+
 	<%= f.fields_for :lotja_selected_reference do |s| %>
 	  <h3>References</h3>
 	  <p>
-		  Please add references in reverse chronological order using 
-		  <%= link_to 'PubMed reference format', 'http://www.nlm.nih.gov/bsd/policy/cit_format.html' %>.
+		  Please add references in reverse chronological order using
+      <%= link_to 'PubMed reference format',
+        'http://www.nlm.nih.gov/bsd/policy/cit_format.html' %>.
 	  </p>
 	  <p>
 	     <%= s.label :selected_references, "Selected References:" %><br />
 	     <%= s.text_area :selected_references %>
 	  </p>
 	<% end %>
-	
+
   <h3>Maps</h3>
   <p>
     <%= f.label :maps, "Maps:" %><br />
@@ -195,7 +226,7 @@
 
 <script type="text/javascript">
 	/** Load CKEditor Instances **/
-  CKEDITOR.replaceAll( function(textarea, config){ 
+  CKEDITOR.replaceAll( function(textarea, config){
     config.toolbar = "<%= @tool_bar %>";
   });
   CKFinder.setupCKEditor( null, '/javascripts/ckfinder/');
@@ -211,37 +242,37 @@
     'lotja_content_flowering_type',
     'flowering_type_information'
   );
-	
+
 	/** Pollination **/
   showHideElementHelper(
     'lotja_content_pollination_type',
     'pollination_type_information'
   );
-	
+
 	/** Genome Size **/
   showHideElementHelper(
     'lotja_content_lotja_genome_summary_attributes_genome_size',
     'genome_size_information'
   );
-	
+
 	/** GC Genome Content **/
   showHideElementHelper(
     'lotja_content_lotja_genome_summary_attributes_gc_content_genome',
     'gc_content_genome_information'
   );
-	
+
 	/** GC Transcriptome Content **/
   showHideElementHelper(
     'lotja_content_lotja_genome_summary_attributes_gc_content_transcriptome',
     'gc_content_transcriptome_information'
   );
-	
+
 	/** Chloroplast Genome Content **/
   showHideElementHelper(
     'lotja_content_lotja_genome_summary_attributes_chloroplast_genome_size',
     'chloroplast_genome_size_information'
   );
-	
+
 	/** Mitochondria Genome Content **/
   showHideElementHelper(
     'lotja_content_lotja_genome_summary_attributes_mitochondria_genome_size',
@@ -262,7 +293,7 @@
 
   /** GRIN Taxon URL **/
   $('lotja_content_grin_taxon_id').observe('blur', function(e) {
-    el = e.element();  
-    verifyTaxonIdUrl(el, el.value, grin_base_url);    
+    el = e.element();
+    verifyTaxonIdUrl(el, el.value, grin_base_url);
   });
 </script>

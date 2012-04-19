@@ -2,7 +2,7 @@
 
 <% permitted_to? :update, :vigra_contents do %>
   <p>
-    <%= link_to raw("Edit Contents &raquo;"), 
+    <%= link_to raw("Edit Contents &raquo;"),
     edit_vigra_content_path(@content.id) %>
   </p>
 <% end %>
@@ -62,7 +62,7 @@
         <%= parse_resources(@content.resources.public_resources) %>
       <% end %>
     </div>
-  </div>	
+  </div>
 
   <div id="tabs-4">
     <h2>Reference Data</h2>

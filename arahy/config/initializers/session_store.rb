@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-Arahy::Application.config.session_store :active_record_store, 
+Arahy::Application.config.session_store :active_record_store,
   :key    => '_lis_site_session',
   :domain => :all
 

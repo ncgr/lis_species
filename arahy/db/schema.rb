@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120224223801) do
 
   create_table "arahy_contents", :force => true do |t|
     t.text     "overview"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "arahy_genome_summaries", :force => true do |t|
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "cajca_genome_summaries", :force => true do |t|
@@ -116,6 +118,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "chafs_genome_summaries", :force => true do |t|
@@ -159,6 +162,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "cicar_genome_summaries", :force => true do |t|
@@ -207,6 +211,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "glyma_genome_summaries", :force => true do |t|
@@ -258,6 +263,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "lencu_genome_summaries", :force => true do |t|
@@ -300,6 +306,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "lotja_genome_summaries", :force => true do |t|
@@ -343,6 +350,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "lupal_genome_summaries", :force => true do |t|
@@ -386,6 +394,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "lupan_genome_summaries", :force => true do |t|
@@ -429,6 +438,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "medsa_genome_summaries", :force => true do |t|
@@ -472,6 +482,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "medtr_genome_summaries", :force => true do |t|
@@ -549,6 +560,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "pea_genome_summaries", :force => true do |t|
@@ -592,6 +604,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "phacn_genome_summaries", :force => true do |t|
@@ -635,6 +648,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "phavu_genome_summaries", :force => true do |t|
@@ -714,6 +728,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "tripr_genome_summaries", :force => true do |t|
@@ -787,6 +802,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "vicfa_genome_summaries", :force => true do |t|
@@ -830,6 +846,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "vigra_genome_summaries", :force => true do |t|
@@ -873,6 +890,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "legume_id",                    :null => false
+    t.text     "maps"
   end
 
   create_table "vigun_genome_summaries", :force => true do |t|

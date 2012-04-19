@@ -3,12 +3,12 @@ class ArahyContentsController < ApplicationController
 
   before_filter :authenticate_user!, :except => :index
   filter_access_to :edit, :update
-  
+
   before_filter :set_tool_bar, :only => [:edit, :update]
-  
+
   def index
     @content = ArahyContent.first
-    
+
     # Attributes for table helper
     @overview_attr = ["ncbi_taxon_id","grin_taxon_id","season",
       "nodulation_type","flowering_type","pollination_type",
@@ -22,18 +22,18 @@ class ArahyContentsController < ApplicationController
   def edit
     @content = ArahyContent.find(params[:id])
   end
-  
+
   def update
     params[:arahy_content][:existing_pathogens_attributes] ||= {}
     params[:arahy_content][:existing_nodulators_attributes] ||= {}
     params[:arahy_content][:existing_reference_datasets_attributes] ||= {}
     params[:arahy_content][:existing_resources_attributes] ||= {}
-    
+
     @content = ArahyContent.find(params[:id])
-    
+
     @content.updated_at = Time.now
     @content.user_id    = current_user.id
-    
+
     if @content.update_attributes(params[:arahy_content])
       flash[:error] = "Successfully updated contents."
       redirect_to root_path
@@ -42,5 +42,5 @@ class ArahyContentsController < ApplicationController
       render :edit
     end
   end
-  
+
 end

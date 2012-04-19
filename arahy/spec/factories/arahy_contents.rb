@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :arahy_content do
-    legume_id 1
     overview "this is the overview"
     ncbi_taxon_id "1234"
     grin_taxon_id "6789"
@@ -16,5 +15,7 @@ FactoryGirl.define do
     user_id "1"
     arahy_selected_reference { association(:arahy_selected_reference) }
     arahy_genome_summary { association(:arahy_genome_summary) }
+    legume
+    maps "nice map!"
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "EditPhacnContents" do
+describe "EditContents" do
 
   def create_user(role)
     @user = FactoryGirl.create(:user_information)
@@ -28,11 +28,8 @@ describe "EditPhacnContents" do
     fill_in "Username", with: @user.username
     fill_in "Password", with: @user.password
     click_button "LOGIN"
-    current_path.should eq(root_path)
 
     click_link "Edit Contents"
-    current_path.should eq(edit_phacn_content_path(@content.id))
-
     fill_in "NCBI Taxon ID", :with => "333"
     fill_in "USDA-ARS GRIN Taxon ID", :with => "555"
     select "Determinate", :from => "Nodulation Type"
@@ -85,11 +82,8 @@ describe "EditPhacnContents" do
     fill_in "Username", with: @user.username
     fill_in "Password", with: @user.password
     click_button "LOGIN"
-    current_path.should eq(root_path)
 
     click_link "Edit Contents"
-    current_path.should eq(edit_phacn_content_path(@content.id))
-
     fill_in "NCBI Taxon ID", :with => "333"
     fill_in "USDA-ARS GRIN Taxon ID", :with => "555"
     select "Determinate", :from => "Nodulation Type"
@@ -137,7 +131,6 @@ describe "EditPhacnContents" do
     fill_in "Username", with: @user.username
     fill_in "Password", with: @user.password
     click_button "LOGIN"
-    current_path.should eq(root_path)
 
     page.body.should_not include("Edit Contents")
 
@@ -153,7 +146,6 @@ describe "EditPhacnContents" do
     fill_in "Username", with: @user.username
     fill_in "Password", with: @user.password
     click_button "LOGIN"
-    current_path.should eq(root_path)
 
     page.body.should_not include("Edit Contents")
 

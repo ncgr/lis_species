@@ -34,7 +34,6 @@ do
             $dir/Rakefile \
             $dir/README \
             $dir/script \
-            $dir/test \
             $dir/spec \
             $dir/vendor
      fi

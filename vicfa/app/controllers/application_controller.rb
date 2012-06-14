@@ -1,7 +1,7 @@
 
 class ApplicationController < ActionController::Base
 
-  before_filter :check_existing_cas_session, :set_ckfinder_cookie
+  before_filter :check_existing_cas_session, :set_ckfinder_session
   protect_from_forgery
 
   #
@@ -25,15 +25,13 @@ class ApplicationController < ActionController::Base
   end
 
   #
-  # Set CKFinder_Role cookie to user's most privileged role.
+  # Set CKFinder_Role session to user's most privileged role.
   #
-  def set_ckfinder_cookie
+  def set_ckfinder_session
     if user_signed_in?
       roles = current_user.roles
-      roles.sort_by! {|r| r.id}
-      cookies.signed[:ckfinder_role] = { :value => roles[0].name.downcase, :domain => :all }
-    else
-      cookies.delete :ckfinder_role, :domain => :all
+      roles.sort_by! { |r| r.id }
+      session[:ckfinder_role] = { :value => roles[0].name.downcase }
     end
   end
 

@@ -1,6 +1,7 @@
 <?php
 
-require_once 'license.php';
+require 'license.php';
+require 'db_connect.php';
 
 /*
  * ### CKFinder : Configuration File - Basic Instructions
@@ -23,21 +24,36 @@ require_once 'license.php';
  */
 function CheckAuthentication()
 {
-    // Decode the user's most privileged role.
-    // The $_COOKIE['ckfinder_role'] is set on login from <subdomain>.comparative-legumes.org.
-    $cookie = $_COOKIE['ckfinder_role'];
+
+    //
+    // Validate the user's existing session and most privileged role.
+    //
+    // Sessions are stored in the database. Lookup a sesion via the cookie
+    // _lis_site_session. If it's valid, extract the ckfinder_role value
+    // and validate it.
+    //
+
+    $cookie = $_COOKIE['_lis_site_session'];
     $value = explode('--', $cookie);
-    $value = base64_decode($value[0]);
-    $role = preg_replace('/[^a-z]/', '', $value);
+    $value = $value[0];
+
+    $conn = dbConnect();
+    $query = mysql_real_escape_string($value);
+    $session = execQuery("SELECT * FROM sessions WHERE session_id = '$query'", "dbResultToArray");
+
+    $session_data = explode("\n", $session[0]['data']);
 
     $valid_roles = array("superuser", "admin");
 
-    // $_COOKIE['tgt'] is set on login from cas.comparative-legumes.org.
-	if ($_COOKIE['tgt'] && $role) {
-	    if (in_array($role, $valid_roles)) {
-	        return true;
-	    }
-	}
+    foreach ($session_data as $s) {
+        $role = preg_replace('/[^a-z]/', '', base64_decode($s));
+        for ($i = 0; $i < count($valid_roles); $i++) {
+            if (strstr($role, $valid_roles[$i])) {
+                return true;
+            }
+        }
+    }
+
 	return false;
 }
 

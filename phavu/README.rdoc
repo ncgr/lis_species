@@ -1,0 +1,7 @@
+= LIS Species Phaseolus vulgaris (common bean)
+
+http://phavu.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

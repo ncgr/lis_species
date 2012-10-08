@@ -1,0 +1,7 @@
+= LIS Species Lupinus albus (white lupin)
+
+http://lupal.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

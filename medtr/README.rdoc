@@ -1,0 +1,7 @@
+= LIS Species Medicago truncatula (barrel medic)
+
+http://medtr.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

@@ -1,0 +1,7 @@
+= LIS Species Pisum sativum (garden pea)
+
+http://pea.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

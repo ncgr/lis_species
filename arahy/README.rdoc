@@ -1,0 +1,7 @@
+= LIS Species Arachis hypogaea (peanut)
+
+http://arahy.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

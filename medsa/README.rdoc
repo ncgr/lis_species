@@ -1,0 +1,7 @@
+= LIS Species Medicago sativa (alfalfa)
+
+http://medsa.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

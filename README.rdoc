@@ -1,0 +1,7 @@
+= LIS Species Pages
+
+http://comparative-legumes.org/pages/species
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

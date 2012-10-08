@@ -1,0 +1,7 @@
+= LIS Species Vicia faba (broad bean)
+
+http://vicfa.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

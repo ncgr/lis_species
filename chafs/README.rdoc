@@ -1,0 +1,7 @@
+= LIS Species Chamaecrista fasciculata (partridge pea)
+
+http://chafs.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

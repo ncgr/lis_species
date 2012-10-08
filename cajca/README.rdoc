@@ -1,0 +1,7 @@
+= LIS Species Cajanus cajan (pigeon pea)
+
+http://cajca.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

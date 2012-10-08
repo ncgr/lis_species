@@ -1,0 +1,7 @@
+= LIS Species Cicer arietinum (chickpea)
+
+http://cicar.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

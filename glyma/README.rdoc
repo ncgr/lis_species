@@ -1,0 +1,7 @@
+= LIS Species Glycine max (soybean)
+
+http://glyma.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

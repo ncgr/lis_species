@@ -1,0 +1,7 @@
+= LIS Species Lotus japonicus (birdsfoot trefoil)
+
+http://lotja.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

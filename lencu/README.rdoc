@@ -1,0 +1,7 @@
+= LIS Species Lens culinaris (lentil)
+
+http://lencu.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

@@ -1,0 +1,7 @@
+= LIS Species Vigna unguiculata (cowpea)
+
+http://vigun.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

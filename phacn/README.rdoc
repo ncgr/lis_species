@@ -1,0 +1,7 @@
+= LIS Species Phaseolus coccineus (scarlet runner bean)
+
+http://phacn.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

@@ -1,4 +1,0 @@
-#!/bin/bash
-
-rails s --environment=development --port=7758 --debugger
-

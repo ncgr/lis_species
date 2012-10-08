@@ -1,0 +1,7 @@
+= LIS Species Trifolium pratense (red clover)
+
+http://tripr.comparative-legumes.org/
+
+== License
+
+MIT License. Copyright NCGR http://ncgr.org

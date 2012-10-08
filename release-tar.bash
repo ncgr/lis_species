@@ -32,7 +32,7 @@ do
             $dir/lib \
             $dir/public \
             $dir/Rakefile \
-            $dir/README \
+            $dir/README.rdoc \
             $dir/script \
             $dir/spec \
             $dir/vendor

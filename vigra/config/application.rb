@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Vigra
+module Arahy
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -38,5 +38,9 @@ module Vigra
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Configure maintenance mode.
+    config.maintenance_mode.if = Proc.new { |env| false } # Set to true to enable.
+    config.maintenance_mode.response = Proc.new { |env| [503, {'Content-Type' => 'text/html'}, [Rails.root.join("public/503.html").read]] }
   end
 end

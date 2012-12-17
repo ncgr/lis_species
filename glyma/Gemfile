@@ -9,6 +9,8 @@ gem 'rubycas-client', '~> 2.2.1'
 gem 'devise_cas_authenticatable', '1.1.1'
 gem 'declarative_authorization', '~> 0.5.2'
 
+gem 'rack-maintenance_mode'
+
 group :development, :test do
   gem 'debugger', :require => 'debugger'
   gem 'rspec-rails', '~> 2.6'

@@ -8,10 +8,11 @@
 SCRIPT=`basename $0`
 INFO="INFO"
 COPY="utils.bash"
+README="README.rdoc"
 
 for dir in $(ls -d *)
 do
-    if [[ $dir == $SCRIPT || $dir == $INFO || $dir == $COPY ]]
+    if [[ $dir == $SCRIPT || $dir == $INFO || $dir == $COPY || $dir == $README ]]
     then
         continue
     else

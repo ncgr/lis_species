@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "EditContents" do
+describe "EditucicarContents" do
 
   def create_user(role)
     @user = FactoryGirl.create(:user_information)
@@ -14,7 +14,7 @@ describe "EditContents" do
     @content = FactoryGirl.create(:cicar_content)
 
     Capybara.current_driver = :selenium
-    set_host "silicon.ncgr.org:53330"
+    set_host hostname
   end
 
   # Skip CKEditor instance testing since it requires JavaScript.

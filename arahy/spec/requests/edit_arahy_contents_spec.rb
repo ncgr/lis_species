@@ -14,7 +14,7 @@ describe "EditArahyContents" do
     @content = FactoryGirl.create(:arahy_content)
 
     Capybara.current_driver = :selenium
-    set_host "silicon.ncgr.org:53330"
+    set_host hostname
   end
 
   # Skip CKEditor instance testing since it requires JavaScript.

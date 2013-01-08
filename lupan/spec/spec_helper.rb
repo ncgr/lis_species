@@ -44,3 +44,10 @@ RSpec.configure do |config|
   # Host Macros
   config.include(HostMacros)
 end
+
+#
+# Helper to set current hostname and port for Capybara.
+#
+def hostname
+  `hostname` + ":53330"
+end

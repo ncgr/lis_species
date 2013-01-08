@@ -38,5 +38,9 @@ module Phavu
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Configure maintenance mode.
+    config.maintenance_mode.if = Proc.new { |env| false } # Set to true to enable.
+    config.maintenance_mode.response = Proc.new { |env| [503, {'Content-Type' => 'text/html'}, [Rails.root.join("public/503.html").read]] }
   end
 end

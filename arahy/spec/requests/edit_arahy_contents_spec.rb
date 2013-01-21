@@ -2,32 +2,20 @@ require 'spec_helper'
 
 describe "EditArahyContents" do
 
-  def create_user(role)
-    @user = FactoryGirl.create(:user_information)
-    role = Role.where({ :name => "#{role}" }).first
-    UserRole.where({ :user_id => @user.id }).first.destroy
-    UserRole.create!([{ :user_id => @user.id, :role_id => role.id }])
-  end
-
   before(:each) do
     create_roles
     @content = FactoryGirl.create(:arahy_content)
-
-    Capybara.current_driver = :selenium
-    set_host hostname
+    set_host
   end
 
   # Skip CKEditor instance testing since it requires JavaScript.
   # Ex: CKEditor.isntances['id'].setData('foo')
 
   it "as superuser" do
-    create_user("superuser")
+    user = create_user("superuser")
 
     visit arahy_contents_path
     click_link "Sign In"
-    fill_in "Username", with: @user.username
-    fill_in "Password", with: @user.password
-    click_button "LOGIN"
 
     click_link "Edit Contents"
     fill_in "NCBI Taxon ID", :with => "333"
@@ -75,13 +63,10 @@ describe "EditArahyContents" do
   end
 
   it "as admin" do
-    create_user("admin")
+    user = create_user("admin")
 
     visit arahy_contents_path
     click_link "Sign In"
-    fill_in "Username", with: @user.username
-    fill_in "Password", with: @user.password
-    click_button "LOGIN"
 
     click_link "Edit Contents"
     fill_in "NCBI Taxon ID", :with => "333"
@@ -124,13 +109,10 @@ describe "EditArahyContents" do
   end
 
   it "should not be able as editor" do
-    create_user("editor")
+    user = create_user("editor")
 
     visit arahy_contents_path
     click_link "Sign In"
-    fill_in "Username", with: @user.username
-    fill_in "Password", with: @user.password
-    click_button "LOGIN"
 
     page.body.should_not include("Edit Contents")
 
@@ -139,22 +121,15 @@ describe "EditArahyContents" do
   end
 
   it "should not be able as system_user" do
-    create_user("system_user")
+    user = create_user("system_user")
 
     visit arahy_contents_path
     click_link "Sign In"
-    fill_in "Username", with: @user.username
-    fill_in "Password", with: @user.password
-    click_button "LOGIN"
 
     page.body.should_not include("Edit Contents")
 
     visit edit_arahy_content_path(@content.id)
     page.body.should include("Sorry, your account has insufficient privileges for the requested resource.")
-  end
-
-  after(:all) do
-    Capybara.use_default_driver
   end
 
 end

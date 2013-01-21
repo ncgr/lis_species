@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120224223801) do
+ActiveRecord::Schema.define(:version => 20130118165213) do
 
   create_table "arahy_contents", :force => true do |t|
     t.text     "overview"
@@ -511,7 +511,7 @@ ActiveRecord::Schema.define(:version => 20120224223801) do
 
   create_table "meetings", :force => true do |t|
     t.string "title"
-    t.string "url"
+    t.string "url",        :limit => 4096
     t.date   "start_date"
     t.date   "end_date"
   end
@@ -670,30 +670,25 @@ ActiveRecord::Schema.define(:version => 20120224223801) do
     t.integer "phavu_content_id",                     :null => false
   end
 
-  create_table "phavu_resources", :force => true do |t|
-    t.text    "resources"
-    t.integer "phavu_content_id", :null => false
-  end
-
   create_table "phavu_selected_references", :force => true do |t|
     t.text    "selected_references"
     t.integer "phavu_content_id",    :null => false
   end
 
   create_table "reference_datasets", :force => true do |t|
-    t.integer "legume_id",                           :null => false
+    t.integer "legume_id",                              :null => false
     t.string  "reference_dataset_type"
     t.string  "description"
     t.string  "source"
-    t.string  "url"
+    t.string  "url",                    :limit => 4096
     t.integer "is_public",              :limit => 1
   end
 
   create_table "resources", :force => true do |t|
-    t.integer "legume_id",                  :null => false
+    t.integer "legume_id",                     :null => false
     t.string  "resource_type"
     t.string  "description"
-    t.string  "url"
+    t.string  "url",           :limit => 4096
     t.integer "is_public",     :limit => 1
   end
 

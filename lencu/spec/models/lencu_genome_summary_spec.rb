@@ -11,16 +11,20 @@ describe LencuGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @lencu_genome_summary = LencuGenomeSummary.create!({
-      :lencu_content_id => 1, :gc_content_genome => '22.5%'
+    ags = LencuContent.new.build_lencu_genome_summary({
+      :lencu_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @lencu_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @lencu_genome_summary = LencuGenomeSummary.create!({
-      :lencu_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = LencuContent.new.build_lencu_genome_summary({
+      :lencu_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @lencu_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

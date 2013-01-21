@@ -1,4 +1,3 @@
-
 class CicarContent < ActiveRecord::Base
 
   belongs_to  :user
@@ -23,6 +22,17 @@ class CicarContent < ActiveRecord::Base
     :primary_key => "legume_id",
     :foreign_key => "legume_id",
     :dependent => :destroy
+
+  attr_accessible :overview, :ncbi_taxon_id, :grin_taxon_id, :special_interest,
+    :nodulation_type, :nodulation_type_information, :flowering_type,
+    :flowering_type_information, :pollination_type,
+    :pollination_type_information, :self_incompatibility,
+    :inbreeding, :wiki_link, :updated_at, :user_id, :maps,
+    :new_pathogens_attributes, :existing_pathogens_attributes,
+    :new_nodulators_attributes, :existing_nodulators_attributes,
+    :new_reference_datasets_attributes, :existing_reference_datasets_attributes,
+    :new_resources_attributes, :existing_resources_attributes,
+    :cicar_genome_summary_attributes, :cicar_selected_reference_attributes
 
   accepts_nested_attributes_for :cicar_selected_reference,
     :cicar_genome_summary, :update_only => true

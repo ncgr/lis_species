@@ -11,16 +11,20 @@ describe VicfaGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @vicfa_genome_summary = VicfaGenomeSummary.create!({
-      :vicfa_content_id => 1, :gc_content_genome => '22.5%'
+    ags = VicfaContent.new.build_vicfa_genome_summary({
+      :vicfa_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @vicfa_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @vicfa_genome_summary = VicfaGenomeSummary.create!({
-      :vicfa_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = VicfaContent.new.build_vicfa_genome_summary({
+      :vicfa_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @vicfa_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

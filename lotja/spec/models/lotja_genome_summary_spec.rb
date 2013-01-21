@@ -11,16 +11,20 @@ describe LotjaGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @lotja_genome_summary = LotjaGenomeSummary.create!({
-      :lotja_content_id => 1, :gc_content_genome => '22.5%'
+    ags = LotjaContent.new.build_lotja_genome_summary({
+      :lotja_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @lotja_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @lotja_genome_summary = LotjaGenomeSummary.create!({
-      :lotja_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = LotjaContent.new.build_lotja_genome_summary({
+      :lotja_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @lotja_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

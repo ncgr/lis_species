@@ -11,16 +11,20 @@ describe VigraGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @vigra_genome_summary = VigraGenomeSummary.create!({
-      :vigra_content_id => 1, :gc_content_genome => '22.5%'
+    ags = VigraContent.new.build_vigra_genome_summary({
+      :vigra_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @vigra_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @vigra_genome_summary = VigraGenomeSummary.create!({
-      :vigra_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = VigraContent.new.build_vigra_genome_summary({
+      :vigra_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @vigra_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

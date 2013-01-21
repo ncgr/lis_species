@@ -11,16 +11,20 @@ describe GlymaGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @glyma_genome_summary = GlymaGenomeSummary.create!({
-      :glyma_content_id => 1, :gc_content_genome => '22.5%'
+    ags = GlymaContent.new.build_glyma_genome_summary({
+      :glyma_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @glyma_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @glyma_genome_summary = GlymaGenomeSummary.create!({
-      :glyma_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = GlymaContent.new.build_glyma_genome_summary({
+      :glyma_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @glyma_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

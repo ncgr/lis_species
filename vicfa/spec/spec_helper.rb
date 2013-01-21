@@ -41,13 +41,9 @@ RSpec.configure do |config|
   # Role Macros
   config.include(RoleMacros)
 
+  # User Macros
+  config.include(UserMacros)
+
   # Host Macros
   config.include(HostMacros)
-end
-
-#
-# Helper to set current hostname and port for Capybara.
-#
-def hostname
-  `hostname` + ":53330"
 end

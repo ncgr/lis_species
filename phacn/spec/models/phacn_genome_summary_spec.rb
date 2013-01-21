@@ -11,16 +11,20 @@ describe PhacnGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @phacn_genome_summary = PhacnGenomeSummary.create!({
-      :phacn_content_id => 1, :gc_content_genome => '22.5%'
+    ags = PhacnContent.new.build_phacn_genome_summary({
+      :phacn_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @phacn_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @phacn_genome_summary = PhacnGenomeSummary.create!({
-      :phacn_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = PhacnContent.new.build_phacn_genome_summary({
+      :phacn_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @phacn_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

@@ -11,16 +11,20 @@ describe CicarGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @cicar_genome_summary = CicarGenomeSummary.create!({
-      :cicar_content_id => 1, :gc_content_genome => '22.5%'
+    ags = CicarContent.new.build_cicar_genome_summary({
+      :cicar_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @cicar_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @cicar_genome_summary = CicarGenomeSummary.create!({
-      :cicar_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = CicarContent.new.build_cicar_genome_summary({
+      :cicar_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @cicar_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

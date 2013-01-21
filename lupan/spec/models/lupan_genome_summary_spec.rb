@@ -11,16 +11,20 @@ describe LupanGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @lupan_genome_summary = LupanGenomeSummary.create!({
-      :lupan_content_id => 1, :gc_content_genome => '22.5%'
+    ags = LupanContent.new.build_lupan_genome_summary({
+      :lupan_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @lupan_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @lupan_genome_summary = LupanGenomeSummary.create!({
-      :lupan_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = LupanContent.new.build_lupan_genome_summary({
+      :lupan_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @lupan_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

@@ -10,15 +10,15 @@
 <div id="tabs">
 
   <ul>
-    <li><a href="#tabs-1">Overview</a></li>
-    <li><a href="#tabs-2">Genome Summary</a></li>
-    <li><a href="#tabs-3">Resources</a></li>
-    <li><a href="#tabs-4">Reference Data</a></li>
-    <li><a href="#tabs-5">Selected References</a></li>
-    <li><a href="#tabs-6">Maps</a></li>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#genome_summary">Genome Summary</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#reference_data">Reference Data</a></li>
+    <li><a href="#selected_references">Selected References</a></li>
+    <li><a href="#maps">Maps</a></li>
   </ul>
 
-  <div id="tabs-1">
+  <div id="overview">
     <h2>Overview</h2>
     <div id="overview">
       <%= raw(@content.overview) %>
@@ -46,7 +46,7 @@
     <% end %>
   </div>
 
-  <div id="tabs-2">
+  <div id="genome_summary">
     <h2>Genome Summary</h2>
     <div id="genome_summary">
       <%= raw(@content.vigra_genome_summary.genome_summary) %>
@@ -55,7 +55,7 @@
     <%= parse_model_attributes(@content.vigra_genome_summary, @genome_attr) %>
   </div>
 
-  <div id="tabs-3">
+  <div id="resources">
     <h2>Resources</h2>
     <div id="resources">
       <% unless @content.resources.blank? %>
@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div id="tabs-4">
+  <div id="reference_data">
     <h2>Reference Data</h2>
     <div id="reference_datasets">
       <% unless @content.reference_datasets.blank? %>
@@ -73,14 +73,14 @@
     </div>
   </div>
 
-  <div id="tabs-5">
+  <div id="selected_references">
     <h2>Selected References</h2>
     <div id="selected_references">
       <%= raw(@content.vigra_selected_reference.selected_references) %>
     </div>
   </div>
 
-  <div id="tabs-6">
+  <div id="maps">
     <h2>Maps</h2>
     <div id="maps">
       <%= raw(@content.maps) %>

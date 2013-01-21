@@ -11,16 +11,20 @@ describe LupalGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @lupal_genome_summary = LupalGenomeSummary.create!({
-      :lupal_content_id => 1, :gc_content_genome => '22.5%'
+    ags = LupalContent.new.build_lupal_genome_summary({
+      :lupal_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @lupal_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @lupal_genome_summary = LupalGenomeSummary.create!({
-      :lupal_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = LupalContent.new.build_lupal_genome_summary({
+      :lupal_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @lupal_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

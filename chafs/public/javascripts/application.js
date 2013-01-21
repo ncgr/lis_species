@@ -46,7 +46,7 @@ function processingOnSubmit () {
 }
 
 /**
- * Present user with Taxon Id URL for verification. 
+ * Present user with Taxon Id URL for verification.
  */
 function verifyTaxonIdUrl (element, param, base_url) {
   if ($(element).next('a')) {
@@ -54,11 +54,11 @@ function verifyTaxonIdUrl (element, param, base_url) {
   }
   if (param != '') {
     $(element).insert({
-      after: new Element ('a', 
+      after: new Element ('a',
         {
-          'class': 'small', 
-          'target': '_blank', 
-          href: base_url + param 
+          'class': 'small',
+          'target': '_blank',
+          href: base_url + param
         }
       ).update('&nbsp;Verify URL &raquo;')
     });

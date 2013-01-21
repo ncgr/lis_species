@@ -11,16 +11,20 @@ describe VigunGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @vigun_genome_summary = VigunGenomeSummary.create!({
-      :vigun_content_id => 1, :gc_content_genome => '22.5%'
+    ags = VigunContent.new.build_vigun_genome_summary({
+      :vigun_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @vigun_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @vigun_genome_summary = VigunGenomeSummary.create!({
-      :vigun_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = VigunContent.new.build_vigun_genome_summary({
+      :vigun_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @vigun_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

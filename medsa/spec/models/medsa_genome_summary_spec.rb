@@ -11,16 +11,20 @@ describe MedsaGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    @medsa_genome_summary = MedsaGenomeSummary.create!({
-      :medsa_content_id => 1, :gc_content_genome => '22.5%'
+    ags = MedsaContent.new.build_medsa_genome_summary({
+      :medsa_content_id => 1,
+      :gc_content_genome => '22.5%'
     })
-    @medsa_genome_summary.gc_content_genome.should == '22.5'
+    ags.save
+    ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    @medsa_genome_summary = MedsaGenomeSummary.create!({
-      :medsa_content_id => 1, :gc_content_transcriptome => '78%'
+    ags = MedsaContent.new.build_medsa_genome_summary({
+      :medsa_content_id => 1,
+      :gc_content_transcriptome => '78%'
     })
-    @medsa_genome_summary.gc_content_transcriptome.should == '78'
+    ags.save
+    ags.gc_content_transcriptome.should == '78'
   end
 end

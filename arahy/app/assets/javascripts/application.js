@@ -1,3 +1,15 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require prototype
+//= require prototype_ujs
+//= require effects
+//= require dragdrop
+//= require controls
+//= require dropdownnav
+//= require_self
+//= require_tree .
+
 /**-----------------------------------------------------------------------------
  * Prototype
  *----------------------------------------------------------------------------*/

@@ -1,24 +1,32 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.20'
+gem 'rails', '3.2.11'
 
-gem 'mysql2', '~> 0.2.7'
-gem 'kaminari', '~> 0.12.4'
-gem 'devise', '~> 1.2.1'
+gem 'mysql2', '~> 0.3.11'
+gem 'kaminari', '~> 0.14.1'
+gem 'devise', '~> 1.5.4'
 gem 'rubycas-client', '~> 2.2.1'
 gem 'devise_cas_authenticatable', '~> 1.1.1'
 gem 'declarative_authorization', '~> 0.5.2'
 
 gem 'rack-maintenance_mode'
 
+group :assets do
+  gem 'uglifier', '>= 1.0.3'
+end
+
+gem 'jquery-rails'
+gem 'prototype-rails'
+
 group :development, :test do
   gem 'debugger', :require => 'debugger'
   gem 'rspec-rails', '~> 2.6'
+  gem 'thin'
 end
 
 group :test do
-  gem 'capybara', '~> 1.1.1'
-  gem 'factory_girl_rails', '~> 3.0'
-  gem 'database_cleaner', '~> 0.7.0'
+  gem 'capybara', '~> 1.1'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'turn', '0.8.2', :require => false
 end

@@ -11,20 +11,20 @@ describe ArahyGenomeSummary do
   end
 
   it "removes % after self.gc_content_genome" do
-    ags = ArahyContent.new.build_arahy_genome_summary({
+    ags = ArahyGenomeSummary.new({
       :arahy_content_id => 1,
       :gc_content_genome => '22.5%'
     })
-    ags.save
+    ags.save!
     ags.gc_content_genome.should == '22.5'
   end
 
   it "removes % after self.gc_content_transcriptome" do
-    ags = ArahyContent.new.build_arahy_genome_summary({
+    ags = ArahyGenomeSummary.new({
       :arahy_content_id => 1,
       :gc_content_transcriptome => '78%'
     })
-    ags.save
+    ags.save!
     ags.gc_content_transcriptome.should == '78'
   end
 end

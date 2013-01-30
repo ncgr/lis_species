@@ -5,11 +5,11 @@
 }
 
 body {
-  background-image: url(../images/bkgd.png);
+  background-image: url(bkgd.png);
   background-repeat: repeat-x;
   background-color: #363636;
   color: #1c140d;
-  font-family: Tahoma, Geneva, sans-serif;	
+  font-family: Tahoma, Geneva, sans-serif;
 }
 
 a {
@@ -58,19 +58,19 @@ a img.link {
 }
 
 hr.big {
-  height: 3px; 
-  border: none; 
-  background-color: #1c140d; 
-  margin: 5px; 
-  width: 98%; 
+  height: 3px;
+  border: none;
+  background-color: #1c140d;
+  margin: 5px;
+  width: 98%;
 }
 
 hr, hr.small {
-  height: 1px; 
-  border: none; 
-  background-color: #1c140d; 
-  margin: 5px; 
-  width: 98%; 
+  height: 1px;
+  border: none;
+  background-color: #1c140d;
+  margin: 5px;
+  width: 98%;
 }
 
 .clear {
@@ -113,7 +113,7 @@ h4 {
   float: right;
   font-size: 12px;
   color: #1c140d;
-  cursor: pointer;	
+  cursor: pointer;
 }
 
 p {
@@ -135,7 +135,7 @@ p.activity {
 }
 
 .right {
-  text-align: right;	
+  text-align: right;
   font-size: 12px;
   font-style: italic;
 }
@@ -147,7 +147,7 @@ p.activity {
 }
 
 .center {
-  text-align: center;	
+  text-align: center;
   font-size: 12px;
 }
 
@@ -159,7 +159,7 @@ ul.web-nobullet {
 ul.web-nobullet li {
   margin: 0;
   padding: 0;
-  font-size: 14px;	
+  font-size: 14px;
   line-height: 18px;
   letter-spacing: 1px;
   list-style-type: none;
@@ -174,7 +174,7 @@ ul.web-nobullet-indent {
 ul.web-nobullet-indent li {
   margin: 0 0 0 10px;
   padding: 0;
-  font-size: 14px;	
+  font-size: 14px;
   line-height: 18px;
   letter-spacing: 1px;
   list-style-type: none;
@@ -189,14 +189,14 @@ ul, ol {
 ul li {
   margin: 0;
   padding: 2px 10px 2px 10px;
-  font-size: 14px;	
+  font-size: 14px;
   letter-spacing: 1px;
 }
 
 ol li {
   margin: 0;
   padding: 2px 10px 2px 10px;
-  font-size: 14px;	
+  font-size: 14px;
   letter-spacing: 1px;
 }
 
@@ -207,11 +207,11 @@ ol li {
 
 .pubDate {
   float: right;
-  font-size: 10px;	
+  font-size: 10px;
 }
 
 .pubDateLeft {
-  font-size: 12px;    
+  font-size: 12px;
 }
 
 .small {
@@ -239,7 +239,7 @@ ol li {
 #logo {
   margin: 0 0 10px 15px;
   padding: 0;
-  background-image: url(../images/logo.jpg);
+  background-image: url(logo.jpg);
   background-repeat: no-repeat;
   height: 115px;
 }
@@ -340,7 +340,7 @@ ol li {
 .caption {
   margin: 10px 0 0 0;
   padding: 5px 0 0 0;
-  font-size: 12px;	
+  font-size: 12px;
 }
 
 div#zoom.edgy {

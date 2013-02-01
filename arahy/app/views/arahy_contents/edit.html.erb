@@ -10,7 +10,7 @@
   </p>
 <% end %>
 <p><%= link_to raw("Return Home &raquo;"), root_path %></p>
-<%= form_for @content, :html => { :multipart => true, :onsubmit => "processingOnSubmit()" } do |f| %>
+<%= form_for @content do |f| %>
   <%= render "shared/error_messages", :target => @content %>
 
 	<p><%= f.submit "Update Contents", :id => "submit", :class => "submit" %></p>
@@ -226,10 +226,10 @@
 
 <script type="text/javascript">
 	/** Load CKEditor Instances **/
-  CKEDITOR.replaceAll( function(textarea, config){
+  CKEDITOR.replaceAll(function(textarea, config){
     config.toolbar = "<%= @tool_bar %>";
   });
-  CKFinder.setupCKEditor( null, '/ckfinder/');
+  CKFinder.setupCKEditor(null, '/ckfinder/');
 
 	/** Nodulation Type **/
   showHideElementHelper(

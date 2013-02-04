@@ -191,28 +191,34 @@ module PhavuContentsHelper
   # Parse reference datasets into table.
   #
   def parse_reference_datasets(datasets)
-    i = 1
-    data = "<table  class='datasets-table'>"
-
-    data << "<tr>"
-    data << "<th>Type</th>"
-    data << "<th>Description</th>"
-    data << "<th>Source</th>"
-    data << "<th>URL</th>"
-    data << "</tr>"
-
-    datasets.each do |d|
-      i.modulo(2) == 0 ? style = "even" : style = "odd"
-      data << "<tr class='#{style}'>"
-      data << "<td>#{d.reference_dataset_type unless d.reference_dataset_type.blank?}</td>"
-      data << "<td>#{d.description unless d.description.blank?}</td>"
-      data << "<td>#{d.source unless d.source.blank?}</td>"
-      data << "<td>#{link_to raw('Download &raquo;'), d.url unless d.url.blank?}</td>"
+    if datasets.size == 0
+      data = "No reference datasets have been collected for this species. "
+      data << "Please <a href=\"mailto:lis_feedback\@ncgr.org?subject=LIS%20Feedback\">contact us</a> "
+      data << "to contribute data."
+    else
+      i = 1
+      data = "<table  class='datasets-table'>"
+  
+      data << "<tr>"
+      data << "<th>Type</th>"
+      data << "<th>Description</th>"
+      data << "<th>Source</th>"
+      data << "<th>URL</th>"
       data << "</tr>"
-      i += 1
+  
+      datasets.each do |d|
+        i.modulo(2) == 0 ? style = "even" : style = "odd"
+        data << "<tr class='#{style}'>"
+        data << "<td>#{d.reference_dataset_type unless d.reference_dataset_type.blank?}</td>"
+        data << "<td>#{d.description unless d.description.blank?}</td>"
+        data << "<td>#{d.source unless d.source.blank?}</td>"
+        data << "<td>#{link_to raw('Download &raquo;'), d.url unless d.url.blank?}</td>"
+        data << "</tr>"
+        i += 1
+      end
+      data << "</table>"
     end
-    data << "</table>"
-
+    
     data.html_safe
   end
 
@@ -220,21 +226,100 @@ module PhavuContentsHelper
   # Parse resources into table.
   #
   def parse_resources(resources)
-    i = 1
-    data = "<table  class='resources-table'>"
-
-    resources.each do |r|
-      i.modulo(2) == 0 ? style = "even" : style = "odd"
-      data << "<tr class='#{style}'>"
-      data << "<td>#{r.resource_type unless r.resource_type.blank?}</td>"
-      data << "<td>#{r.description unless r.description.blank?}</td>"
-      data << "<td>#{link_to raw('Linkout &raquo;'), r.url unless r.url.blank?}</td>"
-      data << "</tr>"
-      i += 1
+    if resources.size == 0
+      data = "There are no resources for this species"
+    else
+      data = "There are {resources.size} resources for this species"
+      i = 1
+      data << "<table  class='resources-table'>"
+  
+      resources.each do |r|
+        i.modulo(2) == 0 ? style = "even" : style = "odd"
+        data << "<tr class='#{style}'>"
+        data << "<td>#{r.resource_type unless r.resource_type.blank?}</td>"
+        data << "<td>#{r.description unless r.description.blank?}</td>"
+        data << "<td>#{link_to raw('Linkout &raquo;'), r.url unless r.url.blank?}</td>"
+        data << "</tr>"
+        i += 1
+      end
+      data << "</table>"
     end
-    data << "</table>"
-
+    
     data.html_safe
   end
 
+  #
+  # Parse QTLs into table.
+  # param qtls: Array
+  #
+  def parse_qtls(qtls, qtl_experiments)
+    if qtls.size == 0
+      data = "There is no QTL data for this species."
+    else
+      data = "There are #{qtls.size} QTL records "
+      data << "from #{qtl_experiments.size} experiments for this species"
+      data << "<br><br>"
+# need an Ajax call here to load QTL records into div 'qtl_list' below
+#      data << "#{link_to \"See all QTL\", :url => show_qtl_list(), :update => :qtl_list, :remote => true}"
+      
+      data << "<table class='qtl-table'>"
+      data << "<tr>"
+      data << "<td><b>Expriment Name</b></td>"
+      data << "<td><b>Citation</b></td>";
+      data << "<td><b>QTL count</b></td>";
+      data << "<tr>"
+      
+      qtl_experiments.each do |r|
+        data << "<tr>"
+        data << "<td>#{r.ename unless r.ename.blank?}</td>"
+        data << "<td>tdb</td>"
+        data << "<td>tbd</td>"
+        data << "<tr>"
+      end
+      
+      data << "</table>"
+      
+      data << "<div id=\"qtl_list\"></div>"
+    end
+
+    data.html_safe  # required
+  end # parse_qtls()
+
+
+  #
+  # Show all QTL records for this species
+  #
+  def show_qtl_list()
+    data "<i>List will go here</i>"
+    data.html_safe
+  end # show_qtl_list()
+  
+    
+  #
+  # Parse markers into table.
+  # param qtls: Array
+  #
+  def parse_markers(markers)
+    if markers.size == 0
+      data = "There is no marker data for this species."
+    else
+      data = "<table class='marker-table'>"
+      data << "<tr>"
+      data << "<td><b>name</b></td>"
+      data << "<td><b><i>et cetera</i></b></td>";
+      data << "<tr>"
+      
+      qtls.each do |r|
+        data << "<tr>"
+        data << "<td>#{r.marker_name unless r.marker_name.blank?}</td>"
+        data << "<td>...</td>"
+        data << "<tr>"
+      end
+      
+      data << "</table>"
+    end
+
+    data.html_safe  # indicates that html is safe to display
+  end # parse_markers()
+  
 end

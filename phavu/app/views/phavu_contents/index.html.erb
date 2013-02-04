@@ -1,3 +1,16 @@
+<%
+=begin
+  file: index.html.erb
+  
+  purpose: display index page for a species.
+           contents for each tab are defined in this page.
+           helper functions in module helpers/phavu_contents_helper.rb
+  
+  documentation:
+      http://docs.jquery.com/UI  -- tabs
+=end
+%>
+
 <h1><%= format_species_name(@content.legume.name) %></h1>
 
 <% permitted_to? :update, :phavu_contents do %>
@@ -11,13 +24,37 @@
 
   <ul>
     <li><a href="#overview">Overview</a></li>
-    <li><a href="#genome_summary">Genome Summary</a></li>
     <li><a href="#resources">Resources</a></li>
     <li><a href="#reference_data">Reference Data</a></li>
-    <li><a href="#selected_references">Selected References</a></li>
+    <li><a href="#publications">Publications</a></li>
     <li><a href="#maps">Maps</a></li>
+    <li><a href="#markers">Markers</a></li>
+    <li><a href="#qtl">Traits &amp; QTL</a></li>
   </ul>
 
+<%
+  # get tab index if any requested
+  #    surely there is a more elegant way to do this!
+  case 
+    when params[:tab] == 'overview'
+      @tab = 0
+    when params[:tab] == 'resources'
+      @tab = 1
+    when params[:tab] == 'reference_data'
+      @tab = 2
+    when params[:tab] == 'publications'
+      @tab = 3
+    when params[:tab] == 'maps'
+      @tab = 4
+    when params[:tab] == 'markers'
+      @tab = 5
+    when params[:tab] == 'qtl'
+      @tab = 6
+    else
+      @tab = ''
+  end 
+%>
+  
   <div id="overview">
     <h2>Overview</h2>
     <div id="overview">
@@ -30,6 +67,11 @@
     <% end %>
 
     <%= parse_model_attributes(@content, @overview_attr) %>
+    
+    <p><strong>Genome summary</strong></p>
+    <%= raw(@content.phavu_genome_summary.genome_summary) %>
+
+    <%= parse_model_attributes(@content.phavu_genome_summary, @genome_attr) %>
 
     <% unless @content.nodulators.empty? %>
       <p><strong>Nodulators</strong></p>
@@ -46,36 +88,23 @@
     <% end %>
   </div>
 
-  <div id="genome_summary">
-    <h2>Genome Summary</h2>
-    <div id="genome_summary">
-      <%= raw(@content.phavu_genome_summary.genome_summary) %>
-    </div>
-
-    <%= parse_model_attributes(@content.phavu_genome_summary, @genome_attr) %>
-  </div>
-
   <div id="resources">
     <h2>Resources</h2>
     <div id="resources">
-      <% unless @content.resources.blank? %>
-        <%= parse_resources(@content.resources.public_resources) %>
-      <% end %>
+      <%= parse_resources(@content.resources.public_resources) %>
     </div>
   </div>
 
   <div id="reference_data">
     <h2>Reference Data</h2>
     <div id="reference_datasets">
-      <% unless @content.reference_datasets.blank? %>
-        <%= parse_reference_datasets(@content.reference_datasets.public_reference_datasets) %>
-      <% end %>
+      <%= parse_reference_datasets(@content.reference_datasets.public_reference_datasets) %>
     </div>
   </div>
 
-  <div id="selected_references">
-    <h2>Selected References</h2>
-    <div id="selected_references">
+  <div id="publications">
+    <h2>Selected Publications</h2>
+    <div id="publications">
       <%= raw(@content.phavu_selected_reference.selected_references) %>
     </div>
   </div>
@@ -86,10 +115,30 @@
       <%= raw(@content.maps) %>
     </div>
   </div>
+
+  <div id="qtl">
+    <h2>Traits and QTL</h2>
+    <div id="qtl">
+      <%= parse_qtls(@content.qtls, @content.qtl_experiments) %>
+    </div>
+  </div>
+
+  <div id="markers">
+    <h2>Markers</h2>
+    <div id="markers">
+      <%= parse_markers(@content.markers) %>
+    </div>
+  </div>
+
+  <%= #tab divs go above here 
+  %>
 </div>
 
 <script type="text/javascript">
   $j(function($) {
-    $("#tabs").tabs();
+    var $tabs = $("#tabs").tabs();
+    <% if @tab != '' %>
+      $tabs.tabs('select', <%= @tab %>);
+    <% end %>
   });
 </script>

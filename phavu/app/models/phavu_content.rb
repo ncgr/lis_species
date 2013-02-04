@@ -22,6 +22,18 @@ class PhavuContent < ActiveRecord::Base
     :primary_key => "legume_id",
     :foreign_key => "legume_id",
     :dependent => :destroy
+    
+  has_many :qtl_experiments,
+    :primary_key => "organism_id",
+    :foreign_key => "organism_id"
+    
+  has_many :qtls,
+    :primary_key => "organism_id",
+    :foreign_key => "organism_id"
+    
+  has_many :markers,
+    :primary_key => "organism_id",
+    :foreign_key => "organism_id"
 
   attr_accessible :overview, :ncbi_taxon_id, :grin_taxon_id, :special_interest,
     :nodulation_type, :nodulation_type_information, :flowering_type,

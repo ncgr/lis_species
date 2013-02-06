@@ -1,29 +1,29 @@
-<ul class="level1" id="dropdown">
-	<li><%= link_to "Home", URLS['root_url'] %></li>
-	<li class="sep">|</li>
-	<li><%= link_to "About", "#{URLS['root_url']}pages/about" %></li>
-	<li class="sep">|</li>
-	<li><%= link_to "News", "#{URLS['root_url']}news_articles" %></li>
-	<li class="sep">|</li>
-	<li>
+<ul id="dropdown" class="level1">
+  <li><%= link_to "Home", URLS['root_url'] %></li>
+  <li class="sep"> | </li>
+  <li><%= link_to "About", "#{URLS['root_url']}pages/about" %></li>
+  <li class="sep"> | </li>
+  <li><%= link_to "News", "#{URLS['root_url']}news_articles" %></li>
+  <li class="sep"> | </li>
+  <li>
     <%= link_to "Search", "#{URLS['root_url']}pages/search" %>
-		<ul class="level2">
-			<li><%= link_to "Search sequenced legume genomes", "http://search.comparative-legumes.org/quorum/jobs/new?genome" %></li>
-			<li><%= link_to "Search genes/proteins/gene families", "http://search.comparative-legumes.org/quorum/jobs/new?gene" %></li>
-			<li><%= link_to "Advanced sequence search", "http://search.comparative-legumes.org/quorum/jobs/new" %></li>
-			<li><%= link_to "CViT search by sequence", "http://cvit.comparative-legumes.org" %></li>
-			<li><%= link_to "Leggle Gene Family Pages", "http://leggle.comparative-legumes.org" %></li>
-		</ul>
-	</li>
-	<li class="sep">|</li>
-	<li>
+    <ul class="level2">
+      <li><%= link_to "Search sequenced legume genomes", "http://search.comparative-legumes.org/quorum/jobs/new?genome" %></li>
+      <li><%= link_to "Search genes/proteins/gene families", "http://search.comparative-legumes.org/quorum/jobs/new?gene" %></li>
+      <li><%= link_to "Advanced sequence search", "http://search.comparative-legumes.org/quorum/jobs/new" %></li>
+      <li><%= link_to "CViT search by sequence", "http://cvit.comparative-legumes.org" %></li>
+      <li><%= link_to "Leggle Gene Family Pages", "http://leggle.comparative-legumes.org" %></li>
+    </ul>
+  </li>
+  <li class="sep"> | </li>
+  <li>
     <%= link_to "Maps", "#{URLS['root_url']}pages/maps" %>
-		<ul class="level2">
-			<li><%= link_to "Comparative map views", "http://cmap.comparative-legumes.org/index.html" %></li>
-		</ul>
-	</li>
-	<li class="sep">|</li>
-	<li>
+    <ul class="level2">
+      <li><%= link_to "Comparative map views", "http://cmap.comparative-legumes.org/index.html" %></li>
+    </ul>
+  </li>
+  <li class="sep"> | </li>
+  <li>
     <%= link_to "Species", "#{URLS['root_url']}pages/species" %>
     <ul class="level2">
       <li><%= link_to "Arachis hypogaea", "http://arahy.comparative-legumes.org" %></li>
@@ -35,7 +35,7 @@
       <li><%= link_to "Lotus japonicus", "http://lotja.comparative-legumes.org" %></li>
       <li><%= link_to "Lupinus albus", "http://lupal.comparative-legumes.org" %></li>
       <li><%= link_to "Lupinus angustifolious", "http://lupan.comparative-legumes.org" %></li>
-			<li><%= link_to "Medicago sativa", "http://medsa.comparative-legumes.org" %></li>
+      <li><%= link_to "Medicago sativa", "http://medsa.comparative-legumes.org" %></li>
       <li><%= link_to "Medicago truncatula", "http://medtr.comparative-legumes.org" %></li>
       <li><%= link_to "Phaseolus coccineus", "http://phacn.comparative-legumes.org" %></li>
       <li><%= link_to "Phaseolus vulgaris", "http://phavu.comparative-legumes.org" %></li>
@@ -46,8 +46,8 @@
       <li><%= link_to "Vigna unguiculata", "http://vigun.comparative-legumes.org" %></li>
     </ul>
   </li>
-	<li class="sep">|</li>
-	<li><%= link_to "Collaborators", "#{URLS['root_url']}pages/collaborators" %></li>
-	<li class="sep">|</li>
-	<li><%= link_to "Resources", "#{URLS['root_url']}pages/resources" %></li>
+  <li class="sep"> | </li>
+  <li><%= link_to "Collaborators", "#{URLS['root_url']}pages/collaborators" %></li>
+  <li class="sep"> | </li>
+  <li><%= link_to "Resources", "#{URLS['root_url']}pages/resources" %></li>
 </ul>

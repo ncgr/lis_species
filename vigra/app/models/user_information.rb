@@ -11,7 +11,7 @@
 class UserInformation < ActiveRecord::Base
 
   # Use the table users.
-  set_table_name "users"
+  self.table_name = "users"
 
   before_save :format_user_information, :if => :should_validate?
   after_create :set_user_role

@@ -1,0 +1,130 @@
+/*** User Navigation Styles ***/
+
+#user-nav {
+  margin: 0;
+  padding: 0 2px 2px 0;
+  color: #fff;
+  float: right;
+  font-size: 14px;
+}
+
+#user-nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#user-nav a:hover {
+  text-decoration: underline;
+}
+
+/*** End User Nav ***/
+
+/*** Navigation Styles ***/
+
+#nav {
+  margin: 0 15px 0 15px;
+  padding: 0;
+  width: 965px;
+  background: #ffffff;
+  border-bottom: 0px #f2e9e1 solid;
+  height: 2.1em;
+}
+
+#dropdown {
+  display: block;
+  margin: 0;
+  padding: 0 0 0 10px;
+  line-height: 17px;
+  list-style: none;
+  z-index: 90;
+  position: relative;
+}
+
+#dropdown li {
+  float: left;
+  margin: 0 1px 0 0;
+  padding: 0;
+  font-size: 14px;
+  letter-spacing: 1.0px;
+  line-height: 17px;
+  list-style-type: none;
+  white-space: nowrap;
+}
+
+#dropdown li a {
+  float: left;
+  display: block;
+  width: auto;
+  font-weight: normal;
+  background: transparent;
+  text-decoration: none;
+  color: #1c140d;
+  margin: 0;
+  padding: 0.8em 0.4em 0.4em 0.4em;
+}
+
+#dropdown li a.no_cursor {
+  cursor: default;
+}
+
+#dropdown li a:hover {
+  color: #ffffff;
+  background: #c34a18;
+  text-decoration: none;
+}
+
+#dropdown li.sep {
+  color: #1c140d;
+  padding: 0.8em 0 0.5em 0;
+}
+
+#dropdown li a {
+  float: none;
+}
+
+#dropdown ul.level2, #dropdown ul.level3 {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  position: absolute;
+  visibility: hidden;
+  border-left: 1px solid #f2e9e1;
+  border-top: 1px solid #f2e9e1;
+  border-right: 1px solid #f2e9e1;
+  background: #fff;
+}
+
+#dropdown ul.level2 li, #dropdown ul.level3 li {
+  border-bottom: 1px solid #f2e9e1;
+  float: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+#dropdown ul.level2 li a, #dropdown ul.level3 li a {
+  margin: 0;
+  padding: 5px 9px 5px 5px;
+}
+
+#dropdown ul.level2 li a:hover, #dropdown ul.level3 li a:hover {
+  font-weight: normal;
+  background-color: #c34a18;
+}
+
+/*** End ***/
+
+/*** Pagination Styles ***/
+
+.pagination {
+  margin: 10px 0 10px 0;
+  padding: 0;
+
+  font-size: 12px;
+}
+
+.pagination, .disabled {
+  color: #777;
+}
+
+/*** End ***/

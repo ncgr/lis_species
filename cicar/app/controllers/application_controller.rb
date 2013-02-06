@@ -1,4 +1,3 @@
-
 class ApplicationController < ActionController::Base
 
   before_filter :set_ckfinder_session

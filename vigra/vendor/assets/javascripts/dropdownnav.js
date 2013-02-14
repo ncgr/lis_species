@@ -16,7 +16,7 @@
 
 /**
  * Container Class (Prototype) for the dropDownMenu
- * 
+ *
  * @param idOrElement
  *            String|HTMLElement root Node of the menu (ul)
  * @param name
@@ -143,7 +143,7 @@ MenuContainer.prototype = {
 		} else if (this.menuType == "flyout") {
 			var parentMenuBorders = this.parentMenu ? this.parentMenu.getBorders() : new Object();
 			var thisBorders = this.getBorders();
-			if ((Position.positionedOffset(this.parentMenu.element)[0]+ this.parentMenu.element.offsetWidth 
+			if ((Position.positionedOffset(this.parentMenu.element)[0]+ this.parentMenu.element.offsetWidth
 					+ this.element.offsetWidth + 20) > (window.innerWidth ? window.innerWidth
 					: document.body.offsetWidth)) {
 				Element.setStyle(this.element, {
@@ -211,7 +211,7 @@ Object.extend(Object.extend(MenuItem.prototype, MenuContainer.prototype), {
 				if (menuItem.root.closeDelayTimer)
 					window.clearTimeout(menuItem.root.closeDelayTimer);
 				eval(menuItem.root.name + ".closingMenuItem = menuItem");
-				menuItem.root.closeDelayTimer = window.setTimeout(menuItem.root.name + ".closingMenuItem.subMenu.close()", 
+				menuItem.root.closeDelayTimer = window.setTimeout(menuItem.root.name + ".closingMenuItem.subMenu.close()",
 						menuItem.root.closeDelayTime);
 			}
 		}

@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   #
+  # Redirect to HTTP after sign out.
+  #
+  def after_sign_out_path_for(resource_or_scope)
+    root_url(:protocol => 'http')
+  end
+
+  #
   # I pitty the fool!
   #
   def permission_denied

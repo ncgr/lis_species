@@ -1,5 +1,7 @@
 class PhacnContentsController < ApplicationController
 
+  force_ssl :only => [:edit, :update]
+
   before_filter :authenticate_user!, :except => :index
   filter_access_to :edit, :update
 

@@ -35,3 +35,10 @@ Medtr::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+# We don't want SSL redirects in our test suite
+module ActionController::ForceSSL::ClassMethods
+  def force_ssl(options = {})
+    # noop
+  end
+end

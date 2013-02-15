@@ -71,10 +71,10 @@ Devise.setup do |config|
   # Limiting the stretches to just one in testing will increase the performance of
   # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
   # a value less than 10 in other environments.
-  config.stretches = Rails.env.test? ? 1 : 10
+  config.stretches = 20
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "6dab1aba9643dac987c071d68114d78f04faafd4c9b9e475f6733c294c6e5880730d9ea32cd6d121e47781d4993e10daf9c78a4898a23da7386a8c1f077cd373"
+  config.pepper = "c01594089249ea928934579482375982437598724395781148b0120e0b370e72855f3e13a9999a0672e0897a56fe390ecb34048601c378cca569f13320e1ef9a47c"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -103,7 +103,7 @@ Devise.setup do |config|
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
-  # config.cookie_options = {}
+  config.cookie_options = { :secure => true }
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 6..128.
@@ -145,7 +145,7 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  # config.reset_password_keys = [ :email ]
+  config.reset_password_keys = [ :username ]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
@@ -158,7 +158,7 @@ Devise.setup do |config|
   # :authlogic_sha512 (then you should set stretches above to 20 for default behavior)
   # and :restful_authentication_sha1 (then you should set stretches to 10, and copy
   # REST_AUTH_SITE_KEY to pepper)
-  # config.encryptor = :sha512
+  config.encryptor = :authlogic_sha512
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key

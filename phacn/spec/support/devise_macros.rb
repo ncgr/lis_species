@@ -1,6 +1,7 @@
 module DeviseMacros
   def login_superuser
     before(:each) do
+      @request.env['HTTPS'] = "on"
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryGirl.create(:user_information)
       @user = User.find(@user.id)
@@ -17,6 +18,7 @@ module DeviseMacros
 
   def login_admin
     before(:each) do
+      @request.env['HTTPS'] = "on"
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryGirl.create(:user_information)
       @user = User.find(@user.id)
@@ -33,6 +35,7 @@ module DeviseMacros
 
   def login_editor
     before(:each) do
+      @request.env['HTTPS'] = "on"
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryGirl.create(:user_information)
       @user = User.find(@user.id)
@@ -52,6 +55,7 @@ module DeviseMacros
   #
   def login_system_user
     before(:each) do
+      @request.env['HTTPS'] = "on"
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryGirl.create(:user_information)
       @user = User.find(@user.id)

@@ -9,7 +9,7 @@ development:
 
 production:
   cas_url: "https://cas.comparative-legumes.org"
-  cas_validate: "https://velarde.ncgr.org:8055/proxyValidate"
+  cas_validate: "https://cas.comparative-legumes.org:8020/proxyValidate"
   root_url: "comparative-legumes.org/"
 
 test:

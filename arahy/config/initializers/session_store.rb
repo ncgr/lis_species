@@ -2,7 +2,8 @@
 
 Arahy::Application.config.session_store :active_record_store,
   :key    => '_lis_site_session',
-  :domain => :all
+  :domain => :all,
+  :secure => Rails.env.production?
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

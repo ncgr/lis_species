@@ -4,6 +4,13 @@ module LotjaContentsHelper
   GRIN_URL = "http://www.ars-grin.gov/cgi-bin/npgs/html/taxon.pl?"
 
   #
+  # Return current protocol.
+  #
+  def protocol
+    request.ssl? ? 'https://' : 'http://'
+  end
+
+  #
   # Italicize species name.
   #
   def format_species_name(name)
